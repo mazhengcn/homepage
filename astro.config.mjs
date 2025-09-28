@@ -1,4 +1,3 @@
-import db from '@astrojs/db'
 import mdx from '@astrojs/mdx'
 import netlify from '@astrojs/netlify'
 import react from '@astrojs/react'
@@ -9,7 +8,7 @@ import { defineConfig } from 'astro/config'
 // https://astro.build/config
 export default defineConfig({
   site: 'https://zheng-homepage.netlify.app',
-  integrations: [sitemap(), react(), mdx(), db()],
+  integrations: [sitemap(), react(), mdx()],
   markdown: {},
   vite: {
     plugins: [tailwindcss()],
