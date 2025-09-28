@@ -1,12 +1,19 @@
 import React, { useEffect } from 'react'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card'
 
 interface Props {
   title: string
   content: string
+  date: Date
 }
 
-export default function CardSpotlight({ title, content }: Props) {
+export default function CardSpotlight({ title, content, date }: Props) {
   useEffect(() => {
     const all = document.querySelectorAll('.spotlight-card')
 
@@ -48,10 +55,21 @@ export default function CardSpotlight({ title, content }: Props) {
     <div className="h-max w-max">
       <div className="spotlight-card group relative overflow-hidden rounded-xl p-px transition-all duration-300 ease-in-out hover:shadow-lg">
         <Card className="max-w-80 border border-orange-200 bg-white/50 transition-all duration-300 ease-in-out group-hover:backdrop-blur-[20px]">
-          <CardHeader>
+          <CardHeader className="w-full">
             <CardTitle className="text-xl font-bold">{title}</CardTitle>
           </CardHeader>
-          <CardContent className="opacity-70">{content}</CardContent>
+          <CardContent>{content}</CardContent>
+          <CardFooter>
+            <div className="text-mono text-xs">
+              <time dateTime={date.toISOString()}>
+                {date.toLocaleDateString('en-us', {
+                  year: 'numeric',
+                  month: 'short',
+                  day: 'numeric',
+                })}
+              </time>
+            </div>
+          </CardFooter>
         </Card>
         <div className="blob absolute left-0 top-0 h-20 w-20 rounded-full bg-orange-300/60 opacity-0 blur-2xl transition-all duration-300 ease-in-out dark:bg-orange-400/60" />
         <div className="fake-blob absolute left-0 top-0 h-20 w-20 rounded-full" />
