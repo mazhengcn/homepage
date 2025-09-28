@@ -52,15 +52,17 @@ export default function CardSpotlight({ title, content, date }: Props) {
   }, [])
 
   return (
-    <div className="h-max w-max">
+    <div className="h-max">
       <div className="spotlight-card group relative overflow-hidden rounded-xl p-px transition-all duration-300 ease-in-out hover:shadow-lg">
-        <Card className="max-w-80 border border-orange-200 bg-white/50 transition-all duration-300 ease-in-out group-hover:backdrop-blur-[20px]">
-          <CardHeader className="w-full">
+        <Card className="bg-white/40 transition-all duration-300 ease-in-out group-hover:backdrop-blur-[20px] dark:bg-zinc-950/40">
+          <CardHeader>
             <CardTitle className="text-xl font-bold">{title}</CardTitle>
           </CardHeader>
-          <CardContent>{content}</CardContent>
+          <CardContent>
+            <p className="opacity-70">{content}</p>
+          </CardContent>
           <CardFooter>
-            <div className="text-mono text-xs">
+            <div className="font-mono text-xs opacity-70">
               <time dateTime={date.toISOString()}>
                 {date.toLocaleDateString('en-us', {
                   year: 'numeric',
