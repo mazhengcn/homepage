@@ -4,9 +4,9 @@ import type { CollectionEntry } from 'astro:content'
 import BackToTopButton from '../components/BackToTopButton'
 import BaseHead from '../components/BaseHead.astro'
 import Body from '../components/Body.astro'
+import Content from '../components/Content.astro'
 import Footer from '../components/Footer.astro'
 import Header from '../components/Header.astro'
-import Prose from '../components/Prose.astro'
 import { SITE_TITLE } from '../consts'
 
 type Props = CollectionEntry<'blog'>['data']
@@ -26,7 +26,7 @@ const { title, description, heroImage } = Astro.props
   <Body>
     <Header />
     <main class="pt-[56px]">
-      <Prose className="mx-auto max-w-4xl px-8 pt-6">
+      <Content>
         <div class="mb-8">
           {
             heroImage && (
@@ -44,7 +44,7 @@ const { title, description, heroImage } = Astro.props
         <div>{description}</div>
         <hr class="border-top border-zinc-400" />
         <slot />
-      </Prose>
+      </Content>
       <BackToTopButton client:idle />
     </main>
     <Footer />
