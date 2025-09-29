@@ -53,8 +53,8 @@ export default function CardSpotlight({ title, content, date }: Props) {
 
   return (
     <div className="h-max">
-      <div className="spotlight-card group relative overflow-hidden rounded-xl p-px transition-all duration-300 ease-in-out hover:shadow-lg">
-        <Card className="bg-white/40 transition-all duration-300 ease-in-out group-hover:backdrop-blur-[20px] dark:bg-zinc-950/40">
+      <div className="spotlight-card group relative overflow-hidden rounded-xl border-none p-px transition-all duration-300 ease-in-out hover:shadow-lg">
+        <Card className="border-none bg-white/40 transition-all duration-300 ease-in-out group-hover:backdrop-blur-[20px] dark:bg-zinc-950/40">
           <CardHeader>
             <CardTitle className="text-xl font-bold">{title}</CardTitle>
           </CardHeader>
