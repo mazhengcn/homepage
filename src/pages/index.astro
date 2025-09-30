@@ -21,7 +21,7 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts'
     <Header title={SITE_TITLE} />
     <main class="pt-[80px]">
       <section
-        class="mx-auto flex h-80 max-w-3xl flex-col items-center justify-center gap-6 px-4 md:flex-row md:gap-0"
+        class="mx-auto flex h-80 max-w-4xl flex-col items-center gap-6 px-4 md:flex-row md:justify-evenly md:gap-0"
       >
         <Image
           src={Persona}
@@ -30,7 +30,7 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts'
           layout="constrained"
           priority
         />
-        <div class="prose dark:prose-invert m-auto">
+        <div class="prose dark:prose-invert">
           <h1 class="mb-4 text-4xl font-semibold">
             Zheng Ma <span class="font-sans-cn font-semibold">(马 征)</span>
           </h1>
@@ -39,7 +39,7 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts'
           </p>
         </div>
       </section>
-      <Prose className="mx-auto my-12 max-w-3xl px-4">
+      <Prose className="mx-auto my-12 max-w-4xl px-4">
         <p class="indent-8">
           Welcome to my homepage, I'm a mathematician and tech enthusiast. My
           research interests include computational mathematics and deep learning
