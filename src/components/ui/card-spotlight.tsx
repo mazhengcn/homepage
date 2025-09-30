@@ -53,13 +53,13 @@ export default function CardSpotlight({ title, content, date }: Props) {
 
   return (
     <div className="h-max">
-      <div className="spotlight-card group relative overflow-hidden rounded-xl p-px transition-all duration-300 ease-in-out hover:shadow-lg">
-        <Card className="border-none bg-orange-100/40 transition-all duration-300 ease-in-out group-hover:backdrop-blur-[20px] dark:bg-zinc-800/40">
+      <div className="spotlight-card group relative overflow-hidden rounded-xl shadow-lg transition-all duration-300 ease-in-out hover:shadow-2xl">
+        <Card className="transition-all duration-300 ease-in-out group-hover:backdrop-blur-[20px]">
           <CardHeader>
-            <CardTitle className="text-xl">{title}</CardTitle>
+            <CardTitle className="text-foreground text-xl">{title}</CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="opacity-70">{content}</p>
+            <p className="text-secondary-foreground opacity-75">{content}</p>
           </CardContent>
           <CardFooter>
             <div className="font-mono text-xs opacity-70">
@@ -73,7 +73,7 @@ export default function CardSpotlight({ title, content, date }: Props) {
             </div>
           </CardFooter>
         </Card>
-        <div className="blob absolute left-0 top-0 h-20 w-20 rounded-full bg-orange-500 opacity-0 blur-2xl transition-all duration-300 ease-in-out dark:bg-orange-500" />
+        <div className="blob bg-primary absolute left-0 top-0 h-20 w-20 rounded-full opacity-0 blur-2xl transition-all duration-300 ease-in-out" />
         <div className="fake-blob absolute left-0 top-0 h-20 w-20 rounded-full" />
       </div>
     </div>

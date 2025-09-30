@@ -13,7 +13,7 @@ export default function LinkButton({ href, children }: Props) {
       <Button
         variant="outline"
         asChild
-        className="hover:text-orange-500 dark:hover:text-orange-500"
+        className="hover:bg-primary hover:text-primary-foreground hover:dark:bg-primary hover:dark:text-primary-foreground"
       >
         <a href={href}>{children}</a>
       </Button>
