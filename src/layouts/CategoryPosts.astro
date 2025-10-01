@@ -1,5 +1,11 @@
 ---
-import { Image } from 'astro:assets'
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card.tsx'
 import { getCollection } from 'astro:content'
 import BackToTopButton from '../components/BackToTopButton'
 import BaseHead from '../components/BaseHead.astro'
@@ -42,15 +48,23 @@ const posts = (
           <ul class="grid grid-cols-1 gap-4 md:grid-cols-2">
             {
               posts.map((post: any) => (
-                <li class="mb-4 text-center">
-                  <a href={`/blog/${post.id}`} class="block">
-                    <Image
-                      class="h-50 rounded-xl border border-slate-300 dark:border-zinc-700"
-                      src={post.data.heroImage}
-                      alt="Thumbnail"
-                    />
-                    <div class="mt-3 text-xl font-bold">{post.data.title}</div>
-                    <div>{post.data.description}</div>
+                <li>
+                  <a href={`/blog/${post.id}`}>
+                    <Card className="shadow-lg hover:shadow-2xl">
+                      <CardHeader>
+                        <CardTitle>{post.data.title}</CardTitle>
+                      </CardHeader>
+                      <CardContent className="text-muted-foreground">
+                        {post.data.description}
+                      </CardContent>
+                      <CardFooter className="text-muted-foreground text-xs font-mono">
+                        {post.data.pubDate.toLocaleDateString('en-US', {
+                          year: 'numeric',
+                          month: 'short',
+                          day: 'numeric',
+                        })}
+                      </CardFooter>
+                    </Card>
                   </a>
                 </li>
               ))
