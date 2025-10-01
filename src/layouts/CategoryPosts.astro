@@ -1,11 +1,5 @@
 ---
-import {
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card.tsx'
+import CardSpotlight from '@/components/ui/card-spotlight'
 import { getCollection } from 'astro:content'
 import BackToTopButton from '../components/BackToTopButton'
 import BaseHead from '../components/BaseHead.astro'
@@ -49,22 +43,13 @@ const posts = (
             {
               posts.map((post: any) => (
                 <li>
-                  <a href={`/blog/${post.id}`}>
-                    <Card className="shadow-lg hover:shadow-2xl">
-                      <CardHeader>
-                        <CardTitle>{post.data.title}</CardTitle>
-                      </CardHeader>
-                      <CardContent className="text-muted-foreground">
-                        {post.data.description}
-                      </CardContent>
-                      <CardFooter className="text-muted-foreground text-xs font-mono">
-                        {post.data.pubDate.toLocaleDateString('en-US', {
-                          year: 'numeric',
-                          month: 'short',
-                          day: 'numeric',
-                        })}
-                      </CardFooter>
-                    </Card>
+                  <a href={`/blog/${post.id}/`}>
+                    <CardSpotlight
+                      title={post.data.title}
+                      content={post.data.description}
+                      date={post.data.pubDate}
+                      client:visible
+                    />
                   </a>
                 </li>
               ))
