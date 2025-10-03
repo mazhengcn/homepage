@@ -1,6 +1,4 @@
 ---
-import Prose from './Prose.astro'
-
 export interface Props {
   className?: string
 }
@@ -8,4 +6,8 @@ export interface Props {
 const { className = '' } = Astro.props
 ---
 
-<Prose className={`mx-auto max-w-4xl px-8 ${className}`}><slot /></Prose>
+<article
+  class={`prose prose-lg dark:prose-invert prose-a:no-underline mx-auto max-w-4xl px-8 ${className}`}
+>
+  <slot />
+</article>
