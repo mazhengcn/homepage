@@ -53,7 +53,7 @@ const posts = (await getCollection('blog')).sort(
                 return (
                   <li>
                     <a href={`/blog/${post.id}/`}>
-                      <Card className="h-full hover:bg-accent  hover:text-accent-foreground transition-shadow flex flex-col">
+                      <Card className="h-full hover:bg-accent  hover:text-accent-foreground transition-shadow inset-shadow-default flex flex-col">
                         <CardHeader className="flex-1">
                           <CardTitle className="text-xl font-bold">
                             {post.data.title}

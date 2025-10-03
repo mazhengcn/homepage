@@ -1,0 +1,120 @@
+.dark {
+  /* Foreground Colors */
+  --fgColor-accent: #4493f8;
+  --fgColor-attention: #d29922;
+  --fgColor-black: #010409;
+  --fgColor-danger: #f85149;
+  --fgColor-default: #f0f6fc;
+  --fgColor-disabled: #656c76;
+  --fgColor-done: #ab7df8;
+  --fgColor-muted: #9198a1;
+  --fgColor-neutral: #9198a1;
+  --fgColor-severe: #db6d28;
+  --fgColor-sponsors: #db61a2;
+  --fgColor-success: #3fb950;
+  --fgColor-onEmphasis: #ffffff;
+  --fgColor-onInverse: #010409;
+  --fgColor-white: #ffffff;
+
+  --fgColor-link: var(--fgColor-accent);
+  --fgColor-closed: var(--fgColor-danger);
+  --fgColor-draft: var(--fgColor-neutral);
+  --fgColor-open: var(--fgColor-success);
+  --fgColor-upsell: var(--fgColor-done);
+
+  /* Background Colors */
+  --bgColor-default: #0d1117;
+  --bgColor-disabled: #212830;
+  --bgColor-black: #010409;
+  --bgColor-inset: #010409;
+  --bgColor-inverse: #ffffff;
+  --bgColor-white: #ffffff;
+  --bgColor-emphasis: #3d444d;
+  --bgColor-muted: #151b23;
+
+  --bgColor-accent-emphasis: #1f6feb;
+  --bgColor-accent-muted: #388bfd1a;
+  --bgColor-attention-emphasis: #9e6a03;
+  --bgColor-attention-muted: #bb800926;
+  --bgColor-danger-emphasis: #da3633;
+  --bgColor-danger-muted: #f851491a;
+  --bgColor-done-emphasis: #8957e5;
+  --bgColor-done-muted: #ab7df826;
+  --bgColor-neutral-emphasis: #656c76;
+  --bgColor-neutral-muted: #656c7633;
+  --bgColor-severe-emphasis: #bd561d;
+  --bgColor-severe-muted: #db6d281a;
+  --bgColor-sponsors-emphasis: #bf4b8a;
+  --bgColor-sponsors-muted: #db61a21a;
+  --bgColor-success-emphasis: #238636;
+  --bgColor-success-muted: #2ea04326;
+  --bgColor-transparent: #00000000;
+
+  --bgColor-closed-emphasis: var(--bgColor-danger-emphasis);
+  --bgColor-closed-muted: var(--bgColor-danger-muted);
+  --bgColor-draft-emphasis: var(--bgColor-neutral-emphasis);
+  --bgColor-draft-muted: var(--bgColor-neutral-muted);
+  --bgColor-open-emphasis: var(--bgColor-success-emphasis);
+  --bgColor-open-muted: var(--bgColor-success-muted);
+  --bgColor-upsell-emphasis: var(--bgColor-done-emphasis);
+  --bgColor-upsell-muted: var(--bgColor-done-muted);
+
+  /* Border Colors */
+  --borderColor-transparent: #00000000;
+  --borderColor-translucent: #ffffff26;
+  --borderColor-muted: #3d444db3;
+  --borderColor-default: #3d444d;
+  --borderColor-disabled: #656c761a;
+  --borderColor-emphasis: #656c76;
+
+  --borderColor-accent-emphasis: #1f6feb;
+  --borderColor-accent-muted: #388bfd66;
+  --borderColor-attention-emphasis: #9e6a03;
+  --borderColor-attention-muted: #bb800966;
+  --borderColor-danger-emphasis: #da3633;
+  --borderColor-danger-muted: #f8514966;
+  --borderColor-done-emphasis: #8957e5;
+  --borderColor-done-muted: #ab7df866;
+  --borderColor-severe-emphasis: #bd561d;
+  --borderColor-severe-muted: #db6d2866;
+  --borderColor-sponsors-emphasis: #bf4b8a;
+  --borderColor-sponsors-muted: #db61a266;
+  --borderColor-success-emphasis: #238636;
+  --borderColor-success-muted: #2ea04366;
+
+  --borderColor-closed-emphasis: var(--borderColor-danger-emphasis);
+  --borderColor-closed-muted: var(--borderColor-danger-muted);
+  --borderColor-neutral-emphasis: var(--borderColor-emphasis);
+  --borderColor-open-emphasis: var(--borderColor-success-emphasis);
+  --borderColor-open-muted: var(--borderColor-success-muted);
+  --borderColor-upsell-emphasis: var(--borderColor-done-emphasis);
+  --borderColor-upsell-muted: var(--borderColor-done-muted);
+  --borderColor-draft-emphasis: var(--borderColor-neutral-emphasis);
+  --borderColor-neutral-muted: var(--borderColor-muted);
+  --borderColor-draft-muted: var(--borderColor-neutral-muted);
+
+  /* Shadows */
+  --shadow-inset: inset 0px 1px 0px 0px #0104093d;
+  --shadow-resting-medium: 0px 1px 1px 0px #01040966, 0px 3px 6px 0px #010409cc;
+  --shadow-resting-small: 0px 1px 1px 0px #01040999, 0px 1px 3px 0px #01040999;
+  --shadow-resting-xsmall: 0px 1px 1px 0px #010409cc;
+  --shadow-floating-large: 0px 0px 0px 1px #3d444d, 0px 24px 48px 0px #010409;
+  --shadow-floating-medium:
+    0px 0px 0px 1px #3d444d, 0px 8px 16px -4px #01040966,
+    0px 4px 32px -4px #01040966, 0px 24px 48px -12px #01040966,
+    0px 48px 96px -24px #01040966;
+  --shadow-floating-small:
+    0px 0px 0px 1px #3d444d, 0px 6px 12px -3px #01040966,
+    0px 6px 18px 0px #01040966;
+  --shadow-floating-xlarge: 0px 0px 0px 1px #3d444d, 0px 32px 64px 0px #010409;
+
+  /* Others */
+  --overlay-backdrop-bgColor: #21283066;
+  --overlay-bgColor: #010409;
+  --overlay-borderColor: var(--borderColor-muted);
+
+  --header-bgColor: #151b23f2;
+  --header-borderColor-divider: #656c76;
+  --headerSearch-bgColor: #0d1117;
+  --headerSearch-borderColor: #2a313c;
+}
