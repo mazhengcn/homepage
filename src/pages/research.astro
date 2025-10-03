@@ -1,11 +1,5 @@
 ---
-import type { ImageMetadata } from 'astro'
 import { getCollection } from 'astro:content'
-import BaseHead from '../components/BaseHead.astro'
-import Body from '../components/Body.astro'
-import Content from '../components/Content.astro'
-import Footer from '../components/Footer.astro'
-import Header from '../components/Header.astro'
 import {
   Card,
   CardDescription,
@@ -13,73 +7,53 @@ import {
   CardHeader,
   CardTitle,
 } from '../components/ui/card.tsx'
-import { SITE_DESCRIPTION, SITE_TITLE } from '../consts'
-
-const images = import.meta.glob<{ default: ImageMetadata }>(
-  '/src/assets/thumbnails/*.{jpeg,jpg,png,gif}'
-)
-
-const findKeysByValue = (imgs: any, id: string) => {
-  return Object.keys(imgs).filter(key => key.includes(id + '_thumbnail'))
-}
+import PageLayout from '../layouts/PageLayout.astro'
 
 const posts = (await getCollection('blog')).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 )
 ---
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-  </head>
-  <Body>
-    <Header title={SITE_TITLE} />
-    <main class="pt-[56px]">
-      <Content>
-        <section>
-          <p class="mb-8 indent-4">
-            My research lies in the intersection of machine learning and
-            healthcare, with a particular focus on developing advanced deep
-            learning models to enhance medical image analysis and diagnostics.
-          </p>
-        </section>
-        <section class="prose-ul:list-none -ml-8">
-          <ul
-            class="grid auto-rows-fr grid-cols-1 gap-4 md:grid-cols-2 md:items-stretch"
-          >
-            {
-              posts.map(post => {
-                return (
-                  <li>
-                    <a href={`/blog/${post.id}/`}>
-                      <Card className="h-full hover:bg-accent  hover:text-accent-foreground transition-shadow inset-shadow-default flex flex-col">
-                        <CardHeader className="flex-1">
-                          <CardTitle className="text-xl font-bold">
-                            {post.data.title}
-                          </CardTitle>
-                          <CardDescription className="mt-2 text-base">
-                            {post.data.description}
-                          </CardDescription>
-                        </CardHeader>
-                        <CardFooter className="text-muted-foreground font-mono text-sm">
-                          {post.data.pubDate.toLocaleDateString('en-US', {
-                            year: 'numeric',
-                            month: 'long',
-                            day: 'numeric',
-                          })}
-                        </CardFooter>
-                      </Card>
-                    </a>
-                  </li>
-                )
-              })
-            }
-          </ul>
-          <!-- <CreatedWithSection /> -->
-        </section>
-      </Content>
-      <Footer />
-    </main>
-  </Body>
-</html>
+<PageLayout>
+  <section class="mt-12">
+    <h1 class="text-center">Research Interests</h1>
+    <p class="mb-8 indent-4">
+      My research lies in the intersection of machine learning and healthcare,
+      with a particular focus on developing advanced deep learning models to
+      enhance medical image analysis and diagnostics.
+    </p>
+  </section>
+  <section class="prose-ul:list-none -ml-8">
+    <ul
+      class="grid auto-rows-fr grid-cols-1 gap-4 md:grid-cols-2 md:items-stretch"
+    >
+      {
+        posts.map(post => {
+          return (
+            <li>
+              <a href={`/blog/${post.id}/`}>
+                <Card className="h-full hover:bg-accent  hover:text-accent-foreground transition-shadow inset-shadow-default flex flex-col">
+                  <CardHeader className="flex-1">
+                    <CardTitle className="text-xl font-bold">
+                      {post.data.title}
+                    </CardTitle>
+                    <CardDescription className="mt-2 text-base">
+                      {post.data.description}
+                    </CardDescription>
+                  </CardHeader>
+                  <CardFooter className="text-muted-foreground font-mono text-sm">
+                    {post.data.pubDate.toLocaleDateString('en-US', {
+                      year: 'numeric',
+                      month: 'long',
+                      day: 'numeric',
+                    })}
+                  </CardFooter>
+                </Card>
+              </a>
+            </li>
+          )
+        })
+      }
+    </ul>
+  </section>
+</PageLayout>

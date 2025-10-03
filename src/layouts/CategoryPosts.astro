@@ -1,13 +1,6 @@
 ---
 import { getCollection } from 'astro:content'
-import BackToTopButton from '../components/BackToTopButton'
-import BaseHead from '../components/BaseHead.astro'
-import Body from '../components/Body.astro'
 import Breadcrumb from '../components/Breadcrumb.astro'
-import Content from '../components/Content.astro'
-import Footer from '../components/Footer.astro'
-import Header from '../components/Header.astro'
-import Masthead from '../components/Masthead.astro'
 import {
   Card,
   CardDescription,
@@ -15,7 +8,7 @@ import {
   CardHeader,
   CardTitle,
 } from '../components/ui/card.tsx'
-import { SITE_DESCRIPTION, SITE_TITLE } from '../consts'
+import HeroLayout from './HeroLayout.astro'
 
 export interface Props {
   category: string
@@ -30,50 +23,33 @@ const posts = (
 ).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
 ---
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <BaseHead
-      title={category + ` / ${SITE_TITLE}`}
-      description={SITE_DESCRIPTION}
-    />
-  </head>
-  <Body>
-    <Header title={SITE_TITLE} />
-    <main class="pt-[56px]">
-      <Masthead />
-      <Content>
-        <Breadcrumb>{category}</Breadcrumb>
-        <section class="not-prose">
-          <ul class="grid grid-cols-1 gap-4 md:grid-cols-2">
-            {
-              posts.map((post: any) => (
-                <li>
-                  <a href={`/blog/${post.id}/`}>
-                    <Card className="h-full hover:bg-accent transition-shadow">
-                      <CardHeader>
-                        <CardTitle>{post.data.title}</CardTitle>
-                        <CardDescription className="mt-2">
-                          {post.data.description}
-                        </CardDescription>
-                      </CardHeader>
-                      <CardFooter className="text-muted-foreground font-mono text-xs mt-auto">
-                        {post.data.pubDate.toLocaleDateString('en-US', {
-                          year: 'numeric',
-                          month: 'long',
-                          day: 'numeric',
-                        })}
-                      </CardFooter>
-                    </Card>
-                  </a>
-                </li>
-              ))
-            }
-          </ul>
-        </section>
-      </Content>
-      <BackToTopButton client:idle />
-    </main>
-    <Footer />
-  </Body>
-</html>
+<HeroLayout>
+  <Breadcrumb>{category}</Breadcrumb>
+  <section class="not-prose">
+    <ul class="grid grid-cols-1 gap-4 md:grid-cols-2">
+      {
+        posts.map((post: any) => (
+          <li>
+            <a href={`/blog/${post.id}/`}>
+              <Card className="h-full hover:bg-accent transition-shadow">
+                <CardHeader>
+                  <CardTitle>{post.data.title}</CardTitle>
+                  <CardDescription className="mt-2">
+                    {post.data.description}
+                  </CardDescription>
+                </CardHeader>
+                <CardFooter className="text-muted-foreground font-mono text-xs mt-auto">
+                  {post.data.pubDate.toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                  })}
+                </CardFooter>
+              </Card>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+</HeroLayout>

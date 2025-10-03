@@ -1,0 +1,14 @@
+---
+import Masthead from '@/components/Masthead.astro'
+import Content from '../components/Content.astro'
+import Layout from './Layout.astro'
+---
+
+<Layout>
+  <Masthead />
+  <main class="pt-[56px]">
+    <Content>
+      <slot />
+    </Content>
+  </main>
+</Layout>
