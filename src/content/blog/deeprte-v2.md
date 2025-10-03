@@ -1,5 +1,5 @@
 ---
-description: Pre-trained Attention-based Neural Network for Radiative Tranfer
+description: Test
 public: true
 title: DeepRTE
 pubDate: 2025-10-22

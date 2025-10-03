@@ -7,7 +7,7 @@
     "unifiedjs.vscode-mdx",
     "bradlc.vscode-tailwindcss",
     "redhat.vscode-yaml",
-    "tamasfe.even-better-toml"
+    "tamasfe.even-better-toml",
+    "fill-labs.dependi"
   ],
-  "unwantedRecommendations": []
 }
