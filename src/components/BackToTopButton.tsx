@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import { IoArrowUp } from 'react-icons/io5'
-import { Button } from '@headlessui/react'
+import { Button } from '@/components/ui/button.tsx'
+import { ArrowUpIcon } from 'lucide-react'
 
 export default function BackToTopButton() {
   const [isVisible, setIsVisible] = useState(false)
@@ -38,10 +38,13 @@ export default function BackToTopButton() {
   return (
     isVisible && (
       <Button
+        className="fixed bottom-4 right-4"
         onClick={scrollToTop}
-        className="prose dark:prose-invert border-border data-[hover]:text-primary data-[hover]:border-primary fixed bottom-4 right-4 rounded-lg border p-3 opacity-80 shadow-lg backdrop-blur-md"
+        variant="outline"
+        size="icon-lg"
+        aria-label="Scroll to top"
       >
-        <IoArrowUp />
+        <ArrowUpIcon />
       </Button>
     )
   )

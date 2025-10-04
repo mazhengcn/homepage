@@ -3,7 +3,7 @@ import { Image } from 'astro:assets'
 import { getCollection } from 'astro:content'
 import { IoLogoGithub } from 'react-icons/io5'
 import persona from '../assets/persona.jpg'
-import DropdownMenu from './DropdownMenu'
+import { DropdownMenuWithIcon } from './DropdownMenu.tsx'
 import HeaderLink from './HeaderLink.astro'
 import ThemeToggle from './ThemeToggleButton'
 
@@ -41,7 +41,7 @@ allPosts.map((post: any) => {
       </div>
       <div class="flex-1"></div>
       <ThemeToggle client:visible />
-      <DropdownMenu client:visible tags={Array.from(allTags)} />
+      <DropdownMenuWithIcon client:visible tags={Array.from(allTags)} />
     </nav>
   </div>
 </header>
