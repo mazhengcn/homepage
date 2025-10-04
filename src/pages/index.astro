@@ -1,5 +1,6 @@
 ---
 import LinkButton from '@/components/LinkButton'
+import { Card, CardContent, CardTitle } from '@/components/ui/card'
 import { Image } from 'astro:assets'
 import { IoDocument, IoMail } from 'react-icons/io5'
 import Persona from '../assets/persona.jpg'
@@ -7,64 +8,78 @@ import PageLayout from '../layouts/PageLayout.astro'
 ---
 
 <PageLayout>
-  <section
-    class="mx-auto flex max-w-4xl flex-col items-center gap-6 px-4 md:flex-row md:justify-evenly md:gap-0"
-  >
-    <Image
-      src={Persona}
-      alt="Portrait of Zheng Ma"
-      class="border-border mx-4 h-60 w-60 rounded-full border-4 object-cover"
-      layout="constrained"
-      priority
-    />
-    <div>
-      <h1 class="mb-4 text-4xl font-semibold">
-        Zheng Ma <span class="font-sans-cn font-semibold">(马 征)</span>
-      </h1>
-      <p class="text-lg text-gray-600 dark:text-gray-400">
-        Mathmatician and Tech Enthusiast
-      </p>
-    </div>
-  </section>
-  <section>
-    <p class="indent-8">
-      Welcome to my homepage, I'm a mathematician and tech enthusiast. My
-      research interests include computational mathematics and deep learning
-      methods. I am particularly interested in the interplay between deep
-      learning and mathematics, and how deep learning methods can be applied to
-      solve problems in mathematical and engineering.
-    </p>
-    <LinkButton href="/cv.pdf"><IoDocument />Full CV here</LinkButton>
-    <h2
-      class="decoration-muted-foreground underline decoration-4 underline-offset-4"
-    >
-      Work
-    </h2>
-    <p>
-      <span class="font-semibold">2020 - present</span>: <span class="italic"
-        >Tenured-track Associate Professor</span
-      >, School of Mathematical Sciences, Shanghai Jiao Tong University, China
-    </p>
-    <p>
-      <span class="font-semibold">2017 - 2020</span>: <span class="italic"
-        >Golomb Visiting Assistant Professor</span
-      >, Department of Mathematics, Purdue University, U.S.
-    </p>
-    <h2
-      class="decoration-muted-foreground underline decoration-4 underline-offset-4"
-    >
-      Education
-    </h2>
-    <p>
-      <span class="font-semibold">2012 - 2017</span>: Ph.D. in Mathematics,
-      Shanghai Jiao Tong University, China
-    </p>
-    <p>
-      <span class="font-semibold">2008 - 2012</span>: B.S. in Mathematics,
-      Zhiyuan College, Shanghai Jiao Tong University, China
-    </p>
-    <LinkButton href="mailto:zhengma@sjtu.edu.cn"
-      ><IoMail />Contact me</LinkButton
-    >
-  </section>
+  <div class="pt-10">
+    <Card>
+      <CardContent
+        className="flex flex-col items-center gap-6 overflow-auto md:flex-row md:justify-center md:gap-24"
+      >
+        <Image
+          src={Persona}
+          alt="Portrait of Zheng Ma"
+          class="border-border h-60 w-60 rounded-full border-2 object-cover"
+          layout="constrained"
+          priority
+        />
+        <div class="flex flex-col items-center text-center">
+          <div>
+            <h1 class="text-4xl font-bold">
+              Zheng Ma <span class="font-sans-cn font-bold">(马 征)</span>
+            </h1>
+            <p class="-mt-4 text-lg text-gray-600 dark:text-gray-400">
+              Mathmatician and Tech Enthusiast
+            </p>
+          </div>
+          <div class="flex gap-2">
+            <LinkButton href="/cv.pdf">
+              <IoDocument />Full CV here
+            </LinkButton>
+            <LinkButton href="mailto:zhengma@sjtu.edu.cn"
+              ><IoMail />Contact me</LinkButton
+            >
+          </div>
+        </div>
+      </CardContent>
+    </Card>
+    <Card className="mt-6 p-10">
+      <CardTitle>
+        <div
+          class="decoration-muted-foreground text-center text-3xl font-bold underline decoration-4 underline-offset-8"
+        >
+          Work Experience
+        </div>
+      </CardTitle>
+      <CardContent className="mt-4 flex flex-col items-start gap-6">
+        <div>
+          <span class="font-semibold">2020 - present</span>: <span
+            class="italic">Tenured-track Associate Professor</span
+          >, School of Mathematical Sciences, Shanghai Jiao Tong University,
+          China
+        </div>
+        <div>
+          <span class="font-semibold">2017 - 2020</span>: <span class="italic"
+            >Golomb Visiting Assistant Professor</span
+          >, Department of Mathematics, Purdue University, U.S.
+        </div>
+      </CardContent>
+    </Card>
+    <Card className="mt-6 p-10">
+      <CardTitle>
+        <div
+          class="decoration-muted-foreground text-center text-3xl font-bold underline decoration-4 underline-offset-8"
+        >
+          Education
+        </div>
+      </CardTitle>
+      <CardContent className="mt-4 flex flex-col items-start gap-6">
+        <div>
+          <span class="font-semibold">2012 - 2017</span>: Ph.D. in Mathematics,
+          Shanghai Jiao Tong University, China
+        </div>
+        <div>
+          <span class="font-semibold">2008 - 2012</span>: B.S. in Mathematics,
+          Zhiyuan College, Shanghai Jiao Tong University, China
+        </div>
+      </CardContent>
+    </Card>
+  </div>
 </PageLayout>

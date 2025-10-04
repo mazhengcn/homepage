@@ -12,15 +12,9 @@ import type { CollectionEntry } from 'astro:content'
 export function ItemList({ posts }: { posts: CollectionEntry<'blog'>[] }) {
   return (
     <div className="flex w-full flex-col gap-6">
-      <ItemGroup className="gap-4 md:grid md:grid-cols-2">
+      <ItemGroup className="gap-4">
         {posts.map(post => (
-          <Item
-            key={post.data.title}
-            variant="outline"
-            asChild
-            role="listitem"
-            size="sm"
-          >
+          <Item key={post.data.title} variant="outline" asChild role="listitem">
             <a href="/">
               <ItemContent>
                 <ItemTitle className="line-clamp-1">
@@ -28,7 +22,7 @@ export function ItemList({ posts }: { posts: CollectionEntry<'blog'>[] }) {
                 </ItemTitle>
                 <ItemDescription>{post.data.description}</ItemDescription>
               </ItemContent>
-              <ItemContent className="flex-none text-center">
+              {/* <ItemContent className="flex-none text-center">
                 <ItemDescription>
                   {post.data.pubDate.toLocaleDateString('en-US', {
                     year: 'numeric',
@@ -36,7 +30,7 @@ export function ItemList({ posts }: { posts: CollectionEntry<'blog'>[] }) {
                     day: 'numeric',
                   })}
                 </ItemDescription>
-              </ItemContent>
+              </ItemContent> */}
             </a>
           </Item>
         ))}
