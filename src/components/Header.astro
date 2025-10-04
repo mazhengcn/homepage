@@ -40,7 +40,7 @@ allPosts.map((post: any) => {
         >
       </div>
       <div class="flex-1"></div>
-      <ThemeToggle client:visible />
+      <ThemeToggle client:load />
       <DropdownMenuWithIcon client:visible tags={Array.from(allTags)} />
     </nav>
   </div>

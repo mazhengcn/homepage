@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { IoSunny, IoMoon } from 'react-icons/io5'
+import { Button } from '@/components/ui/button'
 
 const themes = ['light', 'dark']
 
 export default function ThemeToggle() {
   const [isMounted, setIsMounted] = useState(false)
   const [theme, setTheme] = useState(() => {
-    if (import.meta.env.SSR) {
+    if (typeof window === 'undefined') {
       return undefined
     }
     if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
@@ -37,20 +38,19 @@ export default function ThemeToggle() {
   }, [])
 
   return isMounted ? (
-    <div className="bg-secondary inline-flex items-center rounded-3xl p-px">
+    <div className="bg-secondary inline-flex items-center rounded-full p-px">
       {themes.map(t => {
         const checked = t === theme
         return (
-          <button
+          <Button
             key={t}
-            className={`${
-              checked ? 'bg-background text-foreground' : ''
-            } cursor-pointer rounded-3xl p-2`}
+            className={`cursor-pointer rounded-full ${checked ? 'hover:bg-background text-foreground bg-[var(--background)]' : 'text-foreground bg-transparent hover:bg-transparent'}`}
             onClick={toggleTheme}
             aria-label="Toggle theme"
+            size="icon"
           >
             {t === 'light' ? <IoSunny /> : <IoMoon />}
-          </button>
+          </Button>
         )
       })}
     </div>

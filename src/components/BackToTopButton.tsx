@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Button } from '@/components/ui/button.tsx'
+import { Button } from '@/components/ui/button'
 import { ArrowUpIcon } from 'lucide-react'
 
 export default function BackToTopButton() {
@@ -38,7 +38,7 @@ export default function BackToTopButton() {
   return (
     isVisible && (
       <Button
-        className="fixed bottom-4 right-4"
+        className="fixed bottom-4 right-4 cursor-pointer"
         onClick={scrollToTop}
         variant="outline"
         size="icon-lg"

@@ -17,8 +17,8 @@ interface Props {
 export function DropdownMenuWithIcon({ tags }: Props) {
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button variant="outline" size="icon-sm">
+      <DropdownMenuTrigger asChild className="cursor-pointer">
+        <Button variant="outline" size="icon">
           <IconMenu />
         </Button>
       </DropdownMenuTrigger>
