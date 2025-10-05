@@ -31,12 +31,14 @@ export function ItemList({ publications }: { publications: Publications[] }) {
               <ItemMedia variant="icon">100</ItemMedia>
               <ItemContent>
                 <ItemTitle>{pub.title}</ItemTitle>
-                <ItemDescription>{pub.author}</ItemDescription>
+                <ItemDescription className="text-foreground/75">
+                  {pub.author}
+                </ItemDescription>
                 <ItemDescription className="italic">
                   {pub.journal}
                 </ItemDescription>
-                <ItemDescription className="flex w-full flex-wrap items-center gap-2 text-xs">
-                  <Badge className="font-mono tabular-nums">2024</Badge>
+                <ItemDescription className="mt-1 flex w-full flex-wrap items-center gap-2 text-xs">
+                  <Badge className="font-mono tabular-nums">{pub.year}</Badge>
                   <Badge
                     variant="secondary"
                     className="bg-green-700 text-white dark:bg-green-600"

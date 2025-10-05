@@ -1,5 +1,4 @@
 import mdx from '@astrojs/mdx'
-import netlify from '@astrojs/netlify'
 import react from '@astrojs/react'
 import sitemap from '@astrojs/sitemap'
 import tailwindcss from '@tailwindcss/vite'
@@ -10,8 +9,8 @@ export default defineConfig({
   site: 'https://zheng-homepage.netlify.app',
   integrations: [sitemap(), react(), mdx()],
   markdown: {},
+
   vite: {
     plugins: [tailwindcss()],
   },
-  adapter: netlify(),
 })
