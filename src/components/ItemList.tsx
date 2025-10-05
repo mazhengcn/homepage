@@ -5,36 +5,54 @@ import {
   ItemDescription,
   ItemGroup,
   ItemTitle,
+  ItemActions,
+  ItemMedia,
 } from '@/components/ui/item'
+import { ExternalLinkIcon } from 'lucide-react'
+import { Badge } from '@/components/ui/badge'
 
-import type { CollectionEntry } from 'astro:content'
+export interface Publications {
+  id: string
+  title: string
+  author: string
+  journal: string
+  year: number
+  pages: number
+  volume: number
+}
 
-export function ItemList({ posts }: { posts: CollectionEntry<'blog'>[] }) {
+export function ItemList({ publications }: { publications: Publications[] }) {
   return (
-    <div className="flex w-full flex-col gap-6">
-      <ItemGroup className="gap-4">
-        {posts.map(post => (
-          <Item key={post.data.title} variant="outline" asChild role="listitem">
+    <ItemGroup className="not-prose gap-6">
+      {publications.map(pub => {
+        return (
+          <Item key={pub.id} variant="outline" asChild>
             <a href="/">
+              <ItemMedia variant="icon">100</ItemMedia>
               <ItemContent>
-                <ItemTitle className="line-clamp-1">
-                  {post.data.title}
-                </ItemTitle>
-                <ItemDescription>{post.data.description}</ItemDescription>
-              </ItemContent>
-              {/* <ItemContent className="flex-none text-center">
-                <ItemDescription>
-                  {post.data.pubDate.toLocaleDateString('en-US', {
-                    year: 'numeric',
-                    month: 'long',
-                    day: 'numeric',
-                  })}
+                <ItemTitle>{pub.title}</ItemTitle>
+                <ItemDescription>{pub.author}</ItemDescription>
+                <ItemDescription className="italic">
+                  {pub.journal}
                 </ItemDescription>
-              </ItemContent> */}
+                <ItemDescription className="flex w-full flex-wrap items-center gap-2 text-xs">
+                  <Badge className="font-mono tabular-nums">2024</Badge>
+                  <Badge
+                    variant="secondary"
+                    className="bg-green-700 text-white dark:bg-green-600"
+                  >
+                    Journal
+                  </Badge>
+                  <Badge variant="destructive">Preprint</Badge>
+                </ItemDescription>
+              </ItemContent>
+              <ItemActions>
+                <ExternalLinkIcon className="size-4" />
+              </ItemActions>
             </a>
           </Item>
-        ))}
-      </ItemGroup>
-    </div>
+        )
+      })}
+    </ItemGroup>
   )
 }

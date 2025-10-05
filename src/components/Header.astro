@@ -1,8 +1,7 @@
 ---
-import { Image } from 'astro:assets'
 import { getCollection } from 'astro:content'
 import { IoLogoGithub } from 'react-icons/io5'
-import persona from '../assets/persona.jpg'
+import portrait from '../assets/portrait.jpg'
 import { DropdownMenuWithIcon } from './DropdownMenu'
 import HeaderLink from './HeaderLink.astro'
 import ThemeToggle from './ThemeToggleButton'
@@ -23,12 +22,10 @@ allPosts.map((post: any) => {
   <div class="mx-auto max-w-4xl">
     <nav class="flex items-center gap-3">
       <a href="/" class="group flex flex-auto items-center">
-        <Image
+        <img
+          src={portrait.src}
+          alt="Portrait of Zheng Ma"
           class="h-8 w-8 rounded-full"
-          src={persona}
-          alt="Persona"
-          layout="constrained"
-          priority
         />
         <h2 class="p-2 text-lg font-semibold tracking-tighter">Home</h2>
       </a>
@@ -41,7 +38,7 @@ allPosts.map((post: any) => {
       </div>
       <div class="flex-1"></div>
       <ThemeToggle client:load />
-      <DropdownMenuWithIcon client:visible tags={Array.from(allTags)} />
+      <DropdownMenuWithIcon client:load tags={Array.from(allTags)} />
     </nav>
   </div>
 </header>

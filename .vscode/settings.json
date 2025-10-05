@@ -2,17 +2,6 @@
   "files.associations": {
     "*.css": "tailwindcss"
   },
-  "files.exclude": {
-    "**/.git": true,
-    "**/.svn": true,
-    "**/.hg": true,
-    "**/.DS_Store": true,
-    "**/Thumbs.db": true,
-    // "**/node_modules": true,
-    "**/.pnpm-store": true,
-    "**/.netlify": true,
-    "**/.astro": true,
-  },
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
