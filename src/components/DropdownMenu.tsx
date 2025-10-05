@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import { Button } from '@/components/ui/button'
 import {
   DropdownMenu,
@@ -10,11 +10,11 @@ import {
 } from '@/components/ui/dropdown-menu'
 import { Menu as IconMenu } from 'lucide-react'
 
-interface Props {
-  tags: string[]
+interface DropdownMenuWithIconProps {
+  tags: Array<string>
 }
 
-export function DropdownMenuWithIcon({ tags }: Props) {
+export function DropdownMenuWithIcon({ tags }: DropdownMenuWithIconProps) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild className="cursor-pointer">
