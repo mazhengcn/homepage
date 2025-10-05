@@ -10,11 +10,11 @@ import {
 } from '@/components/ui/dropdown-menu'
 import { Menu as IconMenu } from 'lucide-react'
 
-interface DropdownMenuWithIconProps {
-  tags: Array<string>
+interface Props {
+  tags: string[]
 }
 
-export function DropdownMenuWithIcon({ tags }: DropdownMenuWithIconProps) {
+export function DropdownMenuWithIcon({ tags }: Props) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild className="cursor-pointer">
