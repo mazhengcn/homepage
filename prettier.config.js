@@ -12,8 +12,13 @@ const config = {
   arrowParens: 'avoid',
   bracketSpacing: true,
   endOfLine: 'lf',
-  plugins: ['prettier-plugin-astro', 'prettier-plugin-tailwindcss'],
-  tailwindStylesheet: './src/app.css',
+  plugins: [
+    'prettier-plugin-astro',
+    'prettier-plugin-tailwindcss',
+    'prettier-plugin-organize-imports',
+  ],
+  tailwindStylesheet: './src/styles/global.css',
+  organizeImportsSkipDestructiveCodeActions: true,
 }
 
 export default config
