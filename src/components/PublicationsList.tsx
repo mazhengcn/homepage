@@ -32,10 +32,10 @@ export function PublicationsList({
 }) {
   return (
     <ItemGroup className="not-prose gap-6">
-      {publications.map(pub => {
+      {publications.map((pub, index) => {
         return (
           <Item key={pub.id} variant="outline">
-            <ItemMedia variant="icon">100</ItemMedia>
+            <ItemMedia variant="icon">{index + 1}</ItemMedia>
             <ItemContent>
               <ItemTitle>{pub.title}</ItemTitle>
               <ItemDescription className="text-foreground/80">
