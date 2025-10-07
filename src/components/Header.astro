@@ -2,7 +2,7 @@
 import { getCollection } from 'astro:content'
 import { IoLogoGithub } from 'react-icons/io5'
 import portrait from '../assets/portrait.jpg'
-import { DropdownMenuWithIcon } from './DropdownMenu'
+import { DropdownNavMenu } from './DropdownNavMenu'
 import HeaderLink from './HeaderLink.astro'
 import ThemeToggle from './ThemeToggleButton'
 
@@ -14,6 +14,12 @@ const allTags = new Set<string>()
 allPosts.map((post: any) => {
   post.data.tags && post.data.tags.map((tag: string) => allTags.add(tag))
 })
+
+const navLinks = [
+  { href: '/research', text: 'Research' },
+  { href: '/publications', text: 'Publications' },
+  { href: 'https://github.com/mazhengcn', text: 'Github' },
+]
 ---
 
 <header
@@ -38,7 +44,7 @@ allPosts.map((post: any) => {
       </div>
       <div class="flex-1"></div>
       <ThemeToggle client:load />
-      <DropdownMenuWithIcon client:load tags={Array.from(allTags)} />
+      <DropdownNavMenu navLinks={navLinks} className="md:hidden" client:load />
     </nav>
   </div>
 </header>

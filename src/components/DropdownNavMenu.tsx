@@ -7,14 +7,16 @@ import {
   DropdownMenuLabel,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
+import { cn } from '@/lib/utils'
 import { Menu as IconMenu } from 'lucide-react'
 import React, { useState } from 'react'
 
 interface Props {
-  tags: string[]
+  navLinks: { href: string; text: string }[]
+  className: string
 }
 
-export function DropdownMenuWithIcon({ tags }: Props) {
+export function DropdownNavMenu({ navLinks, className }: Props) {
   const [dropdownOpen, setDropdownOpen] = useState(false)
   return (
     <DropdownMenu
@@ -26,19 +28,19 @@ export function DropdownMenuWithIcon({ tags }: Props) {
         onClick={() => {
           setDropdownOpen(val => !val)
         }}
-        className="cursor-pointer"
+        className={cn('cursor-pointer', className)}
       >
         <Button variant="outline" size="icon">
           <IconMenu />
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56" align="start">
-        <DropdownMenuLabel>Categories</DropdownMenuLabel>
+        <DropdownMenuLabel>Menu</DropdownMenuLabel>
         <DropdownMenuGroup>
-          {tags.map(tag => {
+          {navLinks.map((link, index) => {
             return (
-              <DropdownMenuItem asChild key={tag}>
-                <a href={`/categories/${tag.toLowerCase()}`}>{tag}</a>
+              <DropdownMenuItem key={index} asChild>
+                <a href={link.href}>{link.text}</a>
               </DropdownMenuItem>
             )
           })}
