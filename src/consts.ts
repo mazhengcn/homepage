@@ -38,7 +38,7 @@ export const PUBLICATIONS = [
     journal: 'Communications in Computational Physics',
     pages: 693,
     volume: 35,
-    status: 'Preprint',
+    status: 'preprint',
     tags: ['Neural Network', 'Asymptotic-Preserving', 'Kinetic Equation'],
   },
 ]
