@@ -9,26 +9,13 @@ import {
   ItemMedia,
   ItemTitle,
 } from '@/components/ui/item'
+import { Publications } from 'astro:db'
 import React from 'react'
-
-interface Publications {
-  id: string
-  title: string
-  author: string
-  journal: string
-  year: number
-  pages?: number
-  volume?: number
-  status: 'published' | 'in-review' | 'preprint'
-  tags: string[]
-  url?: string
-  pdflink?: string
-}
 
 export function PublicationsList({
   publications,
 }: {
-  publications: Publications[]
+  publications: (typeof Publications)[]
 }) {
   return (
     <ItemGroup className="not-prose gap-6">
@@ -58,16 +45,16 @@ export function PublicationsList({
                 >
                   {pub.status}
                 </Badge>
-                {pub.tags.map(tag => (
+                {/* {pub.tags.map(tag => (
                   <Badge key={tag} variant="outline" className="font-mono px-1">
                     {tag}
                   </Badge>
-                ))}
+                ))} */}
               </ItemDescription>
             </ItemContent>
             <ItemActions className="flex-col">
               <Button variant="outline" size="sm">
-                <a href="/">URL</a>
+                <a href={`https://www.doi.org/${pub.doi}`}>URL</a>
               </Button>
               <Button variant="outline" size="sm" asChild>
                 <a href="/">PDF</a>

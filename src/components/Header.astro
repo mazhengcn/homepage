@@ -38,7 +38,7 @@ const navLinks = [
         <NavMenu tags={Array.from(allTags)} client:load />
       </div>
       <div class="flex-1"></div>
-      <ThemeToggle client:load />
+      <ThemeToggle client:visible />
       <DropdownNavMenu navLinks={navLinks} className="md:hidden" client:load />
     </nav>
   </div>
