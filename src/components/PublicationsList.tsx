@@ -52,8 +52,8 @@ export function PublicationsList({
                   variant="secondary"
                   className={`${
                     pub.status === 'published'
-                      ? 'bg-green-700 text-white dark:bg-green-600'
-                      : 'bg-red-300 text-black dark:bg-red-400'
+                      ? 'bg-lime-600 text-white dark:bg-lime-700'
+                      : 'bg-orange-300 text-black'
                   } font-mono px-1`}
                 >
                   {pub.status}

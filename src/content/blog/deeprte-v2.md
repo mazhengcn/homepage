@@ -4,7 +4,7 @@ public: true
 title: DeepRTE
 pubDate: 2025-10-22
 tags:
-  - Kinetic Equations
+  -  Machine learning
 heroImage: ../../assets/blog/deeprte.png
 ---
 

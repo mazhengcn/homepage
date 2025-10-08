@@ -1,9 +1,8 @@
 ---
 import { getCollection } from 'astro:content'
-import { IoLogoGithub } from 'react-icons/io5'
 import portrait from '../assets/portrait.jpg'
 import { DropdownNavMenu } from './DropdownNavMenu'
-import HeaderLink from './HeaderLink.astro'
+import { NavMenu } from './NavigationMenu'
 import ThemeToggle from './ThemeToggleButton'
 
 const allPosts = (await getCollection('blog')).sort(
@@ -11,7 +10,7 @@ const allPosts = (await getCollection('blog')).sort(
 )
 const allTags = new Set<string>()
 
-allPosts.map((post: any) => {
+allPosts.map(post => {
   post.data.tags && post.data.tags.map((tag: string) => allTags.add(tag))
 })
 
@@ -35,12 +34,8 @@ const navLinks = [
         />
         <h2 class="p-2 text-lg font-semibold tracking-tighter">Home</h2>
       </a>
-      <div class="hidden items-center gap-6 md:flex">
-        <HeaderLink href="/research">Research</HeaderLink>
-        <HeaderLink href="/publications">Publications</HeaderLink>
-        <HeaderLink href="https://github.com/mazhengcn" target="_blank"
-          ><IoLogoGithub />Github</HeaderLink
-        >
+      <div class="hidden items-center md:flex">
+        <NavMenu tags={Array.from(allTags)} client:load />
       </div>
       <div class="flex-1"></div>
       <ThemeToggle client:load />

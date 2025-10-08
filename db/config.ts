@@ -9,7 +9,7 @@ const Publications = defineTable({
     year: column.number(),
     pages: column.number({ optional: true }),
     volume: column.number({ optional: true }),
-    status: column.text({ enum: ['published', 'in-review', 'preprint'] }),
+    status: column.text({ enum: ['published', 'preprint'] }),
     tags: column.json(),
     type: column.text({
       enum: ['article', 'conference_paper', 'book_section'],
