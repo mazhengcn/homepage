@@ -18,7 +18,7 @@ import PageLayout from '../layouts/PageLayout.astro'
           src={portrait}
           alt="Portrait of Zheng Ma"
           priority
-          class="border-border h-60 w-60 rounded-full border-2 object-cover"
+          class="h-60 w-60 rounded-full border-2 border-border object-cover"
         />
         <div class="flex flex-col items-center text-center">
           <div>
@@ -34,8 +34,8 @@ import PageLayout from '../layouts/PageLayout.astro'
               <IoDocument />Full CV here
             </LinkButton>
             <LinkButton href="mailto:zhengma@sjtu.edu.cn"
-              ><IoMail />Contact me</LinkButton
-            >
+              ><IoMail />Contact me
+            </LinkButton>
           </div>
         </div>
       </CardContent>
@@ -43,7 +43,7 @@ import PageLayout from '../layouts/PageLayout.astro'
     <Card className="mt-6 p-8">
       <CardTitle>
         <div
-          class="decoration-muted-foreground text-center text-3xl font-bold underline decoration-4 underline-offset-8"
+          class="text-center text-3xl font-bold underline decoration-muted-foreground decoration-4 underline-offset-8"
         >
           Work Experience
         </div>
@@ -65,7 +65,7 @@ import PageLayout from '../layouts/PageLayout.astro'
     <Card className="mt-6 p-8">
       <CardTitle>
         <div
-          class="decoration-muted-foreground text-center text-3xl font-bold underline decoration-4 underline-offset-8"
+          class="text-center text-3xl font-bold underline decoration-muted-foreground decoration-4 underline-offset-8"
         >
           Education
         </div>

@@ -4,7 +4,6 @@ import { PublicationsList } from '../components/PublicationsList'
 import PageLayout from '../layouts/PageLayout.astro'
 
 const publications = await db.select().from(Publications)
-console.log(publications)
 ---
 
 <PageLayout>
