@@ -11,6 +11,7 @@
     "prettier-plugin-tailwindcss",
     "prettier-plugin-organize-imports"
   ],
+  "organizeImportsSkipDestructiveCodeActions": true,
   "tailwindStylesheet": "./src/styles/global.css",
-  "organizeImportsSkipDestructiveCodeActions": true
+  "tailwindFunctions": ["clsx", "cn", "cva"]
 }
