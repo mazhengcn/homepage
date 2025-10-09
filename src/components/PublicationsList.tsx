@@ -18,6 +18,7 @@ interface PublicationsListProps {
 }
 
 export function PublicationsList({ publications }: PublicationsListProps) {
+  const totalNum = publications.length
   return (
     <ItemGroup className="not-prose gap-6">
       {publications.map((pub: Publication, index: number) => {
@@ -30,7 +31,19 @@ export function PublicationsList({ publications }: PublicationsListProps) {
             .join(', ') || 'Unknown Author'
 
         // Get journal name from container-title
-        const journal = pub['container-title'] || ''
+        const journal =
+          pub['container-title'] === 'arXiv'
+            ? ''
+            : pub['container-title'] || 'Unknown Journal'
+
+        const type =
+          pub.type === 'article-journal'
+            ? 'journal'
+            : pub.type === 'paper-conference'
+              ? 'conference'
+              : pub.type === 'chapter'
+                ? 'chapter'
+                : 'other'
 
         // Extract year from issued.date-parts
         const year = pub.issued?.['date-parts']?.[0]?.[0] || 'N/A'
@@ -41,7 +54,7 @@ export function PublicationsList({ publications }: PublicationsListProps) {
 
         return (
           <Item key={pub.id} variant="outline">
-            <ItemMedia variant="icon">{index + 1}</ItemMedia>
+            <ItemMedia variant="icon">{totalNum - index}</ItemMedia>
             <ItemContent>
               <ItemTitle>{pub.title}</ItemTitle>
               <ItemDescription className="text-foreground/80">
@@ -50,6 +63,9 @@ export function PublicationsList({ publications }: PublicationsListProps) {
               <ItemDescription className="italic">{journal}</ItemDescription>
               <ItemDescription className="mt-1 flex w-full flex-wrap items-center gap-2 text-xs">
                 <Badge className="px-1 font-mono tabular-nums">{year}</Badge>
+                <Badge variant="secondary" className="px-1 font-mono">
+                  {type}
+                </Badge>
                 <Badge
                   variant="secondary"
                   className={`${
