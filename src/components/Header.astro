@@ -2,8 +2,8 @@
 import { getCollection } from 'astro:content'
 import portrait from '../assets/portrait.jpg'
 import { DropdownNavMenu } from './DropdownNavMenu'
+import { ModeToggle } from './ModeToggle'
 import { NavMenu } from './NavigationMenu'
-import ThemeToggle from './ThemeToggleButton'
 
 const allPosts = (await getCollection('blog')).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
@@ -38,7 +38,7 @@ const navLinks = [
         <NavMenu tags={Array.from(allTags)} client:load />
       </div>
       <div class="flex-1"></div>
-      <ThemeToggle client:visible />
+      <ModeToggle client:load />
       <DropdownNavMenu navLinks={navLinks} className="md:hidden" client:load />
     </nav>
   </div>

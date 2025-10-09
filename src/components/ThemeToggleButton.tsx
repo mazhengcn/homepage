@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react'
-import { IoSunny, IoMoon } from 'react-icons/io5'
 import { Button } from '@/components/ui/button'
+import React, { useEffect, useState } from 'react'
+import { IoMoon, IoSunny } from 'react-icons/io5'
 
 const themes = ['light', 'dark']
 
