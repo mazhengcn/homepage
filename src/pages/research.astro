@@ -6,8 +6,8 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card'
+import PageLayout from '@/layouts/PageLayout.astro'
 import { getCollection } from 'astro:content'
-import PageLayout from '../layouts/PageLayout.astro'
 
 const posts = (await getCollection('blog')).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()

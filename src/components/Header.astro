@@ -1,9 +1,9 @@
 ---
+import portrait from '@/assets/portrait.jpg'
+import { DropdownNavMenu } from '@/components/DropdownNavMenu'
+import { ModeToggle } from '@/components/ModeToggle'
+import { NavMenu } from '@/components/NavigationMenu'
 import { getCollection } from 'astro:content'
-import portrait from '../assets/portrait.jpg'
-import { DropdownNavMenu } from './DropdownNavMenu'
-import { ModeToggle } from './ModeToggle'
-import { NavMenu } from './NavigationMenu'
 
 const allPosts = (await getCollection('blog')).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()

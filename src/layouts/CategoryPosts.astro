@@ -1,4 +1,5 @@
 ---
+import Breadcrumb from '@/components/Breadcrumb.astro'
 import {
   Card,
   CardDescription,
@@ -6,9 +7,8 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card'
+import HeroLayout from '@/layouts/HeroLayout.astro'
 import { getCollection } from 'astro:content'
-import Breadcrumb from '../components/Breadcrumb.astro'
-import HeroLayout from './HeroLayout.astro'
 
 export interface Props {
   category: string
