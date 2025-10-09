@@ -49,14 +49,14 @@ export function PublicationsList({ publications }: PublicationsListProps) {
               </ItemDescription>
               <ItemDescription className="italic">{journal}</ItemDescription>
               <ItemDescription className="mt-1 flex w-full flex-wrap items-center gap-2 text-xs">
-                <Badge className="font-mono tabular-nums px-1">{year}</Badge>
+                <Badge className="px-1 font-mono tabular-nums">{year}</Badge>
                 <Badge
                   variant="secondary"
                   className={`${
                     status === 'published'
                       ? 'bg-lime-600 text-white dark:bg-lime-700'
                       : 'bg-orange-300 text-black'
-                  } font-mono px-1`}
+                  } px-1 font-mono`}
                 >
                   {status}
                 </Badge>

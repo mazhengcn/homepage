@@ -38,7 +38,7 @@ export default function BackToTopButton() {
   return (
     isVisible && (
       <Button
-        className="fixed bottom-4 right-4 cursor-pointer"
+        className="fixed right-4 bottom-4 cursor-pointer"
         onClick={scrollToTop}
         variant="outline"
         size="icon-lg"

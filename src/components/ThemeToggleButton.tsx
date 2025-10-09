@@ -38,13 +38,13 @@ export default function ThemeToggle() {
   }, [])
 
   return isMounted ? (
-    <div className="bg-secondary inline-flex items-center rounded-full p-px">
+    <div className="inline-flex items-center rounded-full bg-secondary p-px">
       {themes.map(t => {
         const checked = t === theme
         return (
           <Button
             key={t}
-            className={`cursor-pointer rounded-full ${checked ? 'hover:bg-background text-foreground bg-[var(--background)]' : 'text-foreground bg-transparent hover:bg-transparent'}`}
+            className={`cursor-pointer rounded-full ${checked ? 'bg-[var(--background)] text-foreground hover:bg-background' : 'bg-transparent text-foreground hover:bg-transparent'}`}
             onClick={toggleTheme}
             aria-label="Toggle theme"
             size="icon"
