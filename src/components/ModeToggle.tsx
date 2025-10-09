@@ -10,6 +10,7 @@ import {
 } from '@/components/ui/dropdown-menu'
 
 export function ModeToggle() {
+  const [dropdownOpen, setDropdownOpen] = React.useState(false)
   const [theme, setThemeState] = React.useState<
     'theme-light' | 'dark' | 'system'
   >('theme-light')
@@ -28,9 +29,12 @@ export function ModeToggle() {
   }, [theme])
 
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button variant="outline" size="icon-lg">
+    <DropdownMenu
+      open={dropdownOpen}
+      onOpenChange={val => setDropdownOpen(val)}
+    >
+      <DropdownMenuTrigger asChild onClick={() => setDropdownOpen(val => !val)}>
+        <Button variant="outline" size="icon" className="cursor-pointer">
           <Sun className="h-[1.2rem] w-[1.2rem] scale-100 rotate-0 transition-all dark:scale-0 dark:-rotate-90" />
           <Moon className="absolute h-[1.2rem] w-[1.2rem] scale-0 rotate-90 transition-all dark:scale-100 dark:rotate-0" />
           <span className="sr-only">Toggle theme</span>

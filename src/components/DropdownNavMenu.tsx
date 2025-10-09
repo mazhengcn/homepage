@@ -28,9 +28,12 @@ export function DropdownNavMenu({ navLinks, className }: Props) {
         onClick={() => {
           setDropdownOpen(val => !val)
         }}
-        className={cn('cursor-pointer', className)}
       >
-        <Button variant="outline" size="icon">
+        <Button
+          variant="outline"
+          size="icon"
+          className={cn('cursor-pointer', className)}
+        >
           <IconMenu />
         </Button>
       </DropdownMenuTrigger>
