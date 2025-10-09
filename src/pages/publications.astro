@@ -10,7 +10,7 @@ import PageLayout from '@/layouts/PageLayout.astro'
       <h1 class="text-center">Publications</h1>
     </section>
     <section class="items-center">
-      <PublicationsList publications={Pubs} />
+      <PublicationsList publications={Pubs} client:load />
     </section>
   </div>
 </PageLayout>

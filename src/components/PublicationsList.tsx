@@ -1,6 +1,11 @@
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import {
+  HoverCard,
+  HoverCardContent,
+  HoverCardTrigger,
+} from '@/components/ui/hover-card'
+import {
   Item,
   ItemActions,
   ItemContent,
@@ -56,7 +61,14 @@ export function PublicationsList({ publications }: PublicationsListProps) {
           <Item key={pub.id} variant="outline">
             <ItemMedia variant="icon">{totalNum - index}</ItemMedia>
             <ItemContent>
-              <ItemTitle>{pub.title}</ItemTitle>
+              <HoverCard>
+                <HoverCardTrigger asChild>
+                  <ItemTitle className="hover:underline">{pub.title}</ItemTitle>
+                </HoverCardTrigger>
+                <HoverCardContent className="w-auto max-w-4xl bg-background/50 indent-8 font-mono text-sm/relaxed backdrop-blur-md">
+                  {pub.abstract ? pub.abstract : 'No abstract available.'}
+                </HoverCardContent>
+              </HoverCard>
               <ItemDescription className="text-foreground/80">
                 {authorString}
               </ItemDescription>
