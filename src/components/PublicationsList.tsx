@@ -9,35 +9,56 @@ import {
   ItemMedia,
   ItemTitle,
 } from '@/components/ui/item'
+import type pubs from '@/db/publications.json'
 
-export function PublicationsList({ publications }: any) {
+type Publication = (typeof pubs)[number]
+
+interface PublicationsListProps {
+  publications: Publication[]
+}
+
+export function PublicationsList({ publications }: PublicationsListProps) {
   return (
     <ItemGroup className="not-prose gap-6">
-      {publications.map((pub, index) => {
+      {publications.map((pub: Publication, index: number) => {
+        // Format author names
+        const authorString =
+          pub.author
+            ?.map(
+              (a: { family: string; given: string }) => `${a.given} ${a.family}`
+            )
+            .join(', ') || 'Unknown Author'
+
+        // Get journal name from container-title
+        const journal = pub['container-title'] || ''
+
+        // Extract year from issued.date-parts
+        const year = pub.issued?.['date-parts']?.[0]?.[0] || 'N/A'
+
+        // Determine status based on container-title or other fields
+        const status =
+          pub['container-title'] === 'arXiv' ? 'preprint' : 'published'
+
         return (
           <Item key={pub.id} variant="outline">
             <ItemMedia variant="icon">{index + 1}</ItemMedia>
             <ItemContent>
               <ItemTitle>{pub.title}</ItemTitle>
               <ItemDescription className="text-foreground/80">
-                {pub.author}
+                {authorString}
               </ItemDescription>
-              <ItemDescription className="italic">
-                {pub.journal}
-              </ItemDescription>
+              <ItemDescription className="italic">{journal}</ItemDescription>
               <ItemDescription className="mt-1 flex w-full flex-wrap items-center gap-2 text-xs">
-                <Badge className="font-mono tabular-nums px-1">
-                  {pub.year}
-                </Badge>
+                <Badge className="font-mono tabular-nums px-1">{year}</Badge>
                 <Badge
                   variant="secondary"
                   className={`${
-                    pub.status === 'published'
+                    status === 'published'
                       ? 'bg-lime-600 text-white dark:bg-lime-700'
                       : 'bg-orange-300 text-black'
                   } font-mono px-1`}
                 >
-                  {pub.status}
+                  {status}
                 </Badge>
                 {/* {pub.tags.map(tag => (
                   <Badge key={tag} variant="outline" className="font-mono px-1">
@@ -48,7 +69,7 @@ export function PublicationsList({ publications }: any) {
             </ItemContent>
             <ItemActions className="flex-col">
               <Button variant="outline" size="sm">
-                <a href={`https://www.doi.org/${pub.doi}`}>URL</a>
+                <a href={`https://www.doi.org/${pub.DOI}`}>URL</a>
               </Button>
               <Button variant="outline" size="sm" asChild>
                 <a href="/">PDF</a>

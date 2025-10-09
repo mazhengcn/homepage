@@ -40,9 +40,9 @@ export function DropdownNavMenu({ navLinks, className }: Props) {
       <DropdownMenuContent className="w-56" align="start">
         <DropdownMenuLabel>Menu</DropdownMenuLabel>
         <DropdownMenuGroup>
-          {navLinks.map((link, index) => {
+          {navLinks.map(link => {
             return (
-              <DropdownMenuItem key={index} asChild>
+              <DropdownMenuItem key={link.href} asChild>
                 <a href={link.href}>{link.text}</a>
               </DropdownMenuItem>
             )

@@ -10,9 +10,13 @@ const allPosts = (await getCollection('blog')).sort(
 )
 const allTags = new Set<string>()
 
-allPosts.map(post => {
-  post.data.tags && post.data.tags.map((tag: string) => allTags.add(tag))
+allPosts.forEach(post => {
+  post.data.tags?.forEach((tag: string) => {
+    allTags.add(tag.toLowerCase())
+  })
 })
+
+console.log(allTags)
 
 const navLinks = [
   { href: '/research', text: 'Research' },

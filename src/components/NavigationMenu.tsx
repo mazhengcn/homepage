@@ -1,5 +1,3 @@
-import * as React from 'react'
-
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -32,17 +30,16 @@ export function NavMenu({ tags }: { tags: string[] }) {
           <NavigationMenuContent>
             <ul className="grid w-[300px] gap-4">
               <li>
-                {tags &&
-                  tags.map(tag => (
-                    <NavigationMenuLink asChild key={tag}>
-                      <a href={`/blog/tags/${tag}`}>
-                        <div className="font-medium">{tag}</div>
-                        <div className="text-muted-foreground">
-                          Browse posts tagged with &quot;{tag}&quot;.
-                        </div>
-                      </a>
-                    </NavigationMenuLink>
-                  ))}
+                {tags?.map(tag => (
+                  <NavigationMenuLink asChild key={tag}>
+                    <a href={`/tags/${tag}`}>
+                      <div className="font-medium">{tag}</div>
+                      <div className="text-muted-foreground">
+                        Browse posts tagged with &quot;{tag}&quot;.
+                      </div>
+                    </a>
+                  </NavigationMenuLink>
+                ))}
               </li>
             </ul>
           </NavigationMenuContent>

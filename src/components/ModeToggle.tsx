@@ -1,5 +1,5 @@
 import { Moon, Sun } from 'lucide-react'
-import * as React from 'react'
+import { useEffect, useState } from 'react'
 
 import { Button } from '@/components/ui/button'
 import {
@@ -10,17 +10,17 @@ import {
 } from '@/components/ui/dropdown-menu'
 
 export function ModeToggle() {
-  const [dropdownOpen, setDropdownOpen] = React.useState(false)
-  const [theme, setThemeState] = React.useState<
-    'theme-light' | 'dark' | 'system'
-  >('theme-light')
+  const [dropdownOpen, setDropdownOpen] = useState(false)
+  const [theme, setThemeState] = useState<'theme-light' | 'dark' | 'system'>(
+    'theme-light'
+  )
 
-  React.useEffect(() => {
+  useEffect(() => {
     const isDarkMode = document.documentElement.classList.contains('dark')
     setThemeState(isDarkMode ? 'dark' : 'theme-light')
   }, [])
 
-  React.useEffect(() => {
+  useEffect(() => {
     const isDark =
       theme === 'dark' ||
       (theme === 'system' &&
