@@ -1,10 +1,10 @@
 ---
-description: Pre-trained Attention-based Neural Network for Radiative Tranfer
+title: Fusion with AI
+description: Simulate plasma physics and control problem in fusion with deep learning.
 public: true
-title: DeepRTE
 pubDate: 2025-10-22
 tags:
-  - Kinetic Equations
+  - Nuclear Fusion
 heroImage: ../../assets/blog/deeprte.png
 ---
 

@@ -1,10 +1,10 @@
 ---
-description: Test
+title: Kinetic Simulation
+description: Explore the integration of AI with traditional numerical methods for solving kinetic equations.
 public: true
-title: DeepRTE
 pubDate: 2025-10-22
 tags:
-  - Machine learning
+  - Kinetic Equations
 heroImage: ../../assets/blog/deeprte.png
 ---
 

@@ -36,10 +36,7 @@ export function PublicationsList({ publications }: PublicationsListProps) {
             .join(', ') || 'Unknown Author'
 
         // Get journal name from container-title
-        const journal =
-          pub['container-title'] === 'arXiv'
-            ? ''
-            : pub['container-title'] || 'Unknown Journal'
+        const journal = pub['container-title'] || ''
 
         const type =
           pub.type === 'article-journal'

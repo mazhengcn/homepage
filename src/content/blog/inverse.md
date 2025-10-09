@@ -1,10 +1,10 @@
 ---
-description: Pre-trained Attention-based Neural Network for Radiative Tranfer
+title: PDE Inverse Problems
+description: Solve PDE inverse problems with Deep learning, especially with diffusion model.
 public: true
-title: DeepRTE
 pubDate: 2025-10-22
 tags:
-  - Kinetic Equations
+  - Inverse Problems
 heroImage: ../../assets/blog/deeprte.png
 ---
 

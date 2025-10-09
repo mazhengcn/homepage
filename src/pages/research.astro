@@ -8,6 +8,7 @@ import {
 } from '@/components/ui/card'
 import PageLayout from '@/layouts/PageLayout.astro'
 import { getCollection } from 'astro:content'
+import { ArrowRight } from 'lucide-react'
 
 const posts = (await getCollection('blog')).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
@@ -27,31 +28,31 @@ const posts = (await getCollection('blog')).sort(
   </section>
   <section class="-ml-8 prose-ul:list-none">
     <ul
-      class="grid auto-rows-fr grid-cols-1 gap-4 md:grid-cols-2 md:items-stretch"
+      class="grid auto-rows-fr grid-cols-1 gap-4 md:grid-cols-3 md:items-stretch"
     >
       {
         posts.map(post => {
           return (
             <li>
-              <a href={`/blog/${post.id}/`}>
-                <Card className="h-full hover:bg-accent  hover:text-accent-foreground transition-shadow inset-shadow-default flex flex-col">
-                  <CardHeader className="flex-1">
-                    <CardTitle className="text-xl font-bold">
-                      {post.data.title}
-                    </CardTitle>
-                    <CardDescription className="mt-2 text-base">
-                      {post.data.description}
-                    </CardDescription>
-                  </CardHeader>
-                  <CardFooter className="text-muted-foreground font-mono text-sm">
-                    {post.data.pubDate.toLocaleDateString('en-US', {
-                      year: 'numeric',
-                      month: 'long',
-                      day: 'numeric',
-                    })}
-                  </CardFooter>
-                </Card>
-              </a>
+              <Card className="h-full hover:bg-accent  hover:text-accent-foreground transition-shadow inset-shadow-default flex flex-col">
+                <CardHeader className="flex-1">
+                  <CardTitle className="text-xl font-bold">
+                    {post.data.title}
+                  </CardTitle>
+                  <CardDescription className="mt-2 text-base">
+                    {post.data.description}
+                  </CardDescription>
+                </CardHeader>
+                <CardFooter>
+                  <a
+                    href={`/blog/${post.id}/`}
+                    class="ont-mono text-sm text-muted-foreground"
+                  >
+                    Learn more
+                    <ArrowRight className="size-4 inline" />
+                  </a>
+                </CardFooter>
+              </Card>
             </li>
           )
         })
