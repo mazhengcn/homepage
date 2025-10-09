@@ -1,9 +1,7 @@
 ---
-import { db, Publications } from 'astro:db'
 import { PublicationsList } from '../components/PublicationsList'
+import Pubs from '../db/publications.json'
 import PageLayout from '../layouts/PageLayout.astro'
-
-const publications = await db.select().from(Publications)
 ---
 
 <PageLayout>
@@ -12,7 +10,7 @@ const publications = await db.select().from(Publications)
       <h1 class="text-center">Publications</h1>
     </section>
     <section class="items-center">
-      <PublicationsList publications={publications} />
+      <PublicationsList publications={Pubs} />
     </section>
   </div>
 </PageLayout>

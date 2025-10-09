@@ -9,14 +9,8 @@ import {
   ItemMedia,
   ItemTitle,
 } from '@/components/ui/item'
-import { Publications } from 'astro:db'
-import React from 'react'
 
-export function PublicationsList({
-  publications,
-}: {
-  publications: (typeof Publications)[]
-}) {
+export function PublicationsList({ publications }: any) {
   return (
     <ItemGroup className="not-prose gap-6">
       {publications.map((pub, index) => {

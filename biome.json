@@ -18,10 +18,7 @@
   "linter": {
     "enabled": true,
     "rules": {
-      "recommended": true,
-      "nursery": {
-        "useSortedClasses": "error"
-      }
+      "recommended": true
     }
   },
   "javascript": {
@@ -39,7 +36,7 @@
   },
   "html": { "formatter": { "selfCloseVoidElements": "always" } },
   "assist": {
-    "enabled": false,
+    "enabled": true,
     "actions": { "source": { "organizeImports": "on" } }
   },
   "overrides": [

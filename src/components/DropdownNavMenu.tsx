@@ -9,7 +9,7 @@ import {
 } from '@/components/ui/dropdown-menu'
 import { cn } from '@/lib/utils'
 import { Menu as IconMenu } from 'lucide-react'
-import React, { useState } from 'react'
+import { useState } from 'react'
 
 interface Props {
   navLinks: { href: string; text: string }[]
