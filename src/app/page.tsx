@@ -1,4 +1,7 @@
-import Image from "next/image";
+"use client"
+import Image from "next/image"
+import { Button } from "@/components/ui/button"
+import Welcome from "@/markdown/welcome.md"
 
 export default function Home() {
   return (
@@ -12,14 +15,19 @@ export default function Home() {
           height={38}
           priority
         />
+        <div className="prose dark:prose-invert">
+          <Welcome />
+        </div>
         <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
+          <Button variant="outline" size="lg" className="mb-4">
+            <li className="tracking-[-.01em]">
+              Get started by editing{" "}
+              <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
+                src/app/page.tsx
+              </code>
+              .
+            </li>
+          </Button>
           <li className="tracking-[-.01em]">
             Save and see your changes instantly.
           </li>
@@ -99,5 +107,5 @@ export default function Home() {
         </a>
       </footer>
     </div>
-  );
+  )
 }
