@@ -1,5 +1,12 @@
 import createMDX from "@next/mdx"
 
+const resolvePath = (path: string) => {
+  return require.resolve(path)
+}
+
+const readingTimePluginPath = resolvePath("./src/lib/remark-reading-time")
+const lastModifiedPluginPath = resolvePath("./src/lib/remark-last-modified")
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   // Configure `pageExtensions` to include markdown and MDX files
@@ -14,7 +21,8 @@ const withMDX = createMDX({
       // Without options
       "remark-gfm",
       "remark-math",
-      "@/lib/remark-reading-time.ts",
+      readingTimePluginPath,
+      lastModifiedPluginPath,
     ],
     rehypePlugins: [
       // With options

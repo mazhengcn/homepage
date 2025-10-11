@@ -7,10 +7,9 @@ export default async function Page({
   const {
     default: Content,
     metadata,
+    lastModified,
     readingTime,
   } = await import(`@/content/${slug}.mdx`)
-
-  console.log(metadata, readingTime.words)
 
   return (
     <>
@@ -18,7 +17,7 @@ export default async function Page({
       <p>{metadata.description}</p>
       <p className="opacity-75">Contributors: {metadata.author}</p>
       <p className="mb-4 text-sm opacity-75">
-        Last modified: xxx · {readingTime.text}
+        Last modified: {lastModified} · {readingTime.text}
       </p>
       <hr />
       <Content />
