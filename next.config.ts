@@ -17,7 +17,7 @@ const withMDX = createMDX({
     ],
     rehypePlugins: [
       // With options
-      ["rehype-katex", { strict: true, throwOnError: true }],
+      "rehype-katex",
     ],
   },
 })
