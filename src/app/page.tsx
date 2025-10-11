@@ -1,7 +1,7 @@
-"use client"
 import Image from "next/image"
+import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import Welcome from "@/markdown/welcome.md"
+import "katex/dist/katex.min.css"
 
 export default function Home() {
   return (
@@ -15,9 +15,6 @@ export default function Home() {
           height={38}
           priority
         />
-        <div className="prose dark:prose-invert">
-          <Welcome />
-        </div>
         <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
           <Button variant="outline" size="lg" className="mb-4">
             <li className="tracking-[-.01em]">
@@ -29,10 +26,11 @@ export default function Home() {
             </li>
           </Button>
           <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
+            Save and see your changes instantly $x^2$.
           </li>
         </ol>
-
+        <Link href="/mdx-page/f-principle">Test Test</Link>
+        <Link href="/mdx-page/condense">Test Test</Link>
         <div className="flex gap-4 items-center flex-col sm:flex-row">
           <a
             className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
