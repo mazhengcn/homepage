@@ -1,3 +1,8 @@
+import dayjs from "dayjs"
+import utc from "dayjs/plugin/utc"
+
+dayjs.extend(utc)
+
 export default async function Page({
   params,
 }: {
@@ -17,7 +22,8 @@ export default async function Page({
       <p>{metadata.description}</p>
       <p className="opacity-75">Contributors: {metadata.author}</p>
       <p className="mb-4 text-sm opacity-75">
-        Last modified: {lastModified} · {readingTime.text}
+        Last modified: {dayjs(lastModified).format("MMMM D, YYYY")} ·{" "}
+        {readingTime.text}
       </p>
       <hr />
       <Content />
