@@ -14,6 +14,7 @@ const withMDX = createMDX({
       // Without options
       "remark-gfm",
       "remark-math",
+      "@/lib/remark-reading-time.ts",
     ],
     rehypePlugins: [
       // With options
