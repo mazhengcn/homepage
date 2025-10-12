@@ -33,7 +33,7 @@ export default function BackToTopButton() {
   }
 
   if (!isMounted) {
-    return <div />
+    return
   }
 
   return (

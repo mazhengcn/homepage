@@ -1,6 +1,8 @@
 import type { Metadata } from "next"
 import { Geist, Geist_Mono } from "next/font/google"
 import "./globals.css"
+import BackToTopButton from "@/components/back-to-top"
+import NavBar from "@/components/nav-bar"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,9 +27,15 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased leading-normal break-words transition-colors bg-background duration-500`}
       >
-        {children}
+        <NavBar />
+        <main className="pt-20">
+          <article className="prose prose-lg dark:prose-invert prose-a:no-underline mx-auto max-w-5xl px-8">
+            {children}
+          </article>
+        </main>
+        <BackToTopButton />
       </body>
     </html>
   )

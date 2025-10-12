@@ -1,0 +1,39 @@
+import Image from "next/image"
+import Link from "next/link"
+import { ModeToggle } from "@/components/mode-toggle"
+import { NavDropdownMenu } from "@/components/nav-dropdown-menu"
+import { NavMenu } from "@/components/nav-menu"
+import PortraitImage from "../../public/portrait.jpg"
+
+const navLinks = [
+  { href: "/research", text: "Research" },
+  { href: "/publications", text: "Publications" },
+  { href: "https://github.com/mazhengcn", text: "Github" },
+]
+
+const TAGS = ["Inverse Problems", "Machine Learning", "Medical Imaging"]
+
+export default function NavBar() {
+  return (
+    <header className="fixed z-20 w-full p-2 backdrop-blur-md transition-shadow duration-300">
+      <div className="mx-auto max-w-5xl">
+        <nav className="flex items-center gap-3">
+          <Link href="/" className="group flex flex-auto items-center">
+            <Image
+              src={PortraitImage}
+              alt="Portrait of Zheng Ma"
+              className="h-8 w-8 rounded-full"
+            />
+            <h2 className="p-2 text-lg font-semibold tracking-tighter">Home</h2>
+          </Link>
+          <div className="hidden items-center md:flex">
+            <NavMenu tags={TAGS} />
+          </div>
+          <div className="flex-1"></div>
+          <ModeToggle />
+          <NavDropdownMenu navLinks={navLinks} className="md:hidden" />
+        </nav>
+      </div>
+    </header>
+  )
+}
