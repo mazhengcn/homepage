@@ -5,17 +5,12 @@ import { Button } from "@/components/ui/button"
 
 export default function BackToTopButton() {
   const [isVisible, setIsVisible] = useState(false)
-  const [isMounted, setIsMounted] = useState(false)
 
   useEffect(() => {
-    setIsMounted(true)
-  }, [])
-
-  useEffect(() => {
-    if (!isMounted || typeof window === "undefined") return
+    if (typeof window === "undefined") return
 
     const handleScroll = () => {
-      if (typeof window !== "undefined" && window.scrollY > 10) {
+      if (typeof window !== "undefined" && window.scrollY > 20) {
         setIsVisible(true)
       } else {
         setIsVisible(false)
@@ -24,7 +19,7 @@ export default function BackToTopButton() {
 
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
-  }, [isMounted])
+  }, [])
 
   const scrollToTop = () => {
     if (typeof window !== "undefined") {
@@ -32,21 +27,19 @@ export default function BackToTopButton() {
     }
   }
 
-  if (!isMounted) {
-    return
-  }
-
   return (
-    isVisible && (
-      <Button
-        className="fixed right-4 bottom-4 cursor-pointer"
-        onClick={scrollToTop}
-        variant="outline"
-        size="icon-lg"
-        aria-label="Scroll to top"
-      >
-        <ArrowUpIcon />
-      </Button>
-    )
+    <>
+      {isVisible && (
+        <Button
+          className="fixed right-4 bottom-4 cursor-pointer"
+          onClick={scrollToTop}
+          variant="outline"
+          size="icon-lg"
+          aria-label="Scroll to top"
+        >
+          <ArrowUpIcon />
+        </Button>
+      )}
+    </>
   )
 }
