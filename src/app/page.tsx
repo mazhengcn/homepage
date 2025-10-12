@@ -1,9 +1,14 @@
 import Image from "next/image"
 import "katex/dist/katex.min.css"
+import { Noto_Sans_SC } from "next/font/google"
 import { IoDocument, IoMail } from "react-icons/io5"
 import LinkButton from "@/components/link-button"
 import { Card, CardContent, CardTitle } from "@/components/ui/card"
-import PortraitImage from "@/public/portrait.jpg"
+import PortraitImage from "../../public/portrait.jpg"
+
+const notoSansSC = Noto_Sans_SC({
+  variable: "--font-sans-sc",
+})
 
 export default function Home() {
   return (
@@ -19,7 +24,10 @@ export default function Home() {
           <div className="flex flex-col items-center text-center">
             <div>
               <h1 className="text-4xl font-bold">
-                Zheng Ma <span className="font-sans-cn font-bold">(马 征)</span>
+                Zheng Ma{" "}
+                <span className={`${notoSansSC.variable} font-bold`}>
+                  (马 征)
+                </span>
               </h1>
               <p className="-mt-4 text-lg text-gray-600 dark:text-gray-400">
                 Mathmatician and Tech Enthusiast
@@ -40,7 +48,7 @@ export default function Home() {
       </Card>
       <Card className="mt-6 p-8">
         <CardTitle>
-          <div className="text-center text-3xl font-bold underline decoration-muted-foreground decoration-4 underline-offset-8">
+          <div className="text-center text-3xl font-bold underline decoration-muted-foreground decoration-4 underline-offset-10">
             Work Experience
           </div>
         </CardTitle>
