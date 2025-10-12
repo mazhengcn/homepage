@@ -1,14 +1,10 @@
 import createMDX from "@next/mdx"
+import type { NextConfig } from "next"
 
-const resolvePath = (path: string) => {
-  return require.resolve(path)
-}
+const readingTimePluginPath = require.resolve("./src/lib/remark-reading-time")
+const lastModifiedPluginPath = require.resolve("./src/lib/remark-last-modified")
 
-const readingTimePluginPath = resolvePath("./src/lib/remark-reading-time")
-const lastModifiedPluginPath = resolvePath("./src/lib/remark-last-modified")
-
-/** @type {import('next').NextConfig} */
-const nextConfig = {
+const nextConfig: NextConfig = {
   // Configure `pageExtensions` to include markdown and MDX files
   pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
 }

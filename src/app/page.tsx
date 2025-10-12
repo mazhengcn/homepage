@@ -1,14 +1,10 @@
 import Image from "next/image"
 import "katex/dist/katex.min.css"
-import { Noto_Sans_SC } from "next/font/google"
 import { IoDocument, IoMail } from "react-icons/io5"
 import LinkButton from "@/components/link-button"
 import { Card, CardContent, CardTitle } from "@/components/ui/card"
+import { notoSansSC } from "@/lib/fonts"
 import PortraitImage from "../../public/portrait.jpg"
-
-const notoSansSC = Noto_Sans_SC({
-  variable: "--font-sans-sc",
-})
 
 export default function Home() {
   return (

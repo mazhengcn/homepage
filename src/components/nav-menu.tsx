@@ -9,13 +9,17 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu"
+import { cn } from "@/lib/utils"
 
 export function NavMenu({ tags }: { tags: string[] }) {
   return (
     <NavigationMenu viewport={false}>
       <NavigationMenuList>
         <NavigationMenuItem>
-          <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
+          <NavigationMenuLink
+            asChild
+            className={cn(navigationMenuTriggerStyle(), "bg-transparent")}
+          >
             <Link href="/research">Research</Link>
           </NavigationMenuLink>
         </NavigationMenuItem>
