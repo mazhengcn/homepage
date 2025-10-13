@@ -48,17 +48,23 @@ export default function Home() {
             Work Experience
           </div>
         </CardTitle>
-        <CardContent className="mt-4 flex flex-col items-start gap-6">
-          <div>
-            <span className="font-semibold">2020 - present</span>:{" "}
-            <span className="italic">Tenured-track Associate Professor</span>,
-            School of Mathematical Sciences, Shanghai Jiao Tong University,
-            China
+        <CardContent className="mt-4 flex items-start gap-6">
+          <div className="basis-1/6 flex flex-col gap-14">
+            <div className="font-semibold">2020 - now</div>
+            <div className="font-semibold">2017 - 2020</div>
           </div>
-          <div>
-            <span className="font-semibold">2017 - 2020</span>:{" "}
-            <span className="italic">Golomb Visiting Assistant Professor</span>,
-            Department of Mathematics, Purdue University, U.S.
+          <div className="flex flex-col gap-6">
+            <div>
+              <span className="italic">Tenured-track Associate Professor</span>,
+              School of Mathematical Sciences, Shanghai Jiao Tong University,
+              China
+            </div>
+            <div>
+              <span className="italic">
+                Golomb Visiting Assistant Professor
+              </span>
+              , Department of Mathematics, Purdue University, U.S.
+            </div>
           </div>
         </CardContent>
       </Card>
@@ -68,14 +74,19 @@ export default function Home() {
             Education
           </div>
         </CardTitle>
-        <CardContent className="mt-4 flex flex-col items-start gap-6">
-          <div>
-            <span className="font-semibold">2012 - 2017</span>: Ph.D. in
-            Mathematics, Shanghai Jiao Tong University, China
+        <CardContent className="mt-4 flex items-start gap-6">
+          <div className="flex flex-col gap-6">
+            <div className="font-semibold">2012 - 2017</div>
+            <div className="font-semibold">2008 - 2012</div>
           </div>
-          <div>
-            <span className="font-semibold">2008 - 2012</span>: B.S. in
-            Mathematics, Zhiyuan College, Shanghai Jiao Tong University, China
+          <div className="flex flex-col gap-6">
+            <div>
+              Ph.D. in Mathematics, Shanghai Jiao Tong University, China
+            </div>
+            <div>
+              B.S. in Mathematics, Zhiyuan College, Shanghai Jiao Tong
+              University, China
+            </div>
           </div>
         </CardContent>
       </Card>
