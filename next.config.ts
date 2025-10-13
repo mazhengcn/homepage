@@ -7,6 +7,9 @@ const lastModifiedPluginPath = require.resolve("./src/lib/remark-last-modified")
 const nextConfig: NextConfig = {
   // Configure `pageExtensions` to include markdown and MDX files
   pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
+  experimental: {
+    reactCompiler: true,
+  },
 }
 
 const withMDX = createMDX({
