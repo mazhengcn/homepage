@@ -4,7 +4,7 @@ import { IoDocument, IoMail } from "react-icons/io5"
 import LinkButton from "@/components/link-button"
 import { Card, CardContent, CardTitle } from "@/components/ui/card"
 import { notoSansSC } from "@/lib/fonts"
-import PortraitImage from "../../public/portrait.jpg"
+import PortraitImage from "@/public/portrait.jpg"
 
 export default function Home() {
   return (

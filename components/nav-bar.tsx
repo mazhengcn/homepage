@@ -3,7 +3,7 @@ import Link from "next/link"
 import { ModeToggle } from "@/components/mode-toggle"
 import { NavDropdownMenu } from "@/components/nav-dropdown-menu"
 import { NavMenu } from "@/components/nav-menu"
-import PortraitImage from "../../public/portrait.jpg"
+import PortraitImage from "@/public/portrait.jpg"
 
 const navLinks = [
   { href: "/research", text: "Research" },

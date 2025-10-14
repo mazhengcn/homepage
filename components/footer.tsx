@@ -1,6 +1,6 @@
 import Image from "next/image"
 import Link from "next/link"
-import nextLogo from "../../public/next.svg"
+import nextLogo from "@/public/next.svg"
 
 const today = new Date()
 

@@ -1,5 +1,5 @@
 import { PublicationList } from "@/components/publication-list"
-import pubs from "@/server/db/publications.json"
+import pubs from "@/lib/db/publications.json"
 
 pubs.sort((a, b) => {
   // @ts-ignore biome-ignore: lint/suspicious/noUnsafeMemberAccess: Accessing nested properties without checks

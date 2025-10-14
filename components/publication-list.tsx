@@ -14,7 +14,7 @@ import {
   ItemMedia,
   ItemTitle,
 } from "@/components/ui/item"
-import type pubs from "@/server/db/publications.json"
+import type pubs from "@/lib/db/publications.json"
 
 type Publication = (typeof pubs)[number]
 
