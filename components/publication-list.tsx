@@ -61,7 +61,7 @@ export function PublicationList({ publications }: PublicationsListProps) {
             <ItemContent>
               <HoverCard>
                 <HoverCardTrigger asChild>
-                  <ItemTitle className="hover:underline">{pub.title}</ItemTitle>
+                  <ItemTitle className="font-semibold">{pub.title}</ItemTitle>
                 </HoverCardTrigger>
                 <HoverCardContent className="w-auto max-w-3xl bg-background/80 p-6 font-mono text-sm/relaxed backdrop-blur-md">
                   {pub.abstract ? pub.abstract : "No abstract available."}

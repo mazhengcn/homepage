@@ -10,12 +10,12 @@ export default function Home() {
   return (
     <div className="pt-10">
       <h1 className="text-center">Home</h1>
-      <Card>
-        <CardContent className="flex flex-col items-center gap-6 overflow-auto md:flex-row md:justify-center md:gap-24">
+      <Card className="py-2">
+        <CardContent className="flex flex-col items-center gap-6 overflow-auto md:flex-row md:justify-center md:gap-30">
           <Image
             src={PortraitImage}
             alt="Portrait of Zheng Ma"
-            className="h-60 w-60 rounded-full border-2 border-border object-cover"
+            className="h-60 w-60 rounded-full border border-border object-cover"
           />
           <div className="flex flex-col items-center text-center">
             <div>
@@ -42,7 +42,7 @@ export default function Home() {
           </div>
         </CardContent>
       </Card>
-      <Card className="mt-6 p-8">
+      <Card className="mt-6 px-8 pt-8 pb-10">
         <CardTitle>
           <div className="text-center text-3xl font-bold underline decoration-muted-foreground decoration-4 underline-offset-10">
             Work Experience
@@ -55,20 +55,17 @@ export default function Home() {
           </div>
           <div className="flex flex-col gap-6">
             <div>
-              <span className="italic">Tenured-track Associate Professor</span>,
-              School of Mathematical Sciences, Shanghai Jiao Tong University,
-              China
+              Tenured-track Associate Professor, School of Mathematical
+              Sciences, Shanghai Jiao Tong University, China
             </div>
             <div>
-              <span className="italic">
-                Golomb Visiting Assistant Professor
-              </span>
-              , Department of Mathematics, Purdue University, U.S.
+              Golomb Visiting Assistant Professor, Department of Mathematics,
+              Purdue University, U.S.
             </div>
           </div>
         </CardContent>
       </Card>
-      <Card className="mt-6 p-8">
+      <Card className="mt-6 px-8 pt-8 pb-10">
         <CardTitle>
           <div className="text-center text-3xl font-bold underline decoration-muted-foreground decoration-4 underline-offset-10">
             Education
