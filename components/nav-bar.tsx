@@ -15,7 +15,7 @@ const TAGS = ["Inverse Problems", "Machine Learning", "Medical Imaging"]
 
 export default function NavBar() {
   return (
-    <header className="fixed z-20 w-full p-2 backdrop-blur-md transition-shadow duration-300">
+    <header className="fixed z-20 w-full p-2 backdrop-blur-md transition-shadow duration-300 border-b">
       <div className="mx-auto max-w-5xl">
         <nav className="flex items-center gap-3">
           <Link href="/" className="group flex flex-auto items-center">

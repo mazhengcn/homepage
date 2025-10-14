@@ -18,7 +18,7 @@ export function NavMenu({ tags }: { tags: string[] }) {
         <NavigationMenuItem>
           <NavigationMenuLink
             asChild
-            className={cn(navigationMenuTriggerStyle(), "bg-transparent")}
+            className={cn(navigationMenuTriggerStyle())}
           >
             <Link href="/research">Research</Link>
           </NavigationMenuLink>

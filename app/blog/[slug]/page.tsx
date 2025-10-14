@@ -10,7 +10,7 @@ export default async function Page({
 }) {
   const { slug } = await params
   const {
-    default: Content,
+    default: MDXContent,
     metadata,
     lastModified,
     readingTime,
@@ -26,7 +26,7 @@ export default async function Page({
         {readingTime.text}
       </p>
       <hr />
-      <Content />
+      <MDXContent />
     </>
   )
 }
