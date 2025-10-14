@@ -70,7 +70,7 @@ export default function Home() {
       </Card>
       <Card className="mt-6 p-8">
         <CardTitle>
-          <div className="text-center text-3xl font-bold underline decoration-muted-foreground decoration-4 underline-offset-8">
+          <div className="text-center text-3xl font-bold underline decoration-muted-foreground decoration-4 underline-offset-10">
             Education
           </div>
         </CardTitle>

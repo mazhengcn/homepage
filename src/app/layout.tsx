@@ -7,7 +7,7 @@ import { ThemeProvider } from "@/components/theme-provider"
 import { geistMono, geistSans } from "@/lib/fonts"
 
 export const metadata: Metadata = {
-  title: "Zheng",
+  title: "Zheng Ma's Personal Website",
   description: "Welcome to my personal website!",
 }
 

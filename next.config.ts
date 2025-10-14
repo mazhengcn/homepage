@@ -17,16 +17,12 @@ const withMDX = createMDX({
   extension: /\.(md|mdx)$/,
   options: {
     remarkPlugins: [
-      // Without options
       "remark-gfm",
       "remark-math",
       readingTimePluginPath,
       lastModifiedPluginPath,
     ],
-    rehypePlugins: [
-      // With options
-      "rehype-katex",
-    ],
+    rehypePlugins: ["rehype-katex"],
   },
 })
 
