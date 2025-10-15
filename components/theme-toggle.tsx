@@ -27,7 +27,6 @@ export function ThemeToggle({ mode = "light-dark" }) {
   }, [])
   const container = cn("inline-flex items-center rounded-full border p-1")
   if (mode === "light-dark") {
-    console.log("themes", { theme, resolvedTheme })
     const value = mounted ? resolvedTheme : null
     return (
       <button

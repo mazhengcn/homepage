@@ -5,6 +5,7 @@ import Footer from "@/components/footer"
 import NavBar from "@/components/nav-bar"
 import { ThemeProvider } from "@/components/theme-provider"
 import { geistMono, geistSans } from "@/lib/fonts"
+import 'katex/dist/katex.css';
 
 export const metadata: Metadata = {
   title: "Zheng Ma's Personal Website",

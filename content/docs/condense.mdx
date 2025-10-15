@@ -1,0 +1,16 @@
+---
+title: Condensation Phenomenon in Deep Neural Networks
+description: Exploring the condensation phenomenon in deep neural networks, where neurons align into groups with similar outputs during training.
+
+---
+
+## 1. Introduction
+
+
+To illustrate this, consider the target function:
+
+```math
+f(x) = - \sigma(x) + \sigma(2(x+0.3)) - \sigma(1.5(x-0.4)) + \sigma(0.5(x-0.8)),
+```
+
+where $$\sigma(x) = ReLU(x)$$. The width of the hidden layer is $m=100$, and the learning rate is $$0.1$$. The parameters are initialized by The training data is evenly sampled in $$[-1,1]$$.
