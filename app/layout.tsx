@@ -4,8 +4,8 @@ import BackToTopButton from "@/components/back-to-top"
 import Footer from "@/components/footer"
 import NavBar from "@/components/nav-bar"
 import { ThemeProvider } from "@/components/theme-provider"
-import { geistMono, geistSans } from "@/lib/fonts"
-import 'katex/dist/katex.css';
+import { geistSans, jetBrainsMono } from "@/lib/fonts"
+import "katex/dist/katex.css"
 
 export const metadata: Metadata = {
   title: "Zheng Ma's Personal Website",
@@ -21,7 +21,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head />
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased leading-normal break-words transition-colors duration-500`}
+        className={`${geistSans.variable} ${jetBrainsMono.variable} antialiased leading-normal break-words transition-colors duration-500`}
       >
         <ThemeProvider
           attribute="class"
