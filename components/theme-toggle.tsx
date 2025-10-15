@@ -5,7 +5,7 @@ import { useTheme } from "next-themes"
 import { useLayoutEffect, useState } from "react"
 import { cn } from "@/lib/utils"
 
-const itemVariants = cva("size-6.5 rounded-full p-1.5 text-muted-foreground", {
+const itemVariants = cva("size-7 rounded-full p-1.5 text-muted-foreground", {
   variants: {
     active: {
       true: "bg-accent text-accent-foreground",

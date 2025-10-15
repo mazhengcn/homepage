@@ -55,7 +55,7 @@ export default function ResearchPage() {
                   </CardHeader>
                   <CardFooter>
                     <Link
-                      href="/docs/condense/"
+                      href="/docs/f-principle/"
                       className="ont-mono text-sm text-muted-foreground"
                     >
                       Learn more
