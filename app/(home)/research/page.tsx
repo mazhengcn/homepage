@@ -56,7 +56,7 @@ export default function ResearchPage() {
                   <CardFooter>
                     <Link
                       href="/docs/f-principle/"
-                      className="ont-mono text-sm text-muted-foreground"
+                      className="font-mono text-sm text-muted-foreground"
                     >
                       Learn more
                       <ArrowRight className="size-4 inline" />
