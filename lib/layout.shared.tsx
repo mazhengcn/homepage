@@ -1,5 +1,6 @@
 import type { BaseLayoutProps } from "fumadocs-ui/layouts/shared"
-import { IoLogoGithub } from "react-icons/io5"
+import Image from "next/image"
+import PortraitImage from "@/public/portrait.jpg"
 
 /**
  * Shared layout configurations
@@ -11,17 +12,23 @@ import { IoLogoGithub } from "react-icons/io5"
 export function baseOptions(): BaseLayoutProps {
   return {
     nav: {
-      title: "Home",
+      transparentMode: "always",
+      title: (
+        <>
+          <Image
+            src={PortraitImage}
+            alt="Portrait of Zheng Ma"
+            className="size-6 rounded-full"
+          />
+          Home
+        </>
+      ),
     },
     // see https://fumadocs.dev/docs/ui/navigation/links
     links: [
       { text: "Research", url: "/research" },
       { text: "Publications", url: "/publications" },
-      {
-        icon: <IoLogoGithub />,
-        text: "GitHub",
-        url: "https://github.com/mazhengcn",
-      },
     ],
+    githubUrl: "https://github.com/mazhengcn",
   }
 }

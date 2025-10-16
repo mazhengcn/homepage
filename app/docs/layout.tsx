@@ -1,8 +1,11 @@
-export default function MdxLayout({ children }: { children: React.ReactNode }) {
-  // Create any shared layout or styles here
+import { DocsLayout } from "fumadocs-ui/layouts/docs"
+import { baseOptions } from "@/lib/layout.shared"
+import { source } from "@/lib/source"
+
+export default function Layout({ children }: LayoutProps<"/docs">) {
   return (
-    <div className="prose dark:prose-invert mx-auto max-w-4xl prose-headings:mt-8 prose-headings:font-semibold prose-headings:text-black prose-h1:text-5xl prose-h2:text-4xl prose-h3:text-3xl prose-h4:text-2xl prose-h5:text-xl prose-h6:text-lg dark:prose-headings:text-white">
+    <DocsLayout tree={source.pageTree} {...baseOptions()}>
       {children}
-    </div>
+    </DocsLayout>
   )
 }
