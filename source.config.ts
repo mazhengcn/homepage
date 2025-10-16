@@ -1,10 +1,24 @@
-import { defineConfig, defineDocs } from "fumadocs-mdx/config"
+import {
+  defineConfig,
+  defineDocs,
+  frontmatterSchema,
+  metaSchema,
+} from "fumadocs-mdx/config"
 import rehypeKatex from "rehype-katex"
 import remarkMath from "remark-math"
 import remarkReadingTime from "@/lib/remark-plugins/remark-reading-time.mjs"
 
 export const docs = defineDocs({
   dir: "content/docs",
+  docs: {
+    schema: frontmatterSchema,
+    postprocess: {
+      includeProcessedMarkdown: true,
+    },
+  },
+  meta: {
+    schema: metaSchema,
+  },
 })
 
 export default defineConfig({
