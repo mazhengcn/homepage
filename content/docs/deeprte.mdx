@@ -3,6 +3,8 @@ title: DeepRTE
 description: Pre-trained Attention-based Neural Network for Radiative Tranfer
 ---
 
+import { File, Files, Folder } from "fumadocs-ui/components/files"
+
 ## Introduction
 
 [**Installation**](#setup) | [**Datasets and Pretrained Models**](#datasets-and-pretrained-models) | [**Run DeepRTE**](#run-deeprte) | [**Train DeepRTE**](#pretrain-deeprte) | [**Cite**](#citing-this-work) | [**Acknowledgements**](#acknowledgements) | [**Contact**](#get-in-touch)
@@ -105,8 +107,8 @@ huggingface-cli download mazhengcn/rte-dataset \
 
 The resulting folder structure should be (for inference, only datasets under `raw/test` are needed):
 
-```bash
-${DATA_DIR}
+```files
+DATA_DIR
 ├── processed
 │   └── tfds      # Processed TFDS dataset for pretraining.
 ├── raw
@@ -114,6 +116,7 @@ ${DATA_DIR}
 │   └── train     # Raw MATLAB dataset for pretraining using grain.
 └── README.md
 ```
+
 
 ### Download Pretrained Models
 
@@ -127,8 +130,8 @@ huggingface-cli download mazhengcn/deeprte \
 
 The folder structure will be:
 
-```bash
-${MODELS_DIR}
+```files
+MODELS_DIR
 ├── README.md
 ├── v0                    # Pre-release version (deprecated).
 ├── v1                    # Pre-release version (deprecated).

@@ -1,3 +1,4 @@
+import { remarkMdxFiles } from "fumadocs-core/mdx-plugins"
 import {
   defineConfig,
   defineDocs,
@@ -23,7 +24,7 @@ export const docs = defineDocs({
 
 export default defineConfig({
   mdxOptions: {
-    remarkPlugins: [remarkMath, remarkReadingTime],
+    remarkPlugins: [remarkMath, remarkMdxFiles, remarkReadingTime],
     rehypePlugins: (v) => [rehypeKatex, ...v],
     valueToExport: ["readingTime"],
   },

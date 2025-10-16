@@ -1,5 +1,3 @@
-import dayjs from "dayjs"
-import utc from "dayjs/plugin/utc"
 import { createRelativeLink } from "fumadocs-ui/mdx"
 import {
   DocsBody,
@@ -12,8 +10,6 @@ import { notFound } from "next/navigation"
 import { getPageImage, source } from "@/lib/source"
 import { getMDXComponents } from "@/mdx-components"
 
-dayjs.extend(utc)
-
 export default async function Page(props: PageProps<"/docs/[[...slug]]">) {
   const params = await props.params
   const page = source.getPage(params.slug)
@@ -24,14 +20,14 @@ export default async function Page(props: PageProps<"/docs/[[...slug]]">) {
   const readingTime = page.data._exports.readingTime as { text: string }
 
   return (
-    <DocsPage toc={page.data.toc} full={page.data.full}>
+    <DocsPage
+      toc={page.data.toc}
+      full={page.data.full}
+      lastUpdate={new Date(page.data.lastModified as string | Date)}
+    >
       <DocsTitle>{page.data.title}</DocsTitle>
       <DocsDescription>
-        <p>{page.data.description}</p>
-        <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
-          Last modified: {dayjs(page.data.lastModified).format("MMMM D, YYYY")}{" "}
-          · {readingTime.text}
-        </p>
+        {page.data.description} · {readingTime.text}
       </DocsDescription>
       <DocsBody>
         <MDX

@@ -6,7 +6,7 @@ const today = new Date()
 
 export default function Footer() {
   return (
-    <footer className="mt-10 p-4 text-center text-zinc-500 items-start flex gap-2 justify-center">
+    <footer className="mt-10 p-4 text-center text-zinc-500 items-center mx-auto flex gap-2 justify-center">
       &copy; {today.getFullYear()} Powered by{" "}
       <Link href={"https://nextjs.org/"}>
         <Image

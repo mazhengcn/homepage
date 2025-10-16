@@ -28,7 +28,6 @@ export function baseOptions(): BaseLayoutProps {
     links: [
       { text: "Research", url: "/research" },
       { text: "Publications", url: "/publications" },
-      { text: "Blog", url: "/docs" },
     ],
     githubUrl: "https://github.com/mazhengcn",
   }

@@ -1,13 +1,14 @@
 import Image from "next/image"
-import "katex/dist/katex.min.css"
 import { IoDocument, IoMail } from "react-icons/io5"
 import LinkButton from "@/components/link-button"
+import { TimeLine } from "@/components/timeline"
 import { Card, CardContent, CardTitle } from "@/components/ui/card"
+import { Separator } from "@/components/ui/separator"
 import PortraitImage from "@/public/portrait.jpg"
 
 export default function Home() {
   return (
-    <div className="pt-10">
+    <div className="max-w-4xl mx-auto pt-10">
       <h1 className="text-center">Home</h1>
       <Card className="py-2">
         <CardContent className="flex flex-col items-center gap-6 overflow-auto md:flex-row md:justify-center md:gap-30">
@@ -45,10 +46,14 @@ export default function Home() {
           </div>
         </CardTitle>
         <CardContent className="mt-4 flex items-start gap-6">
-          <div className="basis-1/6 flex flex-col gap-14">
+          <div className="flex flex-col gap-6">
             <div className="font-semibold">2020 - now</div>
             <div className="font-semibold">2017 - 2020</div>
           </div>
+          <Separator
+            orientation="vertical"
+            className="data-[orientation=vertical]:h-40"
+          />
           <div className="flex flex-col gap-6">
             <div>
               Tenured-track Associate Professor, School of Mathematical
@@ -83,6 +88,7 @@ export default function Home() {
           </div>
         </CardContent>
       </Card>
+      <TimeLine />
     </div>
   )
 }
