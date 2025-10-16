@@ -1,11 +1,21 @@
+import { RootProvider } from "fumadocs-ui/provider/next"
 import type { Metadata } from "next"
+import { Inter, JetBrains_Mono, Noto_Sans_SC } from "next/font/google"
 import "./globals.css"
-import BackToTopButton from "@/components/back-to-top"
-import Footer from "@/components/footer"
-import NavBar from "@/components/nav-bar"
-import { ThemeProvider } from "@/components/theme-provider"
-import { geistSans, jetBrainsMono } from "@/lib/fonts"
-import "katex/dist/katex.css"
+
+const interSans = Inter({
+  variable: "--font-inter-sans",
+  subsets: ["latin"],
+})
+
+const jetBrainsMono = JetBrains_Mono({
+  variable: "--font-jetbrains-mono",
+  subsets: ["latin"],
+})
+
+const notoSansSC = Noto_Sans_SC({
+  variable: "--font-noto-sans",
+})
 
 export const metadata: Metadata = {
   title: "Zheng Ma's Personal Website",
@@ -19,25 +29,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head />
       <body
-        className={`${geistSans.variable} ${jetBrainsMono.variable} antialiased leading-normal break-words transition-colors duration-500`}
+        className={`${interSans.variable} ${jetBrainsMono.variable} ${notoSansSC.variable} font-sans antialiased leading-normal break-words transition-colors duration-500`}
       >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <NavBar />
-          <main className="pt-20">
-            <article className="prose prose-lg dark:prose-invert prose-a:no-underline mx-auto max-w-5xl px-8">
-              {children}
-            </article>
-          </main>
-          <BackToTopButton />
-          <Footer />
-        </ThemeProvider>
+        <RootProvider>{children}</RootProvider>
       </body>
     </html>
   )

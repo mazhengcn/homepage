@@ -3,7 +3,6 @@ import "katex/dist/katex.min.css"
 import { IoDocument, IoMail } from "react-icons/io5"
 import LinkButton from "@/components/link-button"
 import { Card, CardContent, CardTitle } from "@/components/ui/card"
-import { notoSansSC } from "@/lib/fonts"
 import PortraitImage from "@/public/portrait.jpg"
 
 export default function Home() {
@@ -20,12 +19,9 @@ export default function Home() {
           <div className="flex flex-col items-center text-center">
             <div>
               <h1 className="text-4xl font-bold">
-                Zheng Ma{" "}
-                <span className={`${notoSansSC.variable} font-bold`}>
-                  (马 征)
-                </span>
+                Zheng Ma <span className={`font-cn font-bold`}>(马 征)</span>
               </h1>
-              <p className="-mt-4 text-lg text-gray-600 dark:text-gray-400">
+              <p className="-mt-4 text-lg text-gray-600 dark:text-gray-400 font-mono">
                 Mathmatician and Tech Enthusiast
               </p>
             </div>

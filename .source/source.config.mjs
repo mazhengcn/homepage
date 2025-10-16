@@ -1,5 +1,10 @@
 // source.config.ts
-import { defineConfig, defineDocs } from "fumadocs-mdx/config";
+import {
+  defineConfig,
+  defineDocs,
+  frontmatterSchema,
+  metaSchema
+} from "fumadocs-mdx/config";
 import rehypeKatex from "rehype-katex";
 import remarkMath from "remark-math";
 
@@ -16,7 +21,16 @@ function remarkReadingTime() {
 
 // source.config.ts
 var docs = defineDocs({
-  dir: "content/docs"
+  dir: "content/docs",
+  docs: {
+    schema: frontmatterSchema,
+    postprocess: {
+      includeProcessedMarkdown: true
+    }
+  },
+  meta: {
+    schema: metaSchema
+  }
 });
 var source_config_default = defineConfig({
   mdxOptions: {
