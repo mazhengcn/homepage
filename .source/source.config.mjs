@@ -9,15 +9,16 @@ import {
 } from "fumadocs-mdx/config";
 import rehypeKatex from "rehype-katex";
 import remarkMath from "remark-math";
+import { z } from "zod";
 
 // lib/remark-plugins/remark-reading-time.mjs
 import { toString as mdaToString } from "mdast-util-to-string";
 import getReadingTime from "reading-time";
 function remarkReadingTime() {
-  return (tree, file) => {
+  return (tree, vfile) => {
     const textOnPage = mdaToString(tree);
     const readingTime = getReadingTime(textOnPage);
-    file.data.readingTime = readingTime;
+    vfile.data.readingTime = readingTime;
   };
 }
 
@@ -35,8 +36,12 @@ var docs = defineDocs({
   }
 });
 var blog = defineCollections({
+  type: "doc",
   dir: "content/blog",
-  type: "doc"
+  schema: frontmatterSchema.extend({
+    author: z.string(),
+    date: z.iso.date().or(z.date())
+  })
 });
 var source_config_default = defineConfig({
   mdxOptions: {

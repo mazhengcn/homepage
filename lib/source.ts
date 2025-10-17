@@ -13,9 +13,7 @@ export const source = loader({
   plugins: [lucideIconsPlugin()],
 })
 
-export const blog = loader(createMDXSource(blogPosts), {
-  baseUrl: "/blog",
-})
+export const blog = loader(createMDXSource(blogPosts), { baseUrl: "/blog" })
 
 export function getPageImage(page: InferPageType<typeof source>) {
   const segments = [...page.slugs, "image.png"]
@@ -35,4 +33,4 @@ ${processed}`
 }
 
 export type Page = InferPageType<typeof source>
-export type PageMeta = InferMetaType<typeof source>
+export type Meta = InferMetaType<typeof source>

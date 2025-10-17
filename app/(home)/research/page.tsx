@@ -11,7 +11,6 @@ import { source } from "@/lib/source"
 
 export default function ResearchPage() {
   const posts = source.getPages()
-  console.log(posts)
   return (
     <>
       <section className="mt-12">

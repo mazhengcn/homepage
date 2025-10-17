@@ -8,6 +8,7 @@ import {
 } from "fumadocs-mdx/config"
 import rehypeKatex from "rehype-katex"
 import remarkMath from "remark-math"
+import { z } from "zod"
 import remarkReadingTime from "@/lib/remark-plugins/remark-reading-time.mjs"
 
 export const docs = defineDocs({
@@ -24,8 +25,12 @@ export const docs = defineDocs({
 })
 
 export const blog = defineCollections({
-  dir: "content/blog",
   type: "doc",
+  dir: "content/blog",
+  schema: frontmatterSchema.extend({
+    author: z.string(),
+    date: z.iso.date().or(z.date()),
+  }),
 })
 
 export default defineConfig({
