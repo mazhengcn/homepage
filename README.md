@@ -1,3 +1,5 @@
+![Vercel Deploy](https://deploy-badge.vercel.app/vercel/zheng-home)
+
 # Academic Homepage
 
 A modern, fast, and elegant academic homepage built with Next.js and Fumadocs. This website showcases research interests, publications, and documentation with a clean and professional design.
