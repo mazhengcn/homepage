@@ -9,6 +9,12 @@ import PortraitImage from "@/public/portrait.jpg"
  * Home Layout: app/(home)/layout.tsx
  * Docs Layout: app/docs/layout.tsx
  */
+
+export const linkItems = [
+  { text: "Research", url: "/research" },
+  { text: "Publications", url: "/publications" },
+]
+
 export function baseOptions(): BaseLayoutProps {
   return {
     nav: {
@@ -25,10 +31,6 @@ export function baseOptions(): BaseLayoutProps {
       ),
     },
     // see https://fumadocs.dev/docs/ui/navigation/links
-    links: [
-      { text: "Research", url: "/research" },
-      { text: "Publications", url: "/publications" },
-    ],
     githubUrl: "https://github.com/mazhengcn",
   }
 }

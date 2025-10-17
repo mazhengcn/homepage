@@ -1,6 +1,7 @@
 // source.config.ts
 import { remarkMdxFiles } from "fumadocs-core/mdx-plugins";
 import {
+  defineCollections,
   defineConfig,
   defineDocs,
   frontmatterSchema,
@@ -33,6 +34,10 @@ var docs = defineDocs({
     schema: metaSchema
   }
 });
+var blog = defineCollections({
+  dir: "content/blog",
+  type: "doc"
+});
 var source_config_default = defineConfig({
   mdxOptions: {
     remarkPlugins: [remarkMath, remarkMdxFiles, remarkReadingTime],
@@ -42,6 +47,7 @@ var source_config_default = defineConfig({
   lastModifiedTime: "git"
 });
 export {
+  blog,
   source_config_default as default,
   docs
 };

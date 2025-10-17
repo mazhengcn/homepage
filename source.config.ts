@@ -1,5 +1,6 @@
 import { remarkMdxFiles } from "fumadocs-core/mdx-plugins"
 import {
+  defineCollections,
   defineConfig,
   defineDocs,
   frontmatterSchema,
@@ -20,6 +21,11 @@ export const docs = defineDocs({
   meta: {
     schema: metaSchema,
   },
+})
+
+export const blog = defineCollections({
+  dir: "content/blog",
+  type: "doc",
 })
 
 export default defineConfig({

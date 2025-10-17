@@ -1,11 +1,20 @@
-import { type InferPageType, loader } from "fumadocs-core/source"
+import {
+  type InferMetaType,
+  type InferPageType,
+  loader,
+} from "fumadocs-core/source"
 import { lucideIconsPlugin } from "fumadocs-core/source/lucide-icons"
-import { docs } from "@/.source"
+import { createMDXSource } from "fumadocs-mdx/runtime/next"
+import { blog as blogPosts, docs } from "@/.source"
 
 export const source = loader({
   baseUrl: "/docs",
   source: docs.toFumadocsSource(),
   plugins: [lucideIconsPlugin()],
+})
+
+export const blog = loader(createMDXSource(blogPosts), {
+  baseUrl: "/blog",
 })
 
 export function getPageImage(page: InferPageType<typeof source>) {
@@ -24,3 +33,6 @@ export async function getLLMText(page: InferPageType<typeof source>) {
 
 ${processed}`
 }
+
+export type Page = InferPageType<typeof source>
+export type PageMeta = InferMetaType<typeof source>

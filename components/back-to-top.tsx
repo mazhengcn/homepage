@@ -1,6 +1,6 @@
 "use client"
 import { ArrowUpIcon } from "lucide-react"
-import { useEffect, useState } from "react"
+import { Activity, useEffect, useState } from "react"
 import { Button } from "@/components/ui/button"
 
 export default function BackToTopButton() {
