@@ -37,11 +37,11 @@ const timelineData: TimelineEntry[] = [
 export function TimeLine() {
   return (
     <section className="bg-background py-32">
-      <div className="container">
+      <div className="flex flex-col items-center px-6">
         <h1 className="text-foreground mb-10 text-center text-3xl font-bold tracking-tighter sm:text-6xl">
           Work and Education
         </h1>
-        <div className="relative mx-auto max-w-4xl">
+        <div className="relative mx-auto max-w-3xl">
           <Separator
             orientation="vertical"
             className="bg-muted absolute left-2 top-4"

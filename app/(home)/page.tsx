@@ -1,15 +1,46 @@
 import Image from "next/image"
 import { IoDocument, IoMail } from "react-icons/io5"
 import LinkButton from "@/components/link-button"
-import { TimeLine } from "@/components/timeline"
-import { Card, CardContent, CardTitle } from "@/components/ui/card"
+import { Card, CardContent } from "@/components/ui/card"
 import { Separator } from "@/components/ui/separator"
 import PortraitImage from "@/public/portrait.jpg"
+
+type TimelineEntry = {
+  date: string
+  title: string
+  content: string
+}
+
+const timelineData: TimelineEntry[] = [
+  {
+    date: "2020 - now",
+    title: "Tenured-track Associate Professor",
+    content:
+      "I joined the School of Mathematical Sciences at Shanghai Jiao Tong University as a tenured-track Associate Professor. My research focuses on computational mathematics and deep learning methods, exploring the intersection of these fields to solve complex problems in mathematics and engineering.",
+  },
+  {
+    date: "2017 - 2020",
+    title: "Golomb Visiting Assistant Professor",
+    content:
+      "I served as a Golomb Visiting Assistant Professor in the Department of Mathematics at Purdue University. During this time, I engaged in research and teaching, contributing to the academic community while furthering my expertise in computational mathematics and its applications.",
+  },
+  {
+    date: "2012 - 2017",
+    title: "Ph.D. in Computational Mathematics",
+    content:
+      "I completed my Ph.D. in Computational Mathematics at Shanghai Jiao Tong University. My dissertation focused on developing novel algorithms for solving large-scale optimization problems, with applications in machine learning and data analysis.",
+  },
+  {
+    date: "2008 - 2012",
+    title: "B.S. in Mathematics",
+    content:
+      "I obtained my B.S. in Mathematics from Zhiyuan College, Shanghai Jiao Tong University. During my undergraduate studies, I developed a strong foundation in mathematical theory and its applications, which sparked my interest in pursuing advanced studies in computational mathematics.",
+  },
+]
 
 export default function Home() {
   return (
     <div className="max-w-4xl mx-auto pt-10">
-      <h1 className="text-center">Home</h1>
       <Card className="py-2">
         <CardContent className="flex flex-col items-center gap-6 overflow-auto md:flex-row md:justify-center md:gap-30">
           <Image
@@ -19,7 +50,7 @@ export default function Home() {
           />
           <div className="flex flex-col items-center text-center">
             <div>
-              <h1 className="text-4xl font-bold">
+              <h1 className="text-4xl font-bold tracking-tight">
                 Zheng Ma <span className={`font-cn font-bold`}>(马 征)</span>
               </h1>
               <p className="-mt-4 text-lg text-gray-600 dark:text-gray-400 font-mono">
@@ -29,66 +60,45 @@ export default function Home() {
             <div className="flex gap-2">
               <LinkButton href="/cv.pdf">
                 <IoDocument />
-                Full CV here
+                Resume
               </LinkButton>
               <LinkButton href="mailto:zhengma@sjtu.edu.cn">
                 <IoMail />
-                Contact me
+                Email
               </LinkButton>
             </div>
           </div>
         </CardContent>
       </Card>
-      <Card className="mt-6 px-8 pt-8 pb-10">
-        <CardTitle>
-          <div className="text-center text-3xl font-bold underline decoration-muted-foreground decoration-4 underline-offset-10">
-            Work Experience
-          </div>
-        </CardTitle>
-        <CardContent className="mt-4 flex items-start gap-6">
-          <div className="flex flex-col gap-6">
-            <div className="font-semibold">2020 - now</div>
-            <div className="font-semibold">2017 - 2020</div>
-          </div>
+      <div className="flex flex-col items-center px-6 mt-15">
+        <h1 className="text-foreground mb-10 text-center text-4xl font-bold tracking-tighter">
+          Work and Education
+        </h1>
+        <div className="relative mx-auto max-w-3xl">
           <Separator
             orientation="vertical"
-            className="data-[orientation=vertical]:h-40"
+            className="bg-muted absolute left-2 top-4"
           />
-          <div className="flex flex-col gap-6">
-            <div>
-              Tenured-track Associate Professor, School of Mathematical
-              Sciences, Shanghai Jiao Tong University, China
+          {timelineData.map((entry) => (
+            <div key={entry.date} className="relative mb-10 pl-8">
+              <div className="bg-foreground absolute left-0 top-3.5 flex size-4 items-center justify-center rounded-full" />
+              <h4 className="rounded-xl py-2 text-xl font-bold tracking-tight md:mb-4 md:px-3">
+                {entry.title}
+              </h4>
+
+              <h5 className="text-md -left-34 text-muted-foreground top-3 rounded-xl tracking-tight md:absolute">
+                {entry.date}
+              </h5>
+
+              <Card className="my-5 border-none shadow-none">
+                <CardContent className="px-0 xl:px-2">
+                  {entry.content}
+                </CardContent>
+              </Card>
             </div>
-            <div>
-              Golomb Visiting Assistant Professor, Department of Mathematics,
-              Purdue University, U.S.
-            </div>
-          </div>
-        </CardContent>
-      </Card>
-      <Card className="mt-6 px-8 pt-8 pb-10">
-        <CardTitle>
-          <div className="text-center text-3xl font-bold underline decoration-muted-foreground decoration-4 underline-offset-10">
-            Education
-          </div>
-        </CardTitle>
-        <CardContent className="mt-4 flex items-start gap-6">
-          <div className="flex flex-col gap-6">
-            <div className="font-semibold">2012 - 2017</div>
-            <div className="font-semibold">2008 - 2012</div>
-          </div>
-          <div className="flex flex-col gap-6">
-            <div>
-              Ph.D. in Mathematics, Shanghai Jiao Tong University, China
-            </div>
-            <div>
-              B.S. in Mathematics, Zhiyuan College, Shanghai Jiao Tong
-              University, China
-            </div>
-          </div>
-        </CardContent>
-      </Card>
-      <TimeLine />
+          ))}
+        </div>
+      </div>
     </div>
   )
 }

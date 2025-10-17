@@ -1,6 +1,6 @@
 // @ts-nocheck -- skip type checking
-import * as docs_1 from "../content/docs/inverse/fwi.mdx?collection=docs&hash=1760677206992"
-import * as docs_0 from "../content/docs/kinetic/deeprte.mdx?collection=docs&hash=1760677206992"
+import * as docs_1 from "../content/docs/inverse/fwi.mdx?collection=docs&hash=1760687583103"
+import * as docs_0 from "../content/docs/kinetic/deeprte.mdx?collection=docs&hash=1760687583103"
 import { _runtime } from "fumadocs-mdx/runtime/next"
 import * as _source from "../source.config"
 export const blog = _runtime.doc<typeof _source.blog>([]);
