@@ -88,11 +88,15 @@ export function PublicationList({ publications }: PublicationsListProps) {
                     >
                       {status}
                     </Badge>
-                    {/* {pub.tags.map(tag => (
-                  <Badge key={tag} variant="outline" className="font-mono px-1">
-                    {tag}
-                  </Badge>
-                ))} */}
+                    {pub.tags.map((tag) => (
+                      <Badge
+                        key={tag}
+                        variant="outline"
+                        className="font-mono px-1"
+                      >
+                        {tag}
+                      </Badge>
+                    ))}
                   </ItemDescription>
                 </ItemContent>
                 <ItemActions className="flex-col">
@@ -100,7 +104,7 @@ export function PublicationList({ publications }: PublicationsListProps) {
                     <a href={`https://www.doi.org/${pub.DOI}`}>URL</a>
                   </Button>
                   <Button variant="outline" size="sm" asChild>
-                    <a href="/">PDF</a>
+                    <a href={`https://arxiv.org/pdf/${pub.arXiv}`}>PDF</a>
                   </Button>
                 </ItemActions>
               </Item>

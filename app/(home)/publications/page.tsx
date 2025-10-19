@@ -15,7 +15,7 @@ export default function PublicationsPage() {
   return (
     <div className="pt-10">
       <section>
-        <h1 className="text-center">Publications</h1>
+        <h1 className="text-center text-5xl font-bold">Publications</h1>
       </section>
       <section className="items-center">
         <PublicationList publications={pubs} />

@@ -1,7 +1,7 @@
 import Image from "next/image"
 import { IoDocument, IoMail } from "react-icons/io5"
 import LinkButton from "@/components/link-button"
-import Timeline from "@/components/timeline"
+import Resume from "@/components/resume"
 import { Card, CardContent } from "@/components/ui/card"
 import PortraitImage from "@/public/portrait.jpg"
 
@@ -42,7 +42,7 @@ export default function Home() {
       </Card>
       <Card className="mt-10">
         <CardContent>
-          <Timeline />
+          <Resume />
         </CardContent>
       </Card>
     </div>

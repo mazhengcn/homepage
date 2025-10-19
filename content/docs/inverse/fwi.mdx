@@ -3,7 +3,7 @@ title: OpenFWI
 description: FWI
 ---
 
-import { File, Files, Folder } from "fumadocs-ui/components/files"
+import { File, Files, Folder } from "fumadocs-ui/components/files";
 
 ## Introduction
 
@@ -15,9 +15,9 @@ Any publication that discloses findings arising from using this source code, the
 
 DeepRTE learns the solution operator:
 
-```math
-  \mathcal{A}: (I_{-}; \mu_t, \mu_s, p) \to I,
-```
+$$
+\mathcal{A}: (I_{-}; \mu_t, \mu_s, p) \to I,
+$$
 
 for the following steady-state radiative transfer equation:
 
@@ -116,7 +116,6 @@ DATA_DIR
 │   └── train     # Raw MATLAB dataset for pretraining using grain.
 └── README.md
 ```
-
 
 ### Download Pretrained Models
 
@@ -245,18 +244,18 @@ DeepRTE's release was made possible by the contributions of the following people
 
 DeepRTE uses the following separate libraries and packages:
 
-*   [abseil-cpp](https://github.com/abseil/abseil-cpp) and
-    [abseil-py](https://github.com/abseil/abseil-py)
-*   [clu](https://github.com/google/CommonLoopUtils)
-*   [Docker](https://www.docker.com)
-*   [Grain](https://github.com/google/grain)
-*   [Hugging Face](https://huggingface.co)
-*   [JAX](https://github.com/jax-ml/jax)
-*   [Flax](https://github.com/google/flax)
-*   [Optax](https://github.com/google-deepmind/optax)
-*   [NumPy](https://github.com/numpy/numpy)
-*   [Tensorflow](https://github.com/tensorflow/tensorflow)
-*   [uv](https://github.com/astral-sh/uv)
+- [abseil-cpp](https://github.com/abseil/abseil-cpp) and
+  [abseil-py](https://github.com/abseil/abseil-py)
+- [clu](https://github.com/google/CommonLoopUtils)
+- [Docker](https://www.docker.com)
+- [Grain](https://github.com/google/grain)
+- [Hugging Face](https://huggingface.co)
+- [JAX](https://github.com/jax-ml/jax)
+- [Flax](https://github.com/google/flax)
+- [Optax](https://github.com/google-deepmind/optax)
+- [NumPy](https://github.com/numpy/numpy)
+- [Tensorflow](https://github.com/tensorflow/tensorflow)
+- [uv](https://github.com/astral-sh/uv)
 
 We thank all their contributors and maintainers!
 

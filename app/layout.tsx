@@ -1,7 +1,7 @@
 import { RootProvider } from "fumadocs-ui/provider/next"
 import type { Metadata } from "next"
 import { Inter, JetBrains_Mono, Noto_Sans_SC } from "next/font/google"
-import "@/app/global.css"
+import "@/app/globals.css"
 
 const interSans = Inter({
   variable: "--font-inter-sans",
@@ -18,7 +18,7 @@ const notoSansSC = Noto_Sans_SC({
 })
 
 export const metadata: Metadata = {
-  title: "Zheng Ma's Personal Website",
+  title: "Zheng Ma's Homepage",
   description: "Welcome to my personal website!",
 }
 

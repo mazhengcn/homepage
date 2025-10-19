@@ -14,7 +14,7 @@ export default function ResearchPage() {
   return (
     <>
       <section className="mt-12">
-        <h1 className="text-center text-3xl font-bold md:text-6xl">
+        <h1 className="text-center text-3xl font-bold md:text-5xl">
           Research Interests
         </h1>
         <p className="mb-8 indent-4 text-xl">
