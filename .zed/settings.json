@@ -1,6 +1,20 @@
 {
-  "language_servers": ["!eslint", "..."],
+  "lsp": {
+    "vtsls": {
+      "settings": {
+        "autoUseWorkspaceTsdk": true
+      }
+    }
+  },
   "languages": {
+    "CSS": {
+      "language_servers": [
+        "tailwindcss-language-server",
+        "!vscode-css-language-server",
+        "!biome",
+        "..."
+      ]
+    },
     "JavaScript": {
       "prettier": { "allowed": false },
       "formatter": { "language_server": { "name": "biome" } },

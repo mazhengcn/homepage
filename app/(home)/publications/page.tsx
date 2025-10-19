@@ -2,9 +2,11 @@ import { PublicationList } from "@/components/publication-list"
 import pubs from "@/lib/db/publications.json"
 
 pubs.sort((a, b) => {
-  // @ts-ignore biome-ignore: lint/suspicious/noUnsafeMemberAccess: Accessing nested properties without checks
+  // biome-ignore lint/suspicious/noTsIgnore: ignore
+  // @ts-ignore
   const yearA = (a.issued?.["date-parts"]?.[0]?.[0] as number) || 0
-  // @ts-ignore biome-ignore: lint/suspicious/noUnsafeMemberAccess: Accessing nested properties without checks
+  // biome-ignore lint/suspicious/noTsIgnore: ignore
+  // @ts-ignore
   const yearB = (b.issued?.["date-parts"]?.[0]?.[0] as number) || 0
   return yearB - yearA
 })

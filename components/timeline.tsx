@@ -1,71 +1,97 @@
-import { Card, CardContent } from "@/components/ui/card"
-import { Separator } from "@/components/ui/separator"
+import { Building2, Calendar } from "lucide-react"
+import { Badge } from "@/components/ui/badge"
 
-type TimelineEntry = {
-  date: string
-  title: string
-  content: string
-}
-
-const timelineData: TimelineEntry[] = [
+const experiences = [
   {
-    date: "2020 - now",
-    title: "Tenured-track Associate Professor",
-    content:
-      "I joined the School of Mathematical Sciences at Shanghai Jiao Tong University as a tenured-track Associate Professor. My research focuses on computational mathematics and deep learning methods, exploring the intersection of these fields to solve complex problems in mathematics and engineering.",
+    title: "Tenure-Track Associate Professor",
+    company: "Shanghai Jiao Tong University",
+    period: "2020 - Present",
+    description:
+      "Full stack (theory, Algorithms, Engineering) development of using deep learning methods to solve scientific problems, particulaly in the kinetic equations",
+    technologies: ["Kinetic Equations", "Deep Learning"],
   },
   {
-    date: "2017 - 2020",
     title: "Golomb Visiting Assistant Professor",
-    content:
-      "I served as a Golomb Visiting Assistant Professor in the Department of Mathematics at Purdue University. During this time, I engaged in research and teaching, contributing to the academic community while furthering my expertise in computational mathematics and its applications.",
+    company: "Purdue University",
+    period: "2017 - 2020",
+    description:
+      "Conducted research in applied mathematics, focusing on numerical methods for partial differential equations and scientific computing.",
+    technologies: [
+      "Boltzmann Equations",
+      "Model Reduction",
+      "Fast Algorithms",
+      "Deep Learning",
+    ],
   },
   {
-    date: "2012 - 2017",
     title: "Ph.D. in Computational Mathematics",
-    content:
-      "I completed my Ph.D. in Computational Mathematics at Shanghai Jiao Tong University. My dissertation focused on developing novel algorithms for solving large-scale optimization problems, with applications in machine learning and data analysis.",
+    company: "Shanghai Jiao Tong University",
+    period: "2012 - 2017",
+    description:
+      "Supervisor: Prof. Shi Jin. Disseration: Numerical Methods for Kinetic Equations in the Diffusive Regimes.",
+    technologies: [
+      "Thesis",
+      "Asymptotic-Preserving Schemes",
+      "Kinetic Equations",
+      "Uncertainty Quantification",
+    ],
   },
   {
-    date: "2008 - 2012",
-    title: "B.S. in Mathematics",
-    content:
-      "I obtained my B.S. in Mathematics from Zhiyuan College, Shanghai Jiao Tong University. During my undergraduate studies, I developed a strong foundation in mathematical theory and its applications, which sparked my interest in pursuing advanced studies in computational mathematics.",
+    title: "B.S. in Mathematics, Minor in Physics",
+    company: "Shanghai Jiao Tong University",
+    period: "2008 - 2012",
+    description:
+      "Created responsive and interactive user interfaces, collaborated with designers, and optimized application performance.",
+    technologies: [],
   },
 ]
 
-export function TimeLine() {
+export default function Timeline() {
   return (
-    <section className="bg-background py-32">
-      <div className="flex flex-col items-center px-6">
-        <h1 className="text-foreground mb-10 text-center text-3xl font-bold tracking-tighter sm:text-6xl">
-          Work and Education
-        </h1>
-        <div className="relative mx-auto max-w-3xl">
-          <Separator
-            orientation="vertical"
-            className="bg-muted absolute left-2 top-4"
-          />
-          {timelineData.map((entry) => (
-            <div key={entry.date} className="relative mb-10 pl-8">
-              <div className="bg-foreground absolute left-0 top-3.5 flex size-4 items-center justify-center rounded-full" />
-              <h4 className="rounded-xl py-2 text-xl font-bold tracking-tight xl:mb-4 xl:px-3">
-                {entry.title}
-              </h4>
+    <div className="mx-auto py-8 px-8 not-prose">
+      <div className="relative ml-3">
+        {/* Timeline line */}
+        <div className="absolute left-0 top-4 bottom-0 border-l-2" />
+        {experiences.map(
+          ({ company, description, period, technologies, title }) => (
+            <div key={title} className="relative pl-8 pb-12 last:pb-0">
+              {/* Timeline dot */}
+              <div className="absolute h-3 w-3 -translate-x-1/2 left-px top-3 rounded-full border-2 border-primary bg-background" />
 
-              <h5 className="text-md -left-34 text-muted-foreground top-3 rounded-xl tracking-tight xl:absolute">
-                {entry.date}
-              </h5>
-
-              <Card className="my-5 border-none shadow-none">
-                <CardContent className="px-0 xl:px-2">
-                  {entry.content}
-                </CardContent>
-              </Card>
+              {/* Content */}
+              <div className="space-y-3">
+                <div className="flex items-center gap-2.5">
+                  <div className="shrink-0 h-9 w-9 bg-accent rounded-full flex items-center justify-center">
+                    <Building2 className="h-5 w-5 text-muted-foreground" />
+                  </div>
+                  <span className="text-base font-medium">{company}</span>
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold">{title}</h3>
+                  <div className="flex items-center gap-2 mt-2 text-sm">
+                    <Calendar className="h-4 w-4" />
+                    <span>{period}</span>
+                  </div>
+                </div>
+                <p className="text-sm sm:text-base text-muted-foreground text-pretty">
+                  {description}
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  {technologies.map((tech) => (
+                    <Badge
+                      key={tech}
+                      variant="secondary"
+                      className="rounded-full"
+                    >
+                      {tech}
+                    </Badge>
+                  ))}
+                </div>
+              </div>
             </div>
-          ))}
-        </div>
+          ),
+        )}
       </div>
-    </section>
+    </div>
   )
 }
