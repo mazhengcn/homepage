@@ -17,7 +17,7 @@ export default function ResearchPage() {
         <h1 className="text-center text-3xl font-bold md:text-5xl">
           Research Interests
         </h1>
-        <p className="mb-8 indent-4 text-xl">
+        <p className="mb-8 indent-8 text-lg">
           Welcome to my homepage, I'm a mathematician and tech enthusiast. My
           research interests include computational mathematics and deep learning
           methods. I am particularly interested in the interplay between deep
