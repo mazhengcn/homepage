@@ -1,9 +1,9 @@
 "use client"
+import { cn } from "@/lib/utils"
 import { cva } from "class-variance-authority"
 import { Airplay, Moon, Sun } from "lucide-react"
 import { useTheme } from "next-themes"
 import { useLayoutEffect, useState } from "react"
-import { cn } from "@/lib/utils"
 
 const itemVariants = cva("size-7 rounded-full p-1.5 text-muted-foreground", {
   variants: {
@@ -39,9 +39,7 @@ export function ThemeToggle({ mode = "light-dark" }) {
           if (key === "system") return null
           return (
             <Icon
-              // biome-ignore lint/suspicious/noTsIgnore: <ignore>
-              // @ts-ignore
-              key={key}
+              key={key as React.Key}
               fill="currentColor"
               className={cn(itemVariants({ active: value === key }))}
             />
@@ -56,13 +54,9 @@ export function ThemeToggle({ mode = "light-dark" }) {
       {full.map(([key, Icon]) => (
         <button
           type="button"
-          // biome-ignore lint/suspicious/noTsIgnore: <ignore>
-          // @ts-ignore
-          key={key}
+          key={key as React.Key}
           className={cn(itemVariants({ active: value === key }))}
-          // biome-ignore lint/suspicious/noTsIgnore: <ignore>
-          // @ts-ignore
-          onClick={() => setTheme(key)}
+          onClick={() => setTheme(key as string)}
         >
           <Icon className="size-full" fill="currentColor" />
         </button>

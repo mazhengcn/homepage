@@ -1,5 +1,3 @@
-import { ArrowRight } from "lucide-react"
-import Link from "next/link"
 import {
   Card,
   CardDescription,
@@ -8,6 +6,8 @@ import {
   CardTitle,
 } from "@/components/ui/card"
 import { source } from "@/lib/source"
+import { ArrowRight } from "lucide-react"
+import Link from "next/link"
 
 export default function ResearchPage() {
   const pageTreeMeta = source.pageTree.children
@@ -18,32 +18,32 @@ export default function ResearchPage() {
           Research Interests
         </h1>
         <p className="mb-8 indent-8 text-lg">
-          Welcome to my homepage, I'm a mathematician and tech enthusiast. My
-          research interests include computational mathematics and deep learning
-          methods. I am particularly interested in the interplay between deep
-          learning and mathematics, and how deep learning methods can be applied
-          to solve problems in mathematical and engineering.
+          Welcome to my homepage, I&apos;m a mathematician and tech enthusiast.
+          My research interests include computational mathematics and deep
+          learning methods. I am particularly interested in the interplay
+          between deep learning and mathematics, and how deep learning methods
+          can be applied to solve problems in mathematical and engineering.
         </p>
       </section>
       <section className="-ml-8 prose-ul:list-none">
         <ul className="grid auto-rows-fr grid-cols-1 gap-4 md:grid-cols-3 md:items-stretch">
-          {pageTreeMeta.map((meta) => {
+          {pageTreeMeta.map(meta => {
             return (
               <li key={meta.$id}>
                 <Link href={`/docs/${meta.$id}`}>
-                  <Card className="h-full hover:bg-accent  hover:text-accent-foreground transition-shadow inset-shadow-default flex flex-col">
+                  <Card className="inset-shadow-default flex h-full flex-col transition-shadow hover:bg-accent hover:text-accent-foreground">
                     <CardHeader className="flex-1">
                       <CardTitle className="text-xl font-bold">
                         {meta.name}
                       </CardTitle>
                       <CardDescription className="mt-2 text-base">
-                        {/* @ts-ignore */}
+                        {/* @ts-expect-error this is intentional */}
                         {meta.description}
                       </CardDescription>
                     </CardHeader>
                     <CardFooter className="font-mono text-sm text-muted-foreground">
                       Learn more
-                      <ArrowRight className="size-4 inline" />
+                      <ArrowRight className="inline size-4" />
                     </CardFooter>
                   </Card>
                 </Link>
