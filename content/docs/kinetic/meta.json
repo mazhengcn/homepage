@@ -1,5 +1,6 @@
 {
-  "title": "Kinetic",
+  "title": "Kinetic Equations",
+  "icon": "Bubbles",
   "description": "AI for kinetic equations",
   "root": true
 }

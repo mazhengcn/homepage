@@ -31,7 +31,7 @@ const experiences = [
     title: "B.S. in Mathematics, Minor in Applied Physics",
     company: "Shanghai Jiao Tong University",
     period: "2008 - 2012",
-    description: "Zhiyuan College",
+    description: "Graduated from the the first 'Class of Science (Math and Physics)' which is the predecessor of the Zhiyuan College at SJTU.",
     tags: [],
   },
 ]

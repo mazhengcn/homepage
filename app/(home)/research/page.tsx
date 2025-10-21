@@ -10,7 +10,8 @@ import {
 import { source } from "@/lib/source"
 
 export default function ResearchPage() {
-  const posts = source.getPages()
+  const pageTreeMeta = source.pageTree.children
+  console.log(pageTreeMeta)
   return (
     <>
       <section className="mt-12">
@@ -27,17 +28,18 @@ export default function ResearchPage() {
       </section>
       <section className="-ml-8 prose-ul:list-none">
         <ul className="grid auto-rows-fr grid-cols-1 gap-4 md:grid-cols-3 md:items-stretch">
-          {posts.map((post) => {
+          {pageTreeMeta.map((meta) => {
+            const url = new URL(`/docs/${meta.$id}`)
             return (
-              <li key={post.url}>
-                <Link href={post.url}>
+              <li key={meta.$id}>
+                <Link href={url}>
                   <Card className="h-full hover:bg-accent  hover:text-accent-foreground transition-shadow inset-shadow-default flex flex-col">
                     <CardHeader className="flex-1">
                       <CardTitle className="text-xl font-bold">
-                        {post.data.title}
+                        {meta.name}
                       </CardTitle>
                       <CardDescription className="mt-2 text-base">
-                        {post.data.description}
+                        {meta.description}
                       </CardDescription>
                     </CardHeader>
                     <CardFooter className="font-mono text-sm text-muted-foreground">
