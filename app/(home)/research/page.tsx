@@ -11,7 +11,6 @@ import { source } from "@/lib/source"
 
 export default function ResearchPage() {
   const pageTreeMeta = source.pageTree.children
-  console.log(pageTreeMeta)
   return (
     <>
       <section className="mt-12">
@@ -29,16 +28,16 @@ export default function ResearchPage() {
       <section className="-ml-8 prose-ul:list-none">
         <ul className="grid auto-rows-fr grid-cols-1 gap-4 md:grid-cols-3 md:items-stretch">
           {pageTreeMeta.map((meta) => {
-            const url = new URL(`/docs/${meta.$id}`)
             return (
               <li key={meta.$id}>
-                <Link href={url}>
+                <Link href={`/docs/${meta.$id}`}>
                   <Card className="h-full hover:bg-accent  hover:text-accent-foreground transition-shadow inset-shadow-default flex flex-col">
                     <CardHeader className="flex-1">
                       <CardTitle className="text-xl font-bold">
                         {meta.name}
                       </CardTitle>
                       <CardDescription className="mt-2 text-base">
+                        {/* @ts-ignore */}
                         {meta.description}
                       </CardDescription>
                     </CardHeader>
