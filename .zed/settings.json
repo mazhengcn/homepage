@@ -1,17 +1,17 @@
 {
-    "lsp": {
-        "vtsls": {
-            "settings": {
-                "autoUseWorkspaceTsdk": true
-            }
-        },
-        "tailwindcss-language-server": {
-            "settings": {
-                "classFunctions": ["cva", "cx"],
-                "experimental": {
-                    "classRegex": ["[cls|className]\\s\\:\\=\\s\"([^\"]*)"]
-                }
-            }
+  "lsp": {
+    "vtsls": {
+      "settings": {
+        "autoUseWorkspaceTsdk": true
+      }
+    },
+    "tailwindcss-language-server": {
+      "settings": {
+        "classFunctions": ["cva", "cx"],
+        "experimental": {
+          "classRegex": ["[cls|className]\\s\\:\\=\\s\"([^\"]*)"]
         }
+      }
     }
+  }
 }
