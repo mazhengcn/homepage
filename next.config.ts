@@ -5,7 +5,7 @@ const withMDX = createMDX({})
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
-  // reactCompiler: true,
+  reactCompiler: true,
 }
 
 // Merge MDX config with Next.js config

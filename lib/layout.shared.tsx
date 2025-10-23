@@ -1,6 +1,6 @@
+import PortraitImage from "@/public/portrait.jpg"
 import type { BaseLayoutProps } from "fumadocs-ui/layouts/shared"
 import Image from "next/image"
-import PortraitImage from "@/public/portrait.jpg"
 
 /**
  * Shared layout configurations

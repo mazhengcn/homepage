@@ -1,13 +1,13 @@
-import Image from "next/image"
-import { IoDocument, IoMail } from "react-icons/io5"
 import LinkButton from "@/components/link-button"
 import Resume from "@/components/resume"
 import { Card, CardContent } from "@/components/ui/card"
 import PortraitImage from "@/public/portrait.jpg"
+import Image from "next/image"
+import { IoDocument, IoMail } from "react-icons/io5"
 
 export default function Home() {
   return (
-    <div className="max-w-5xl mx-auto pt-10">
+    <div className="mx-auto max-w-5xl pt-10">
       <Card>
         <CardContent className="flex flex-col items-center gap-4 overflow-auto md:flex-row md:justify-center md:gap-26">
           <Image
@@ -23,7 +23,7 @@ export default function Home() {
                   (马 征)
                 </span>
               </h1>
-              <p className="-mt-4 text-lg text-gray-600 dark:text-gray-400 font-mono">
+              <p className="-mt-4 font-mono text-lg text-gray-600 dark:text-gray-400">
                 Mathmatician and Tech Enthusiast
               </p>
             </div>

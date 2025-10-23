@@ -10,7 +10,7 @@ const today = new Date()
 
 function SideFooter() {
   return (
-    <footer className="mx-auto mt-10 flex items-center justify-center p-4 text-center text-zinc-500">
+    <footer className="flex items-center justify-center p-4 text-center text-zinc-500">
       &copy; {today.getFullYear()} Powered by
       <Link href="https://fumadocs.dev/">
         <Image src={fumadocsLogo} alt="Next.js Logo" className="inline w-14" />
@@ -20,13 +20,10 @@ function SideFooter() {
 }
 
 export default function Layout({ children }: LayoutProps<"/docs">) {
-  const { nav, ...base } = baseOptions()
   return (
     <DocsLayout
-      {...base}
-      nav={{ ...nav, mode: "auto" }}
+      {...baseOptions()}
       sidebar={{ footer: SideFooter }}
-      tabMode="sidebar"
       tree={source.pageTree}
     >
       {children}

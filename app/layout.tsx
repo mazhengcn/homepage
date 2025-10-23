@@ -1,7 +1,7 @@
+import "@/app/global.css"
 import { RootProvider } from "fumadocs-ui/provider/next"
 import type { Metadata } from "next"
 import { Inter, JetBrains_Mono, Noto_Sans_SC } from "next/font/google"
-import "@/app/globals.css"
 
 const interSans = Inter({
   variable: "--font-inter-sans",
@@ -33,7 +33,7 @@ export default function RootLayout({
       className={`${interSans.variable} ${jetBrainsMono.variable} ${notoSansSC.variable} antialiased`}
       suppressHydrationWarning
     >
-      <body className="flex flex-col min-h-screen">
+      <body className="flex min-h-screen flex-col">
         <RootProvider>{children}</RootProvider>
       </body>
     </html>
