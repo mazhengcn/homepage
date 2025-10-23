@@ -1,7 +1,7 @@
 "use client"
-import { ArrowUpIcon } from "lucide-react"
-import { useEffect, useState } from "react"
 import { Button } from "@/components/ui/button"
+import { ArrowUpIcon } from "lucide-react"
+import { Activity, useEffect, useState } from "react"
 
 export default function BackToTopButton() {
   const [isVisible, setIsVisible] = useState(false)
@@ -28,18 +28,16 @@ export default function BackToTopButton() {
   }
 
   return (
-    <>
-      {isVisible && (
-        <Button
-          className="fixed right-4 bottom-4 cursor-pointer"
-          onClick={scrollToTop}
-          variant="outline"
-          size="icon-lg"
-          aria-label="Scroll to top"
-        >
-          <ArrowUpIcon />
-        </Button>
-      )}
-    </>
+    <Activity mode={isVisible ? "visible" : "hidden"}>
+      <Button
+        className="fixed right-4 bottom-4 cursor-pointer"
+        onClick={scrollToTop}
+        variant="outline"
+        size="icon-lg"
+        aria-label="Scroll to top"
+      >
+        <ArrowUpIcon />
+      </Button>
+    </Activity>
   )
 }
