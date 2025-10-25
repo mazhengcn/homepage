@@ -28,7 +28,6 @@ export default function ResearchPage() {
           can be applied to solve problems in mathematical and engineering.
         </p>
       </section>
-      <hr />
       <section>
         <ItemGroup className="not-prose flex flex-col gap-6">
           {pageTreeMeta.map((meta) => {
@@ -75,6 +74,10 @@ export default function ResearchPage() {
             )
           })}
         </ItemGroup>
+      </section>
+      <hr />
+      <section>
+        <h1>Current students</h1>
       </section>
     </>
   )
