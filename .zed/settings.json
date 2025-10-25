@@ -1,10 +1,5 @@
 {
   "lsp": {
-    "vtsls": {
-      "settings": {
-        "autoUseWorkspaceTsdk": true
-      }
-    },
     "vscode-css-language-server": {
       "settings": {
         "css": {
