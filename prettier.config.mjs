@@ -8,7 +8,7 @@ const config = {
   tabWidth: 2,
   semi: false,
   plugins: ["prettier-plugin-organize-imports", "prettier-plugin-tailwindcss"],
-  tailwindStylesheet: "./app/global.css",
+  tailwindStylesheet: "./app/globals.css",
   tailwindFunctions: ["clsx", "cn", "cva"],
 }
 
