@@ -2,6 +2,5 @@
   "title": "Fusion Confinement",
   "icon": "Atom",
   "description": "AI for fusion confinement",
-  "image": "/portraint.jpg",
   "root": true
 }

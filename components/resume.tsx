@@ -39,7 +39,7 @@ const experiences = [
 
 export default function Resume() {
   return (
-    <div className="not-prose mx-auto px-2 py-4">
+    <div className="mx-auto px-2 py-4">
       <div className="relative ml-3">
         {/* Timeline line */}
         <div className="absolute top-4 bottom-0 left-0 border-l-2" />

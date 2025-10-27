@@ -25,7 +25,7 @@ interface PublicationsListProps {
 export function PublicationList({ publications }: PublicationsListProps) {
   const totalNum = publications.length
   return (
-    <ItemGroup className="not-prose gap-6">
+    <ItemGroup className="gap-6">
       {publications.map((pub: Publication, index: number) => {
         // Format author names
         const authorString =
@@ -60,7 +60,7 @@ export function PublicationList({ publications }: PublicationsListProps) {
             <HoverCardTrigger asChild>
               <Item
                 variant="outline"
-                className="hover:bg-accent/50 transition-colors"
+                className="transition-colors hover:bg-accent/50"
               >
                 <ItemMedia variant="icon">{totalNum - index}</ItemMedia>
                 <ItemContent>
@@ -92,7 +92,7 @@ export function PublicationList({ publications }: PublicationsListProps) {
                       <Badge
                         key={tag}
                         variant="outline"
-                        className="font-mono px-1"
+                        className="px-1 font-mono"
                       >
                         {tag}
                       </Badge>

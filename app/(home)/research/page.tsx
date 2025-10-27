@@ -4,14 +4,13 @@ import { source } from "@/lib/source"
 
 export default function ResearchPage() {
   const pageTreeMeta = source.pageTree.children
-  console.log(source.pageTree)
   return (
     <>
       <section className="mt-12">
         <h1 className="text-center text-3xl font-bold md:text-5xl">
           Research Interests
         </h1>
-        <p className="mb-8 indent-8 text-lg">
+        <p className="mt-10 mb-8 indent-8 text-lg">
           Welcome to my homepage, I&apos;m a mathematician and tech enthusiast.
           My research interests include computational mathematics and deep
           learning methods. I am particularly interested in the interplay
@@ -20,9 +19,10 @@ export default function ResearchPage() {
         </p>
       </section>
       <ResearchAreas metas={pageTreeMeta} />
-      <hr />
-      <section>
-        <h1>Students</h1>
+      <section className="mt-10">
+        <h1 className="mt-10 mb-10 text-center text-3xl font-bold md:text-5xl">
+          Ph.D. Students
+        </h1>
         <Students metas={pageTreeMeta} />
       </section>
     </>
