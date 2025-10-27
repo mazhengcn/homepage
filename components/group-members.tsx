@@ -72,9 +72,11 @@ export const Students = [
   },
   {
     name: "Keke Wu",
-    avatar: "/people/wu-keke.jpg",
+    avatar: "/people/wu-keke.png",
     email: "evilrabbit@vercel.com",
     period: "2021 - 2024",
+    position:
+      "First position: Postdoc at Suzhou Institute for Advanced Research, University of Science and Technology of China",
     type: "phd",
     status: "former",
   },
@@ -84,7 +86,7 @@ export const Students = [
     email: "evilrabbit@vercel.com",
     period: "2022 - 2024",
     position:
-      "First position after postdoc: Associate professor of Institute of Computational Mathematics, Lanzhou University",
+      "First position: Associate Professor of Institute of Computational Mathematics, Lanzhou University",
     type: "postdoc",
     status: "former",
   },
@@ -97,14 +99,14 @@ function MemberList({ people }: { people: typeof Students }) {
         {people.map((person, index) => (
           <div key={person.name}>
             <Item>
-              <ItemMedia className="group-has-[[data-slot=item-description]]/item:translate-y-0 group-has-[[data-slot=item-description]]/item:self-start">
-                <Avatar>
+              <ItemMedia className="group-has-[[data-slot=item-description]]/item:translate-y-0 group-has-[[data-slot=item-description]]/item:self-center">
+                <Avatar className="size-10">
                   <AvatarImage src={person.avatar} />
                   <AvatarFallback>{person.name.charAt(0)}</AvatarFallback>
                 </Avatar>
               </ItemMedia>
               <ItemContent className="gap-1">
-                <ItemTitle>{person.name}</ItemTitle>
+                <ItemTitle className="text-base">{person.name}</ItemTitle>
                 <ItemDescription>{person.period}</ItemDescription>
                 <ItemDescription>
                   {person.position && person.position}
