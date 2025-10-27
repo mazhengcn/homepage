@@ -11,14 +11,14 @@ import Image from "next/image"
 import Link from "next/link"
 
 const coverImages = {
-  kinetic: "/portrait.jpg",
-  inverse: "/deeprte.png",
-  fusion: "/portrait.jpg",
+  kinetic: "/research/reentry.png",
+  inverse: "/research/rad-therapy.jpg",
+  fusion: "/research/icf.png",
 }
 
 export default function ResearchAreas({ metas }: { metas: PageTree.Node[] }) {
   return (
-    <ItemGroup className="not-prose grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
+    <ItemGroup className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
       {metas.map((meta) => (
         <Item key={meta.$id} variant="outline" asChild>
           <Link href={`/docs/${meta.$id}`}>
@@ -32,10 +32,8 @@ export default function ResearchAreas({ metas }: { metas: PageTree.Node[] }) {
               />
             </ItemHeader>
             <ItemContent>
-              <ItemTitle className="text-center text-base">
-                {meta.name}
-              </ItemTitle>
-              <ItemDescription className="text-center text-base">
+              <ItemTitle className="text-base">{meta.name}</ItemTitle>
+              <ItemDescription className="text-base">
                 {/* @ts-expect-error this is intentional */}
                 {meta.description}
               </ItemDescription>
