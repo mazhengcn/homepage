@@ -1,3 +1,4 @@
+import { blog as blogPosts, docs } from "@/.source"
 import {
   type InferMetaType,
   type InferPageType,
@@ -5,7 +6,6 @@ import {
 } from "fumadocs-core/source"
 import { lucideIconsPlugin } from "fumadocs-core/source/lucide-icons"
 import { createMDXSource } from "fumadocs-mdx/runtime/next"
-import { blog as blogPosts, docs } from "@/.source"
 
 export const source = loader({
   baseUrl: "/docs",
