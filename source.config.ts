@@ -1,3 +1,4 @@
+import remarkReadingTime from "@/lib/remark-plugins/remark-reading-time.mjs"
 import { remarkMdxFiles } from "fumadocs-core/mdx-plugins"
 import {
   defineCollections,
@@ -9,7 +10,6 @@ import {
 import rehypeKatex from "rehype-katex"
 import remarkMath from "remark-math"
 import { z } from "zod"
-import remarkReadingTime from "@/lib/remark-plugins/remark-reading-time.mjs"
 
 export const docs = defineDocs({
   dir: "content/docs",
@@ -20,7 +20,7 @@ export const docs = defineDocs({
     },
   },
   meta: {
-    schema: metaSchema,
+    schema: metaSchema.extend({ image: z.string().optional() }),
   },
 })
 
