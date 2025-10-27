@@ -23,7 +23,7 @@ export default function ResearchAreas({ metas }: { metas: PageTree.Node[] }) {
         const id = meta.$id ? meta.$id : ""
         return (
           <Item key={id} variant="outline" asChild>
-            <Link href={`/docs/id`}>
+            <Link href={`/docs/${id}`}>
               <ItemHeader>
                 {meta.$id && (
                   <Image
