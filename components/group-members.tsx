@@ -12,87 +12,9 @@ import {
   ItemSeparator,
   ItemTitle,
 } from "@/components/ui/item"
+import { type Student, students } from "@/lib/db/students"
 
-export const Students = [
-  {
-    name: "Yekun Zhu",
-    avatar: "/people/zhu-yekun.jpg",
-    email: "shadcn@vercel.com",
-    period: "2021 - present",
-    type: "phd",
-    status: "current",
-  },
-  {
-    name: "Nan Zhou",
-    avatar: "/people/zhou-nan.jpg",
-    email: "maxleiter@vercel.com",
-    period: "2022 - present",
-    type: "phd",
-    status: "current",
-  },
-  {
-    name: "Chen Min",
-    avatar: "/people/min-chen.jpg",
-    email: "evilrabbit@vercel.com",
-    period: "2022 - present",
-    type: "phd",
-    status: "current",
-  },
-  {
-    name: "Jishen Peng",
-    avatar: "/people/peng-jishen.jpg",
-    email: "evilrabbit@vercel.com",
-    period: "2024 - present",
-    type: "phd",
-    status: "current",
-  },
-  {
-    name: "Enze Jiang",
-    avatar: "/people/jiang-enze.jpg",
-    email: "evilrabbit@vercel.com",
-    period: "2024 - present",
-    type: "phd",
-    status: "current",
-  },
-  {
-    name: "Tongrun Lin",
-    avatar: "/people/lin-tongrun.jpg",
-    email: "evilrabbit@vercel.com",
-    period: "2025 - present",
-    type: "phd",
-    status: "current",
-  },
-  {
-    name: "Gengyuan Liu",
-    avatar: "/people/liu-gengyuan.jpg",
-    email: "evilrabbit@vercel.com",
-    period: "2025 - present",
-    type: "phd",
-    status: "current",
-  },
-  {
-    name: "Keke Wu",
-    avatar: "/people/wu-keke.png",
-    email: "evilrabbit@vercel.com",
-    period: "2021 - 2024",
-    position:
-      "First position: Postdoc at Suzhou Institute for Advanced Research, University of Science and Technology of China",
-    type: "phd",
-    status: "former",
-  },
-  {
-    name: "Xiongbin Yan",
-    avatar: "/people/yan-xiongbin.jpg",
-    email: "evilrabbit@vercel.com",
-    period: "2022 - 2024",
-    position:
-      "First position: Associate Professor of Institute of Computational Mathematics, Lanzhou University",
-    type: "postdoc",
-    status: "former",
-  },
-]
-
-function MemberList({ people }: { people: typeof Students }) {
+function MemberList({ people }: { people: Student[] }) {
   return (
     <div className="flex w-full flex-col gap-6">
       <ItemGroup>
@@ -127,16 +49,16 @@ function MemberList({ people }: { people: typeof Students }) {
 }
 
 export default function GroupMembers() {
-  const currentPhDs = Students.filter(
+  const currentPhDs = students.filter(
     (person) => person.type === "phd" && person.status === "current",
   )
-  const formerPhDs = Students.filter(
+  const formerPhDs = students.filter(
     (person) => person.type === "phd" && person.status === "former",
   )
-  const currentPostdocs = Students.filter(
+  const currentPostdocs = students.filter(
     (person) => person.type === "postdoc" && person.status === "current",
   )
-  const formerPostdocs = Students.filter(
+  const formerPostdocs = students.filter(
     (person) => person.type === "postdoc" && person.status === "former",
   )
   return (
