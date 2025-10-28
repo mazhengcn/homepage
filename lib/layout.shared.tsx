@@ -11,8 +11,30 @@ import Image from "next/image"
  */
 
 export const linkItems = [
-  { text: "Research", url: "/research" },
+  {
+    type: "menu",
+    text: "Research",
+    url: "/research",
+    items: [
+      {
+        text: "Kinetic Equations",
+        description: "AI for kinetic equations",
+        url: "/docs/kinetic",
+      },
+      {
+        text: "Inverse Problems",
+        description: "AI for PDE inverse problems",
+        url: "/docs/inverse",
+      },
+      {
+        text: "Fusion Confinement",
+        description: "AI for fusion confinement",
+        url: "/docs/fusion",
+      },
+    ],
+  },
   { text: "Publications", url: "/publications" },
+  { text: "Blog", url: "/" },
 ]
 
 export function baseOptions(): BaseLayoutProps {
