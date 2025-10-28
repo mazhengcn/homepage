@@ -12,7 +12,7 @@ import Image from "next/image"
 
 export const linkItems = [
   {
-    type: "menu",
+    type: "menu" as const,
     text: "Research",
     url: "/research",
     items: [
