@@ -1,0 +1,34 @@
+{
+  "name": "Zheng's Homepage",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+"features": {
+    "ghcr.io/devcontainer-community/devcontainer-features/starship.rs:1": {}
+},
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "oven.bun-vscode",
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "unifiedjs.vscode-mdx",
+        "bradlc.vscode-tailwindcss",
+        "redhat.vscode-yaml",
+        "tamasfe.even-better-toml"
+      ]
+    }
+  },
+  "mounts": [
+    {
+        "source": "${localWorkspaceFolderBasename}-node_modules",
+        "target": "${containerWorkspaceFolder}/node_modules",
+        "type": "volume"
+    }
+  ],
+  "postCreateCommand": { "add-starship": "echo 'eval \"$(starship init bash)\"' >> ~/.bashrc",
+    "fix-permissions": "sudo chown bun node_modules",
+    "install-dependencies": "bun install"
+  },
+  "remoteUser": "bun"
+}
