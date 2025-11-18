@@ -7,6 +7,7 @@ import {
   frontmatterSchema,
   metaSchema,
 } from "fumadocs-mdx/config"
+import lastModified from "fumadocs-mdx/plugins/last-modified"
 import rehypeKatex from "rehype-katex"
 import remarkMath from "remark-math"
 import { z } from "zod"
@@ -39,5 +40,5 @@ export default defineConfig({
     rehypePlugins: (v) => [rehypeKatex, ...v],
     valueToExport: ["readingTime"],
   },
-  lastModifiedTime: "git",
+  plugins: [lastModified()],
 })

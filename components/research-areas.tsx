@@ -20,7 +20,7 @@ export default function ResearchAreas({ metas }: { metas: PageTree.Node[] }) {
   return (
     <ItemGroup className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
       {metas.map((meta) => {
-        const id = meta.$id ? meta.$id : ""
+        const id = meta.$id ? meta.$id.split(":")[1] : ""
         return (
           <Item key={id} variant="outline" asChild>
             <Link href={`/docs/${id}`}>

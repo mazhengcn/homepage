@@ -1,11 +1,11 @@
-import { blog as blogPosts, docs } from "@/.source"
 import {
   type InferMetaType,
   type InferPageType,
   loader,
 } from "fumadocs-core/source"
 import { lucideIconsPlugin } from "fumadocs-core/source/lucide-icons"
-import { createMDXSource } from "fumadocs-mdx/runtime/next"
+import { toFumadocsSource } from "fumadocs-mdx/runtime/server"
+import { blog as blogPosts, docs } from "fumadocs-mdx:collections/server"
 
 export const source = loader({
   baseUrl: "/docs",
@@ -13,7 +13,10 @@ export const source = loader({
   plugins: [lucideIconsPlugin()],
 })
 
-export const blog = loader(createMDXSource(blogPosts), { baseUrl: "/blog" })
+export const blog = loader({
+  baseUrl: "/blog",
+  source: toFumadocsSource(blogPosts, []),
+})
 
 export function getPageImage(page: InferPageType<typeof source>) {
   const segments = [...page.slugs, "image.png"]
