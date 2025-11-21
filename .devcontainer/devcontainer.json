@@ -1,11 +1,8 @@
 {
   "name": "Zheng's Homepage",
-  "build": {
-    "dockerfile": "Dockerfile"
-  },
-"features": {
-    "ghcr.io/devcontainer-community/devcontainer-features/starship.rs:1": {}
-},
+  "dockerComposeFile": "compose.yaml",
+  "service": "homepage",
+  "workspaceFolder": "/homepage",
   "customizations": {
     "vscode": {
       "extensions": [
@@ -19,14 +16,7 @@
       ]
     }
   },
-  "mounts": [
-    {
-        "source": "${localWorkspaceFolderBasename}-node_modules",
-        "target": "${containerWorkspaceFolder}/node_modules",
-        "type": "volume"
-    }
-  ],
-  "postCreateCommand": { "add-starship": "echo 'eval \"$(starship init bash)\"' >> ~/.bashrc",
+  "postCreateCommand": {
     "fix-permissions": "sudo chown bun node_modules",
     "install-dependencies": "bun install"
   },
