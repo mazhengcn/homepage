@@ -4,7 +4,6 @@ import { source } from "@/lib/source"
 
 export default function ResearchPage() {
   const pageTreeMeta = source.pageTree.children
-  console.log(pageTreeMeta)
   return (
     <>
       <section className="mt-12">

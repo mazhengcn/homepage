@@ -7,7 +7,7 @@ services:
     volumes:
       - ..:/homepage:cached
       - node_modules:/homepage/node_modules
-    command: sleep infinity
+    command: "sleep infinity"
 
 volumes:
   node_modules:
