@@ -7,14 +7,13 @@ A modern, fast, and elegant academic homepage built with Next.js and Fumadocs. T
 
 ## 🛠️ Tech Stack
 
-- **Framework**: [Next.js 15](https://nextjs.org/) with App Router
+- **Framework**: [Next.js 16](https://nextjs.org/) with App Router
 - **UI Components**: [shadcn/ui](https://ui.shadcn.com/) (Radix UI + Tailwind CSS)
 - **Styling**: [Tailwind CSS 4](https://tailwindcss.com/)
 - **Documentation**: [Fumadocs](https://fumadocs.vercel.app/)
 - **Content**: MDX with rehype-katex and remark plugins
 - **Icons**: [Lucide React](https://lucide.dev/) + [React Icons](https://react-icons.github.io/react-icons/)
 - **Theme**: [next-themes](https://github.com/pacocoursey/next-themes)
-- **Code Quality**: [Biome](https://biomejs.dev/)
 - **Runtime**: [Bun](https://bun.sh/) (optional, can use Node.js)
 
 ## 📧 Contact
