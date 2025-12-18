@@ -163,7 +163,7 @@
   },
   {
     "type": "article-journal",
-    "title": "An Unsupervised Deep Learning Approach for the Wave Equation Inverse Problem",
+    "title": "A Deep Learning Approach for Solving the Inverse Problem of the Wave Equation",
     "author": [
       {
         "family": "Yan",
@@ -187,10 +187,9 @@
     "arXiv": "2311.04531",
     "abstract": "Full-waveform inversion (FWI) is a powerful geophysical imaging technique that infers high-resolution subsurface physical parameters by solving a non-convex optimization problem. However, due to limitations in observation, e.g., limited shots or receivers, and random noise, conventional inversion methods are confronted with numerous challenges, such as the local-minimum problem. In recent years, a substantial body of work has demonstrated that the integration of deep neural networks and partial differential equations for solving full-waveform inversion problems has shown promising performance. In this work, drawing inspiration from the expressive capacity of neural networks, we provide an unsupervised learning approach aimed at accurately reconstructing subsurface physical velocity parameters. This method is founded on a re-parametrization technique for Bayesian inference, achieved through a deep neural network with random weights. Notably, our proposed approach does not hinge upon the requirement of the labeled training dataset, rendering it exceedingly versatile and adaptable to diverse subsurface models. Extensive experiments show that the proposed approach performs noticeably better than existing conventional inversion methods.",
     "issued": {
-      "date-parts": [["2026"]],
-      "status": "to appear"
+      "date-parts": [["2025"]]
     },
-    "journalAbbreviation": "arXiv",
+    "journalAbbreviation": "CSIAM Trans. Appl. Math.",
     "id": "e25f1255-eca2-467d-bff5-77ceeeb5b51c",
     "tags": ["FWI", "Deep Learning", "Unsupervised Learning"]
   },
@@ -1059,5 +1058,48 @@
     "citekey": "Jin.Journal of Scientific Computing.2018",
     "id": "f7d99ade-cc82-4ba0-a3d0-f5ff63584516",
     "tags": ["Hyperbolic Equations", "Uncertainty Quantification", "gPC-SG"]
+  },
+  {
+    "type": "article-journal",
+    "title": "Numerical Stability for Differential Equations with Memory",
+    "author": [
+      {
+        "family": "Wang",
+        "given": "Guihong"
+      },
+      {
+        "family": "Li",
+        "given": "Yuqing"
+      },
+      {
+        "family": "Luo",
+        "given": "Tao"
+      },
+      {
+        "family": "Ma",
+        "given": "Zheng"
+      },
+      {
+        "family": "Yip",
+        "given": "Nung Kwan"
+      },
+      {
+        "family": "Lin",
+        "given": "Guang"
+      }
+    ],
+    "container-title": "arXiv",
+    "ISSN": "0885-7474",
+    "DOI": "10.1007/s10915-017-0426-7",
+    "abstract": "In this work, we systematically investigate linear multi-step methods for differential equations with memory. In particular, we focus on the numerical stability for multi-step methods. According to this investigation, we give some sufficient conditions for the stability and convergence of some common multi-step methods, and accordingly, a notion of A-stability for differential equations with memory. Finally, we carry out the computational performance of our theory through numerical examples.",
+    "issued": {
+      "date-parts": [["2023"]]
+    },
+    "tags": [
+      "Numerical Stability",
+      "Differential Equations with Memory",
+      "Multi-step Methods"
+    ],
+    "id": "0959bff4-6f23-44c8-ab97-9825b3149c38"
   }
 ]
