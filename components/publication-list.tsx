@@ -53,7 +53,11 @@ export function PublicationList({ publications }: PublicationsListProps) {
 
         // Determine status based on container-title or other fields
         const status =
-          pub["container-title"] === "arXiv" ? "preprint" : "published"
+          pub["container-title"] === "arXiv"
+            ? "preprint"
+            : pub.issued.status
+              ? pub.issued.status
+              : "published"
 
         return (
           <HoverCard key={pub.id}>
