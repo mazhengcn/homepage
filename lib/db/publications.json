@@ -719,6 +719,7 @@
     ],
     "title": "A type of generalization error induced by initialization in deep neural networks",
     "container-title": "Proceedings of Mathematical and Scientific Machine Learning",
+    "arXiv": "1905.07777",
     "abstract": "How initialization and loss function affect the learning of a deep neural network (DNN), specifically its generalization error, is an important problem in practice. In this work, by exploiting the linearity of DNN training dynamics in the NTK regime \\citep{jacot2018neural,lee2019wide}, we provide an explicit and quantitative answer to this problem. Focusing on regression problem, we prove that, in the NTK regime, for any loss in a general class of functions, the DNN finds the same \\emph{global} minima---the one that is nearest to the initial value in the parameter space, or equivalently, the one that is closest to the initial DNN output in the corresponding reproducing kernel Hilbert space. Using these optimization problems, we quantify the impact of initial output and prove that a random non-zero one increases the generalization error. We further propose an antisymmetrical initialization (ASI) trick that eliminates this type of error and accelerates the training. To understand whether the above results hold in general, we also perform experiments for DNNs in the non-NTK regime, which demonstrate the effectiveness of our theoretical results and the ASI trick in a qualitative sense. Overall, our work serves as a baseline for the further investigation of the impact of initialization and loss function on the generalization of DNNs, which can potentially guide and improve the training of DNNs in practice.",
     "issued": {
       "date-parts": [["2020"]]
@@ -852,6 +853,7 @@
     ],
     "container-title": "Research in the Mathematical Sciences",
     "DOI": "10.1186/s40687-017-0105-1",
+    "pdf-link": "https://link.springer.com/content/pdf/10.1186/s40687-017-0105-1.pdf",
     "abstract": "In this paper we study the stochastic Galerkin approximation for the linear transport equation with random inputs and diffusive scaling. We first establish uniform (in the Knudsen number) stability results in the random space for the transport equation with uncertain scattering coefficients and then prove the uniform spectral convergence (and consequently the sharp stochastic asymptotic-preserving property) of the stochastic Galerkin method. A micro–macro decomposition-based fully discrete scheme is adopted for the problem and proved to have a uniform stability. Numerical experiments are conducted to demonstrate the stability and asymptotic properties of the method.",
     "issued": {
       "date-parts": [["2017"]]
@@ -884,6 +886,7 @@
     "container-title": "Journal of Scientific Computing",
     "ISSN": "0885-7474",
     "DOI": "10.1007/s10915-017-0356-4",
+    "arXiv": "1610.03025",
     "abstract": "In this paper, we investigate numerical approximations of the scalar conservation law with the Caputo derivative, which introduces the memory effect. We construct the first order and the second order explicit upwind schemes for such equations, which are shown to be conditionally ℓ1 contracting and TVD. However, the Caputo derivative leads to the modified CFL-type stability condition, (Δt)α=O(Δx), where α∈(0,1] is the fractional exponent in the derivative. When α is small, such strong constraint makes the numerical implementation extremely impractical. We have then proposed the implicit upwind scheme to overcome this issue, which is proved to be unconditionally ℓ1 contracting and TVD. Various numerical tests are presented to validate the properties of the methods and provide more numerical evidence in interpreting the memory effect in conservation laws.",
     "issued": {
       "date-parts": [["2017"]]
@@ -987,6 +990,7 @@
     "container-title": "CSIAM Transactions on Applied Mathematics",
     "ISSN": "2708-0560",
     "DOI": "10.4208/csiam-am.so-2020-0005",
+    "arXiv": "1906.09235",
     "issued": {
       "date-parts": [["2021"]]
     },
@@ -1047,6 +1051,7 @@
     "container-title": "Journal of Scientific Computing",
     "ISSN": "0885-7474",
     "DOI": "10.1007/s10915-017-0426-7",
+    "arXiv": "1701.00068",
     "abstract": "We develop a general polynomial chaos (gPC) based stochastic Galerkin (SG) for hyperbolic equations with random and singular coefficients. Due to the singular nature of the solution, the standard gPC-SG methods may suffer from a poor or even non convergence. Taking advantage of the fact that the discrete solution, by the central type finite difference or finite volume approximations in space and time for example, is smoother, we first discretize the equation by a smooth finite difference or finite volume scheme, and then use the gPC-SG approximation to the discrete system. The jump condition at the interface is treated using the immersed upwind methods introduced in Jin (Proc Symp Appl Math 67(1):93–104, 2009) and Jin and Wen (Commun Math Sci 3:285–315, 2005). This yields a method that converges with the spectral accuracy for finite mesh size and time step. We use a linear hyperbolic equation with discontinuous and random coefficient, and the Liouville equation with discontinuous and random potential, to illustrate our idea, with both one and second order spatial discretizations. Spectral convergence is established for the first equation, and numerical examples for both equations show the desired accuracy of the method.",
     "issued": {
       "date-parts": [["2018"]]
@@ -1089,8 +1094,8 @@
       }
     ],
     "container-title": "arXiv",
-    "ISSN": "0885-7474",
-    "DOI": "10.1007/s10915-017-0426-7",
+    "DOI": "10.48550/arXiv.2305.06571",
+    "arXiv": "2305.06571",
     "abstract": "In this work, we systematically investigate linear multi-step methods for differential equations with memory. In particular, we focus on the numerical stability for multi-step methods. According to this investigation, we give some sufficient conditions for the stability and convergence of some common multi-step methods, and accordingly, a notion of A-stability for differential equations with memory. Finally, we carry out the computational performance of our theory through numerical examples.",
     "issued": {
       "date-parts": [["2023"]]

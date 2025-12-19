@@ -15,6 +15,7 @@ import {
   ItemTitle,
 } from "@/components/ui/item"
 import type pubs from "@/lib/db/publications.json"
+import Link from "next/link"
 
 type Publication = (typeof pubs)[number]
 
@@ -58,6 +59,9 @@ export function PublicationList({ publications }: PublicationsListProps) {
             : pub.issued.status
               ? pub.issued.status
               : "published"
+
+        // PDF link
+        const pdfLink = pub["pdf-link"] ?? `https://arxiv.org/pdf/${pub.arXiv}`
 
         return (
           <HoverCard key={pub.id}>
@@ -105,10 +109,10 @@ export function PublicationList({ publications }: PublicationsListProps) {
                 </ItemContent>
                 <ItemActions className="flex-col">
                   <Button variant="outline" size="sm">
-                    <a href={`https://www.doi.org/${pub.DOI}`}>URL</a>
+                    <Link href={`https://www.doi.org/${pub.DOI}`}>URL</Link>
                   </Button>
                   <Button variant="outline" size="sm" asChild>
-                    <a href={`https://arxiv.org/pdf/${pub.arXiv}`}>PDF</a>
+                    <Link href={pdfLink}>PDF</Link>
                   </Button>
                 </ItemActions>
               </Item>
