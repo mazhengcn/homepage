@@ -1,13 +1,9 @@
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card"
 import matter from "gray-matter"
-import { ExternalLink } from "lucide-react"
+import { TalksList } from "./talks-list"
+
+interface PageProps {
+  searchParams: Promise<{ q?: string }>
+}
 
 interface GitHubContent {
   name: string
@@ -105,81 +101,49 @@ async function getTalksInfo(): Promise<TalkInfo[]> {
   return talksInfo.sort((a, b) => b.dirname.localeCompare(a.dirname))
 }
 
-export default async function Page() {
-  const talks = await getTalksInfo()
+function filterTalks(talks: TalkInfo[], query: string): TalkInfo[] {
+  if (!query.trim()) {
+    return talks
+  }
+
+  const normalizedQuery = query.toLowerCase()
+
+  return talks.filter((talk) => {
+    // Search in title
+    const title = talk.metadata.title?.toLowerCase() || ""
+    if (title.includes(normalizedQuery)) return true
+
+    // Search in dirname
+    if (talk.dirname.toLowerCase().includes(normalizedQuery)) return true
+
+    // Search in layout
+    const layout = talk.metadata.layout?.toString().toLowerCase() || ""
+    if (layout.includes(normalizedQuery)) return true
+
+    // Search in colorSchema
+    const colorSchema =
+      talk.metadata.colorSchema?.toString().toLowerCase() || ""
+    if (colorSchema.includes(normalizedQuery)) return true
+
+    // Search in highlighter
+    const highlighter =
+      talk.metadata.highlighter?.toString().toLowerCase() || ""
+    if (highlighter.includes(normalizedQuery)) return true
+
+    return false
+  })
+}
+
+export default async function Page({ searchParams }: PageProps) {
+  const { q } = await searchParams
+  const allTalks = await getTalksInfo()
+  const filteredTalks = filterTalks(allTalks, q || "")
 
   return (
     <div className="container mx-auto px-4 py-8">
       <h1 className="mb-8 text-4xl font-bold">Talks & Presentations</h1>
 
-      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {talks.map((talk) => (
-          <Card
-            key={talk.dirname}
-            className="transition-shadow hover:shadow-md"
-          >
-            <CardHeader>
-              <CardTitle className="text-2xl">
-                {talk.metadata.title || talk.dirname}
-              </CardTitle>
-              <CardDescription>{talk.dirname}</CardDescription>
-            </CardHeader>
-
-            {talk.metadata && Object.keys(talk.metadata).length > 0 && (
-              <CardContent>
-                <div className="grid gap-2">
-                  {talk.metadata.layout && (
-                    <div className="flex gap-2">
-                      <span className="text-sm font-medium text-muted-foreground">
-                        Layout:
-                      </span>
-                      <span className="text-sm">{talk.metadata.layout}</span>
-                    </div>
-                  )}
-                  {talk.metadata.colorSchema && (
-                    <div className="flex gap-2">
-                      <span className="text-sm font-medium text-muted-foreground">
-                        Theme:
-                      </span>
-                      <span className="text-sm">
-                        {talk.metadata.colorSchema}
-                      </span>
-                    </div>
-                  )}
-                  {talk.metadata.highlighter && (
-                    <div className="flex gap-2">
-                      <span className="text-sm font-medium text-muted-foreground">
-                        Highlighter:
-                      </span>
-                      <span className="text-sm">
-                        {talk.metadata.highlighter}
-                      </span>
-                    </div>
-                  )}
-                </div>
-              </CardContent>
-            )}
-
-            <CardFooter>
-              <a
-                href={talk.html_url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:underline"
-              >
-                View on GitHub
-                <ExternalLink className="h-4 w-4" />
-              </a>
-            </CardFooter>
-          </Card>
-        ))}
-      </div>
-
-      {talks.length === 0 && (
-        <div className="py-12 text-center text-muted-foreground">
-          No talks found.
-        </div>
-      )}
+      <TalksList talks={filteredTalks} searchQuery={q} />
     </div>
   )
 }
