@@ -1,5 +1,5 @@
+import { TalksList } from "@/components/talks-list"
 import matter from "gray-matter"
-import { TalksList } from "./talks-list"
 
 interface GitHubContent {
   name: string

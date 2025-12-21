@@ -52,7 +52,6 @@ export function baseOptions(): BaseLayoutProps {
         </>
       ),
     },
-    links: linkItems,
     // see https://fumadocs.dev/docs/ui/navigation/links
     githubUrl: "https://github.com/mazhengcn",
   }
