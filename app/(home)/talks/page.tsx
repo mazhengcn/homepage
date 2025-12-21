@@ -101,7 +101,7 @@ export default async function Page() {
   const talks = await getTalksInfo()
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="mx-autopx-4 container py-8">
       <h1 className="mb-8 text-4xl font-bold">Talks & Presentations</h1>
 
       <TalksList talks={talks} />
