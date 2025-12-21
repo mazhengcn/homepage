@@ -10,8 +10,7 @@ import {
 } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { ExternalLink, Search } from "lucide-react"
-import { useRouter, useSearchParams } from "next/navigation"
-import { useEffect, useState, useTransition } from "react"
+import { useMemo, useState } from "react"
 
 interface SlideMetadata {
   title?: string
@@ -28,40 +27,43 @@ interface TalkInfo {
 
 interface TalksListProps {
   talks: TalkInfo[]
-  searchQuery?: string
 }
 
-export function TalksList({ talks, searchQuery = "" }: TalksListProps) {
-  const router = useRouter()
-  const searchParams = useSearchParams()
-  const [isPending, startTransition] = useTransition()
-  const [inputValue, setInputValue] = useState(searchQuery)
+export function TalksList({ talks }: TalksListProps) {
+  const [searchQuery, setSearchQuery] = useState("")
 
-  // Debounce the URL update
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      const params = new URLSearchParams(searchParams.toString())
+  const filteredTalks = useMemo(() => {
+    if (!searchQuery.trim()) {
+      return talks
+    }
 
-      if (inputValue) {
-        params.set("q", inputValue)
-      } else {
-        params.delete("q")
-      }
+    const query = searchQuery.toLowerCase()
 
-      const newUrl = inputValue ? `?${params.toString()}` : ""
+    return talks.filter((talk) => {
+      // Search in title
+      const title = talk.metadata.title?.toLowerCase() || ""
+      if (title.includes(query)) return true
 
-      startTransition(() => {
-        router.push(newUrl || "?", { scroll: false })
-      })
-    }, 300) // 300ms debounce delay
+      // Search in dirname
+      if (talk.dirname.toLowerCase().includes(query)) return true
 
-    return () => clearTimeout(timer)
-  }, [inputValue, router, searchParams])
+      // Search in layout
+      const layout = talk.metadata.layout?.toString().toLowerCase() || ""
+      if (layout.includes(query)) return true
 
-  // Sync input value with searchParams when navigating back/forward
-  useEffect(() => {
-    setInputValue(searchQuery)
-  }, [searchQuery])
+      // Search in colorSchema
+      const colorSchema =
+        talk.metadata.colorSchema?.toString().toLowerCase() || ""
+      if (colorSchema.includes(query)) return true
+
+      // Search in highlighter
+      const highlighter =
+        talk.metadata.highlighter?.toString().toLowerCase() || ""
+      if (highlighter.includes(query)) return true
+
+      return false
+    })
+  }, [talks, searchQuery])
 
   return (
     <div className="space-y-6">
@@ -70,19 +72,14 @@ export function TalksList({ talks, searchQuery = "" }: TalksListProps) {
         <Input
           type="text"
           placeholder="Search talks by title, date, theme..."
-          value={inputValue}
-          onChange={(e) => setInputValue(e.target.value)}
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
           className="pl-10"
         />
-        {isPending && (
-          <div className="absolute top-1/2 right-3 -translate-y-1/2">
-            <div className="h-4 w-4 animate-spin rounded-full border-2 border-primary border-t-transparent" />
-          </div>
-        )}
       </div>
 
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {talks.map((talk) => (
+        {filteredTalks.map((talk) => (
           <Card
             key={talk.dirname}
             className="transition-shadow hover:shadow-md"
@@ -144,7 +141,7 @@ export function TalksList({ talks, searchQuery = "" }: TalksListProps) {
         ))}
       </div>
 
-      {talks.length === 0 && (
+      {filteredTalks.length === 0 && (
         <div className="py-12 text-center text-muted-foreground">
           {searchQuery
             ? `No talks found matching "${searchQuery}"`

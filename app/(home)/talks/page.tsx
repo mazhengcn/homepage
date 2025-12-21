@@ -1,10 +1,6 @@
 import matter from "gray-matter"
 import { TalksList } from "./talks-list"
 
-interface PageProps {
-  searchParams: Promise<{ q?: string }>
-}
-
 interface GitHubContent {
   name: string
   path: string
@@ -101,49 +97,14 @@ async function getTalksInfo(): Promise<TalkInfo[]> {
   return talksInfo.sort((a, b) => b.dirname.localeCompare(a.dirname))
 }
 
-function filterTalks(talks: TalkInfo[], query: string): TalkInfo[] {
-  if (!query.trim()) {
-    return talks
-  }
-
-  const normalizedQuery = query.toLowerCase()
-
-  return talks.filter((talk) => {
-    // Search in title
-    const title = talk.metadata.title?.toLowerCase() || ""
-    if (title.includes(normalizedQuery)) return true
-
-    // Search in dirname
-    if (talk.dirname.toLowerCase().includes(normalizedQuery)) return true
-
-    // Search in layout
-    const layout = talk.metadata.layout?.toString().toLowerCase() || ""
-    if (layout.includes(normalizedQuery)) return true
-
-    // Search in colorSchema
-    const colorSchema =
-      talk.metadata.colorSchema?.toString().toLowerCase() || ""
-    if (colorSchema.includes(normalizedQuery)) return true
-
-    // Search in highlighter
-    const highlighter =
-      talk.metadata.highlighter?.toString().toLowerCase() || ""
-    if (highlighter.includes(normalizedQuery)) return true
-
-    return false
-  })
-}
-
-export default async function Page({ searchParams }: PageProps) {
-  const { q } = await searchParams
-  const allTalks = await getTalksInfo()
-  const filteredTalks = filterTalks(allTalks, q || "")
+export default async function Page() {
+  const talks = await getTalksInfo()
 
   return (
     <div className="container mx-auto px-4 py-8">
       <h1 className="mb-8 text-4xl font-bold">Talks & Presentations</h1>
 
-      <TalksList talks={filteredTalks} searchQuery={q} />
+      <TalksList talks={talks} />
     </div>
   )
 }
