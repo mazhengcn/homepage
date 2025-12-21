@@ -34,7 +34,7 @@ export const linkItems = [
     ],
   },
   { text: "Publications", url: "/publications" },
-  { text: "Blog", url: "/" },
+  { text: "Talks", url: "/talks" },
 ]
 
 export function baseOptions(): BaseLayoutProps {

@@ -11,7 +11,7 @@ import {
 import { Input } from "@/components/ui/input"
 import { ExternalLink, Search } from "lucide-react"
 import { useRouter, useSearchParams } from "next/navigation"
-import { useTransition } from "react"
+import { useEffect, useState, useTransition } from "react"
 
 interface SlideMetadata {
   title?: string
@@ -35,20 +35,33 @@ export function TalksList({ talks, searchQuery = "" }: TalksListProps) {
   const router = useRouter()
   const searchParams = useSearchParams()
   const [isPending, startTransition] = useTransition()
+  const [inputValue, setInputValue] = useState(searchQuery)
 
-  const handleSearch = (value: string) => {
-    const params = new URLSearchParams(searchParams.toString())
+  // Debounce the URL update
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      const params = new URLSearchParams(searchParams.toString())
 
-    if (value) {
-      params.set("q", value)
-    } else {
-      params.delete("q")
-    }
+      if (inputValue) {
+        params.set("q", inputValue)
+      } else {
+        params.delete("q")
+      }
 
-    startTransition(() => {
-      router.push(`?${params.toString()}`, { scroll: false })
-    })
-  }
+      const newUrl = inputValue ? `?${params.toString()}` : ""
+
+      startTransition(() => {
+        router.push(newUrl || "?", { scroll: false })
+      })
+    }, 300) // 300ms debounce delay
+
+    return () => clearTimeout(timer)
+  }, [inputValue, router, searchParams])
+
+  // Sync input value with searchParams when navigating back/forward
+  useEffect(() => {
+    setInputValue(searchQuery)
+  }, [searchQuery])
 
   return (
     <div className="space-y-6">
@@ -57,11 +70,15 @@ export function TalksList({ talks, searchQuery = "" }: TalksListProps) {
         <Input
           type="text"
           placeholder="Search talks by title, date, theme..."
-          defaultValue={searchQuery}
-          onChange={(e) => handleSearch(e.target.value)}
+          value={inputValue}
+          onChange={(e) => setInputValue(e.target.value)}
           className="pl-10"
-          disabled={isPending}
         />
+        {isPending && (
+          <div className="absolute top-1/2 right-3 -translate-y-1/2">
+            <div className="h-4 w-4 animate-spin rounded-full border-2 border-primary border-t-transparent" />
+          </div>
+        )}
       </div>
 
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
