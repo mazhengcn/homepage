@@ -55,9 +55,6 @@ export default function GroupMembers() {
   const formerPhDs = students.filter(
     (person) => person.type === "phd" && person.status === "former",
   )
-  const currentPostdocs = students.filter(
-    (person) => person.type === "postdoc" && person.status === "current",
-  )
   const formerPostdocs = students.filter(
     (person) => person.type === "postdoc" && person.status === "former",
   )

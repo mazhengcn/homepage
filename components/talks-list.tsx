@@ -1,29 +1,39 @@
 "use client"
 
 import { Badge } from "@/components/ui/badge"
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card"
+import { Card, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
-import { ArrowUpRight, Calendar, Presentation, Search } from "lucide-react"
+import {
+  ArrowUpRight,
+  Calendar,
+  FileText,
+  Github,
+  Presentation,
+  Search,
+} from "lucide-react"
+import Image from "next/image"
 import Link from "next/link"
 import { useMemo, useState } from "react"
 
 interface SlideMetadata {
   title?: string
+  date?: string
+  event?: string
+  location?: string
+  description?: string
+  tags?: string[]
+  theme?: string
   layout?: string
-  colorSchema?: string
-  [key: string]: string | boolean | number | undefined
 }
 
 interface TalkInfo {
   dirname: string
   metadata: SlideMetadata
   html_url: string
+  displayDate?: string
+  previewImage?: string
+  pdfUrl?: string
+  sourceUrl?: string
 }
 
 interface TalksListProps {
@@ -44,11 +54,19 @@ export function TalksList({ talks }: TalksListProps) {
       const title = talk.metadata.title?.toLowerCase() || ""
       if (title.includes(query)) return true
 
+      const description = talk.metadata.description?.toLowerCase() || ""
+      if (description.includes(query)) return true
+
+      const event = talk.metadata.event?.toLowerCase() || ""
+      if (event.includes(query)) return true
+
+      const location = talk.metadata.location?.toLowerCase() || ""
+      if (location.includes(query)) return true
+
       if (talk.dirname.toLowerCase().includes(query)) return true
 
-      const colorSchema =
-        talk.metadata.colorSchema?.toString().toLowerCase() || ""
-      if (colorSchema.includes(query)) return true
+      const tags = talk.metadata.tags || []
+      if (tags.some((tag) => tag.toLowerCase().includes(query))) return true
 
       return false
     })
@@ -92,29 +110,44 @@ export function TalksList({ talks }: TalksListProps) {
         </div>
       ) : (
         /* Grid */
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
           {filteredTalks.map((talk) => (
             <Link
               key={talk.dirname}
               href={talk.html_url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group block h-full"
+              className="group block"
             >
-              <Card className="relative h-full overflow-hidden transition-all duration-300 hover:border-primary/60 hover:shadow-lg">
+              <Card className="relative flex h-full flex-col overflow-hidden border-border/40 bg-card shadow-sm transition-all duration-300 hover:border-primary/50 hover:shadow-md dark:border-border/50 dark:hover:border-primary/60">
                 {/* Preview Area */}
-                <div className="relative -mt-6 aspect-[4/3] w-full overflow-hidden bg-gradient-to-br from-primary/8 to-primary/3">
-                  {/* Subtle pattern */}
-                  <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:24px_24px]" />
+                <div className="relative -mt-6 aspect-video w-full overflow-hidden bg-linear-to-br from-primary/8 to-primary/3">
+                  {talk.previewImage ? (
+                    <>
+                      {/* Preview Image */}
+                      <Image
+                        src={talk.previewImage}
+                        alt={`Preview of ${talk.metadata.title || talk.dirname}`}
+                        fill
+                        className="object-cover transition-all duration-300 group-hover:scale-105"
+                        unoptimized
+                      />
+                      {/* Overlay gradient for better text readability */}
+                      <div className="absolute inset-0 bg-linear-to-t from-black/20 to-transparent" />
+                    </>
+                  ) : (
+                    <>
+                      {/* Subtle pattern fallback */}
+                      <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-size-[24px_24px]" />
 
-                  {/* Center content */}
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="flex h-20 w-20 items-center justify-center rounded-2xl bg-primary/10 shadow-sm ring-1 ring-primary/10 backdrop-blur-sm transition-all duration-300 group-hover:scale-105 group-hover:bg-primary/15 group-hover:shadow-md">
-                      <span className="text-4xl font-bold text-primary">
-                        {talk.dirname.charAt(0).toUpperCase()}
-                      </span>
-                    </div>
-                  </div>
+                      {/* Center content fallback */}
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <div className="flex h-20 w-20 items-center justify-center rounded-2xl bg-primary/10 shadow-sm ring-1 ring-primary/10 backdrop-blur-sm transition-all duration-300 group-hover:scale-105 group-hover:bg-primary/15 group-hover:shadow-md">
+                          <span className="text-4xl font-bold text-primary">
+                            {talk.dirname.charAt(0).toUpperCase()}
+                          </span>
+                        </div>
+                      </div>
+                    </>
+                  )}
 
                   {/* Hover indicator */}
                   <div className="absolute top-3 right-3 opacity-0 transition-all duration-300 group-hover:opacity-100">
@@ -124,31 +157,111 @@ export function TalksList({ talks }: TalksListProps) {
                   </div>
                 </div>
 
-                <CardHeader>
-                  <CardTitle className="line-clamp-2 min-h-[3.5rem] text-lg leading-tight transition-colors group-hover:text-primary">
-                    {talk.metadata.title || talk.dirname}
-                  </CardTitle>
-                  <CardDescription className="flex items-center gap-1.5">
-                    <Calendar className="h-3.5 w-3.5" />
-                    {talk.dirname}
-                  </CardDescription>
-                </CardHeader>
+                <CardHeader className="flex flex-1 flex-col space-y-3 p-5">
+                  <div className="space-y-2">
+                    <CardTitle className="line-clamp-2 text-base leading-snug font-semibold transition-colors group-hover:text-primary">
+                      {talk.metadata.title || talk.dirname}
+                    </CardTitle>
 
-                {/* Badges */}
-                {(talk.metadata.colorSchema || talk.metadata.layout) && (
-                  <CardContent className="flex min-h-[2rem] flex-wrap gap-1.5">
-                    {talk.metadata.colorSchema && (
-                      <Badge variant="secondary" className="h-6 px-2.5 text-xs">
-                        {talk.metadata.colorSchema}
-                      </Badge>
+                    {talk.metadata.description && (
+                      <p className="line-clamp-2 text-sm leading-relaxed text-muted-foreground">
+                        {talk.metadata.description}
+                      </p>
                     )}
-                    {talk.metadata.layout && (
-                      <Badge variant="outline" className="h-6 px-2.5 text-xs">
-                        {talk.metadata.layout}
-                      </Badge>
+                  </div>
+
+                  <div className="flex flex-col gap-2 text-sm text-muted-foreground">
+                    {talk.metadata.event && (
+                      <div className="flex items-center gap-2">
+                        <Presentation className="h-3.5 w-3.5 shrink-0 text-primary/60" />
+                        <span className="line-clamp-1 font-medium">
+                          {talk.metadata.event}
+                        </span>
+                      </div>
                     )}
-                  </CardContent>
-                )}
+                    <div className="flex items-center gap-2.5">
+                      <div className="flex items-center gap-1.5">
+                        <Calendar className="h-3.5 w-3.5 shrink-0 text-primary/60" />
+                        <span>{talk.displayDate || talk.dirname}</span>
+                      </div>
+                      {talk.metadata.location && (
+                        <>
+                          <span className="text-muted-foreground/40">·</span>
+                          <span className="line-clamp-1">
+                            {talk.metadata.location}
+                          </span>
+                        </>
+                      )}
+                    </div>
+                  </div>
+
+                  <div className="mt-auto space-y-2.5 pt-2">
+                    {/* Tags */}
+                    {(talk.metadata.tags || talk.metadata.theme) && (
+                      <div className="flex flex-wrap gap-1.5">
+                        {talk.metadata.tags?.slice(0, 3).map((tag) => (
+                          <Badge
+                            key={tag}
+                            variant="secondary"
+                            className="h-6 px-2.5 text-xs font-medium"
+                          >
+                            {tag}
+                          </Badge>
+                        ))}
+                        {talk.metadata.theme && (
+                          <Badge
+                            variant="outline"
+                            className="h-6 px-2.5 text-xs font-medium"
+                          >
+                            {talk.metadata.theme}
+                          </Badge>
+                        )}
+                      </div>
+                    )}
+
+                    {/* Action Buttons */}
+                    {(talk.pdfUrl || talk.sourceUrl) && (
+                      <div className="flex gap-2">
+                        {talk.pdfUrl && (
+                          <button
+                            type="button"
+                            onClick={(e) => {
+                              e.preventDefault()
+                              e.stopPropagation()
+                              window.open(
+                                talk.pdfUrl,
+                                "_blank",
+                                "noopener,noreferrer",
+                              )
+                            }}
+                            className="inline-flex items-center gap-1.5 rounded-md bg-secondary px-3 py-1.5 text-xs font-medium text-secondary-foreground transition-colors hover:bg-secondary/80"
+                          >
+                            <FileText className="h-3.5 w-3.5" />
+                            PDF
+                          </button>
+                        )}
+                        {talk.sourceUrl && (
+                          <button
+                            type="button"
+                            onClick={(e) => {
+                              e.preventDefault()
+                              e.stopPropagation()
+                              window.open(
+                                talk.sourceUrl,
+                                "_blank",
+                                "noopener,noreferrer",
+                              )
+                            }}
+                            className="inline-flex items-center gap-1.5 rounded-md bg-secondary px-3 py-1.5 text-xs font-medium text-secondary-foreground transition-colors hover:bg-secondary/80"
+                          >
+                            <Github className="h-3.5 w-3.5" />
+                            Source
+                          </button>
+                        )}
+                      </div>
+                    )}
+                  </div>
+                </CardHeader>
               </Card>
             </Link>
           ))}

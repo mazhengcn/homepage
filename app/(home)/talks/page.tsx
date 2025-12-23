@@ -1,107 +1,94 @@
 import { TalksList } from "@/components/talks-list"
-import matter from "gray-matter"
-
-interface GitHubContent {
-  name: string
-  path: string
-  sha: string
-  size: number
-  url: string
-  html_url: string
-  git_url: string
-  download_url: string | null
-  type: "file" | "dir"
-}
-
-interface SlideMetadata {
-  title?: string
-  layout?: string
-  colorSchema?: string
-  [key: string]: string | boolean | number | undefined
-}
+import type { TalkMetadata, TalksCollection } from "@/types/talks-metadata"
 
 interface TalkInfo {
   dirname: string
-  metadata: SlideMetadata
+  metadata: {
+    title?: string
+    date?: string
+    event?: string
+    location?: string
+    description?: string
+    tags?: string[]
+    theme?: string
+    layout?: string
+  }
   html_url: string
+  displayDate?: string
+  previewImage?: string
+  pdfUrl?: string
+  sourceUrl?: string
 }
 
-async function getRepoContents(): Promise<GitHubContent[]> {
-  const username = "mazhengcn"
-  const repo = "talks"
-  const path = "talks"
-
+async function getTalksMetadata(): Promise<TalksCollection> {
   const res = await fetch(
-    `https://api.github.com/repos/${username}/${repo}/contents/${path}`,
+    "https://zheng-talks.netlify.app/talks-metadata.json",
     {
       next: { revalidate: 3600 }, // Revalidate every hour
     },
   )
 
   if (!res.ok) {
-    throw new Error("Failed to fetch repo contents")
+    throw new Error("Failed to fetch talks metadata")
   }
 
   return res.json()
 }
 
-async function getSlidesMetadata(
-  username: string,
-  repo: string,
-  dirname: string,
-): Promise<SlideMetadata | null> {
-  try {
-    const res = await fetch(
-      `https://raw.githubusercontent.com/${username}/${repo}/main/talks/${dirname}/slides.md`,
-      {
-        next: { revalidate: 3600 },
-      },
-    )
+function transformTalkMetadata(talk: TalkMetadata): TalkInfo {
+  // Type guard for custom string fields
+  const getCustomString = (key: string): string | undefined => {
+    const value = talk.custom?.[key]
+    return typeof value === "string" ? value : undefined
+  }
 
-    if (!res.ok) {
-      return null
-    }
+  const slidesUrl =
+    talk.slidesUrl || `https://zheng-talks.netlify.app/${talk.id}`
 
-    const content = await res.text()
-    const { data } = matter(content)
+  // Generate preview image URL (Slidev exports og-image.png with 16:9 ratio)
+  const previewImage = `${slidesUrl}/og-image.png`
 
-    return data as SlideMetadata
-  } catch (error) {
-    console.error(`Failed to fetch slides.md for ${dirname}:`, error)
-    return null
+  return {
+    dirname: talk.id,
+    metadata: {
+      title: talk.title,
+      date: talk.date,
+      event: talk.conference,
+      location: talk.location,
+      description: talk.description,
+      tags: talk.tags,
+      theme: getCustomString("theme"),
+      layout: getCustomString("layout"),
+    },
+    html_url: slidesUrl,
+    displayDate: talk.date,
+    previewImage,
+    pdfUrl: talk.pdfUrl,
+    sourceUrl: talk.sourceUrl,
   }
 }
 
 async function getTalksInfo(): Promise<TalkInfo[]> {
-  const username = "mazhengcn"
-  const repo = "talks"
+  const collection = await getTalksMetadata()
 
-  const contents = await getRepoContents()
+  // Filter only published talks and transform to TalkInfo format
+  const talks = collection.talks
+    .filter((talk) => talk.published !== false)
+    .map(transformTalkMetadata)
 
-  // Filter only directories
-  const directories = contents.filter((item) => item.type === "dir")
-
-  // Fetch metadata for each directory
-  const talksInfo = await Promise.all(
-    directories.map(async (dir) => {
-      const metadata = await getSlidesMetadata(username, repo, dir.name)
-      return {
-        dirname: dir.name,
-        metadata: metadata || {},
-        html_url: dir.html_url,
-      }
-    }),
-  )
-
-  // Sort by dirname in descending order (newest first)
-  return talksInfo.sort((a, b) => b.dirname.localeCompare(a.dirname))
+  // Sort by date in descending order (newest first)
+  return talks.sort((a, b) => {
+    const dateA = a.metadata.date || a.dirname
+    const dateB = b.metadata.date || b.dirname
+    return dateB.localeCompare(dateA)
+  })
 }
 
 export default async function Page() {
   const talks = await getTalksInfo()
 
   return (
-    <div className="mx-autopx-4 container py-8">
+    <div className="container mx-auto px-4 py-8">
       <h1 className="mb-8 text-4xl font-bold">Talks & Presentations</h1>
 
       <TalksList talks={talks} />

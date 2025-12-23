@@ -6,6 +6,15 @@ const withMDX = createMDX({})
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   reactCompiler: true,
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "zheng-talks.netlify.app",
+        pathname: "/**",
+      },
+    ],
+  },
 }
 
 // Merge MDX config with Next.js config
