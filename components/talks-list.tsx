@@ -1,6 +1,5 @@
 "use client"
 
-import { Badge } from "@/components/ui/badge"
 import { Card, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import {
@@ -24,6 +23,7 @@ interface SlideMetadata {
   tags?: string[]
   theme?: string
   layout?: string
+  conferenceUrl?: string
 }
 
 interface TalkInfo {
@@ -174,9 +174,27 @@ export function TalksList({ talks }: TalksListProps) {
                     {talk.metadata.event && (
                       <div className="flex items-center gap-2">
                         <Presentation className="h-3.5 w-3.5 shrink-0 text-primary/60" />
-                        <span className="line-clamp-1 font-medium">
-                          {talk.metadata.event}
-                        </span>
+                        {talk.metadata.conferenceUrl ? (
+                          <button
+                            type="button"
+                            onClick={(e) => {
+                              e.preventDefault()
+                              e.stopPropagation()
+                              window.open(
+                                talk.metadata.conferenceUrl,
+                                "_blank",
+                                "noopener,noreferrer",
+                              )
+                            }}
+                            className="line-clamp-1 text-left font-medium text-primary underline-offset-4 hover:underline"
+                          >
+                            {talk.metadata.event}
+                          </button>
+                        ) : (
+                          <span className="line-clamp-1 font-medium">
+                            {talk.metadata.event}
+                          </span>
+                        )}
                       </div>
                     )}
                     <div className="flex items-center gap-2.5">
@@ -196,29 +214,6 @@ export function TalksList({ talks }: TalksListProps) {
                   </div>
 
                   <div className="mt-auto space-y-2.5 pt-2">
-                    {/* Tags */}
-                    {(talk.metadata.tags || talk.metadata.theme) && (
-                      <div className="flex flex-wrap gap-1.5">
-                        {talk.metadata.tags?.slice(0, 3).map((tag) => (
-                          <Badge
-                            key={tag}
-                            variant="secondary"
-                            className="h-6 px-2.5 text-xs font-medium"
-                          >
-                            {tag}
-                          </Badge>
-                        ))}
-                        {talk.metadata.theme && (
-                          <Badge
-                            variant="outline"
-                            className="h-6 px-2.5 text-xs font-medium"
-                          >
-                            {talk.metadata.theme}
-                          </Badge>
-                        )}
-                      </div>
-                    )}
-
                     {/* Action Buttons */}
                     {(talk.pdfUrl || talk.sourceUrl) && (
                       <div className="flex gap-2">

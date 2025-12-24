@@ -12,6 +12,7 @@ interface TalkInfo {
     tags?: string[]
     theme?: string
     layout?: string
+    conferenceUrl?: string
   }
   html_url: string
   displayDate?: string
@@ -59,6 +60,7 @@ function transformTalkMetadata(talk: TalkMetadata): TalkInfo {
       tags: talk.tags,
       theme: getCustomString("theme"),
       layout: getCustomString("layout"),
+      conferenceUrl: talk.conferenceUrl,
     },
     html_url: slidesUrl,
     displayDate: talk.date,
