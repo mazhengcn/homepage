@@ -13,9 +13,8 @@ export const source = loader({
   plugins: [lucideIconsPlugin()],
 })
 
-export const blog = loader({
+export const blog = loader(toFumadocsSource(blogPosts, []), {
   baseUrl: "/blog",
-  source: toFumadocsSource(blogPosts, []),
 })
 
 export function getPageImage(page: InferPageType<typeof source>) {

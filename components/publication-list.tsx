@@ -26,9 +26,13 @@ type Publication = (typeof pubs)[number]
 
 interface PublicationsListProps {
   publications: Publication[]
+  showSearch?: boolean
 }
 
-export function PublicationList({ publications }: PublicationsListProps) {
+export function PublicationList({
+  publications,
+  showSearch = true,
+}: PublicationsListProps) {
   const [searchQuery, setSearchQuery] = useState("")
   const totalNum = publications.length
 
@@ -80,25 +84,29 @@ export function PublicationList({ publications }: PublicationsListProps) {
 
   return (
     <div className="space-y-4">
-      <div className="relative">
-        <Search className="absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-        <Input
-          type="text"
-          placeholder="Search publications by title, author, year, type, tags, or journal..."
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-          className="pl-10"
-        />
-      </div>
+      {showSearch && (
+        <div className="relative">
+          <Search className="absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+          <Input
+            type="text"
+            placeholder="Search publications by title, author, year, type, tags, or journal..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="pl-10"
+          />
+        </div>
+      )}
       {filteredPublications.length === 0 ? (
         <div className="py-8 text-center text-muted-foreground">
           No publications found matching &quot;{searchQuery}&quot;
         </div>
       ) : (
-        <div className="text-sm text-muted-foreground">
-          Showing {filteredPublications.length} of {totalNum} publication
-          {totalNum !== 1 ? "s" : ""}
-        </div>
+        showSearch && (
+          <div className="text-sm text-muted-foreground">
+            Showing {filteredPublications.length} of {totalNum} publication
+            {totalNum !== 1 ? "s" : ""}
+          </div>
+        )
       )}
       <ItemGroup className="gap-6">
         {filteredPublications.map((pub: Publication, index: number) => {

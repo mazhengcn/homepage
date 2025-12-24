@@ -1,0 +1,158 @@
+---
+title: 2025年度工作总结
+description: 2025年度教学科研工作总结
+author: Zheng Ma
+date: 2025-12-24
+---
+
+import { PublicationList } from "@/components/publication-list"
+import pubs from "@/lib/db/publications.json"
+import { Card } from "fumadocs-ui/components/card"
+
+export const pubs2025 = pubs.filter(pub => {
+  const year = pub.issued?.["date-parts"]?.[0]?.[0]
+  const isNotArxivOnly = pub["container-title"] !== "arXiv"
+  return (year === 2025 || year === "2025") && isNotArxivOnly
+}).sort((a, b) => {
+  const yearA = a.issued?.["date-parts"]?.[0]?.[0] || 0
+  const yearB = b.issued?.["date-parts"]?.[0]?.[0] || 0
+  return yearB - yearA
+})
+
+export const pubs2026 = pubs.filter(pub => {
+  const year = pub.issued?.["date-parts"]?.[0]?.[0]
+  const isNotArxivOnly = pub["container-title"] !== "arXiv"
+  return (year === 2026 || year === "2026") && isNotArxivOnly
+}).sort((a, b) => {
+  const yearA = a.issued?.["date-parts"]?.[0]?.[0] || 0
+  const yearB = b.issued?.["date-parts"]?.[0]?.[0] || 0
+  return yearB - yearA
+})
+
+回顾2025年，在教学、科研等方面取得了一些进展，现将本年度工作总结如下。
+
+## 教学工作
+
+2025年度，我认真履行教学职责，承担了本科生和研究生的多门课程教学任务。
+
+### 本科生课程（6门，共160课时）
+
+<div className="grid grid-cols-1 md:grid-cols-2 gap-4 not-prose">
+
+<Card title="科学计算">
+**学期**：2024-2025学年第2学期
+**选课人数**：87人
+**授课课时**：48学时
+</Card>
+
+<Card title="研讨课II">
+**学期**：2024-2025学年第2学期
+**选课人数**：19人
+**授课课时**：48学时（独立承担）+ 12学时（参与）
+</Card>
+
+<Card title="人工智能导论">
+**学期**：2024-2025学年第2学期
+**选课人数**：112人
+**授课课时**：16学时
+</Card>
+
+<Card title="人工智能基础">
+**学期**：2024-2025学年第2学期
+**选课人数**：80人
+**授课课时**：32学时（本人承担4学时）
+</Card>
+
+<Card title="动手学深度学习（Python）">
+**学期**：2025-2026学年第1学期
+**选课人数**：114人
+**授课课时**：32学时
+</Card>
+
+</div>
+
+### 研究生课程（1门，共48课时）
+
+<div className="grid grid-cols-1 md:grid-cols-2 gap-4 not-prose">
+
+<Card title="计算方法(MATH6004)">
+**学期**：2025-2026学年第1学期
+**选课人数**：102人
+**授课课时**：48学时
+</Card>
+
+</div>
+
+在教学过程中，我注重理论与实践相结合，引导学生掌握科学计算和深度学习的基本方法，培养学生的创新思维和实践能力。
+
+## 科研工作
+
+### 科研项目
+
+本年度继续主持和参与多项国家级科研项目：
+
+#### 主持项目（3项）
+
+<div className="grid grid-cols-1 md:grid-cols-2 gap-4 not-prose">
+
+<Card title="渐进保持的神经网络方法求解多尺度动理学方程">
+**资助单位**：国家自然科学基金委员会
+**执行期限**：2023年1月 - 2025年12月
+</Card>
+
+<Card title="机器学习方法快速求解辐射输运方程">
+**资助单位**：国家自然科学基金委员会
+**执行期限**：2023年1月 - 2025年12月
+</Card>
+
+<Card title="项目23GFC-JJ16-946">
+**本人到款经费**：7万元
+**起始时间**：2024年12月
+</Card>
+
+</div>
+
+#### 参与项目（1项）
+
+<div className="grid grid-cols-1 md:grid-cols-2 gap-4 not-prose">
+
+<Card title="多尺度动理学方程不确定量化问题的计算方法及理论">
+**资助单位**：国家自然科学基金委员会
+**执行期限**：2021年1月 - 2025年12月
+</Card>
+
+</div>
+
+### 学术论文
+
+本年度共发表和录用学术论文多篇，其中SCI期刊论文多篇，体现了我在多尺度计算、机器学习和反问题求解等领域的研究进展。
+
+#### 2025年发表论文
+
+<div className="not-prose">
+  <PublicationList publications={pubs2025} showSearch={false}/>
+</div>
+
+#### 2026年已录用论文
+
+<div className="not-prose">
+  <PublicationList publications={pubs2026} showSearch={false} className="not-prose" />
+</div>
+
+这些研究工作主要围绕利用深度学习和机器学习方法求解多尺度科学计算问题，特别是在辐射输运、波动方程反问题、贝叶斯反演等方向取得了重要进展。
+
+## 思想政治与师德师风
+
+本人始终坚持正确的政治立场，严格要求自己，认真学习党的理论知识，提高思想政治觉悟。在教学科研工作中，坚持立德树人，关心学生成长，为人师表，得到了支部书记的认可："马征同志严格自我要求，政治立场坚定，思想素质和师德师风等表现良好。"
+
+## 展望2026年
+
+在新的一年里，我将继续：
+
+- 深化教学改革，提升教学质量，探索更有效的教学方法
+- 推进科研项目研究，产出高质量学术成果
+- 加强学术交流与合作，拓展研究方向
+- 指导好研究生，培养优秀人才
+- 不断提升自身综合素质，为学校和学科发展贡献力量
+
+以上是我2025年度的工作总结，请各位领导和同事批评指正。

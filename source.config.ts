@@ -19,6 +19,7 @@ export const docs = defineDocs({
     postprocess: {
       includeProcessedMarkdown: true,
     },
+    async: true,
   },
   meta: {
     schema: metaSchema,
@@ -32,6 +33,7 @@ export const blog = defineCollections({
     author: z.string(),
     date: z.iso.date().or(z.date()),
   }),
+  async: true,
 })
 
 export default defineConfig({
