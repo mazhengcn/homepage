@@ -15,7 +15,8 @@ export default async function Page(props: PageProps<"/blog/[slug]">) {
   const page = blog.getPage([params.slug])
 
   if (!page) notFound()
-  const { body: Mdx, toc } = await page.data.load()
+  const Mdx = page.data.body
+  const toc = page.data.toc
 
   return (
     <>
