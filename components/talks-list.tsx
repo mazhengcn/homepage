@@ -7,6 +7,7 @@ import {
   Calendar,
   FileText,
   Github,
+  MapPin,
   Presentation,
   Search,
 } from "lucide-react"
@@ -73,7 +74,7 @@ export function TalksList({ talks }: TalksListProps) {
   }, [talks, searchQuery])
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4">
       {/* Search Bar */}
       <div className="relative">
         <Search className="absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
@@ -85,31 +86,17 @@ export function TalksList({ talks }: TalksListProps) {
           className="pl-10"
         />
       </div>
-
-      {/* Results count */}
-      {searchQuery && filteredTalks.length > 0 && (
-        <p className="text-sm text-muted-foreground">
-          {filteredTalks.length} result{filteredTalks.length !== 1 ? "s" : ""}
-        </p>
-      )}
-
-      {/* Empty State */}
       {filteredTalks.length === 0 ? (
-        <div className="flex flex-col items-center justify-center rounded-lg border border-dashed py-16">
-          <Presentation className="mb-3 h-10 w-10 text-muted-foreground/40" />
-          <p className="font-medium text-muted-foreground">
-            {searchQuery
-              ? "No presentations found"
-              : "No presentations available"}
-          </p>
-          {searchQuery && (
-            <p className="mt-1 text-sm text-muted-foreground/70">
-              Try different search terms
-            </p>
-          )}
+        <div className="py-8 text-center text-muted-foreground">
+          No presentations found matching &quot;{searchQuery}&quot;
         </div>
       ) : (
-        /* Grid */
+        <div className="text-sm text-muted-foreground">
+          Showing {filteredTalks.length} of {talks.length} presentation
+          {talks.length !== 1 ? "s" : ""}
+        </div>
+      )}
+      {filteredTalks.length > 0 && (
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
           {filteredTalks.map((talk) => (
             <Link
@@ -157,7 +144,7 @@ export function TalksList({ talks }: TalksListProps) {
                   </div>
                 </div>
 
-                <CardHeader className="flex flex-1 flex-col space-y-3 p-5">
+                <CardHeader className="flex flex-1 flex-col space-y-3 px-5">
                   <div className="space-y-2">
                     <CardTitle className="line-clamp-2 text-base leading-snug font-semibold transition-colors group-hover:text-primary">
                       {talk.metadata.title || talk.dirname}
@@ -197,20 +184,18 @@ export function TalksList({ talks }: TalksListProps) {
                         )}
                       </div>
                     )}
-                    <div className="flex items-center gap-2.5">
-                      <div className="flex items-center gap-1.5">
-                        <Calendar className="h-3.5 w-3.5 shrink-0 text-primary/60" />
-                        <span>{talk.displayDate || talk.dirname}</span>
-                      </div>
-                      {talk.metadata.location && (
-                        <>
-                          <span className="text-muted-foreground/40">·</span>
-                          <span className="line-clamp-1">
-                            {talk.metadata.location}
-                          </span>
-                        </>
-                      )}
+                    <div className="flex items-center gap-1.5">
+                      <Calendar className="h-3.5 w-3.5 shrink-0 text-primary/60" />
+                      <span>{talk.displayDate || talk.dirname}</span>
                     </div>
+                    {talk.metadata.location && (
+                      <div className="flex items-center gap-1.5">
+                        <MapPin className="h-3.5 w-3.5 shrink-0 text-primary/60" />
+                        <span className="line-clamp-1">
+                          {talk.metadata.location}
+                        </span>
+                      </div>
+                    )}
                   </div>
 
                   <div className="mt-auto space-y-2.5 pt-2">
