@@ -10,23 +10,23 @@ import pubs from "@/lib/db/publications.json"
 import { Card } from "fumadocs-ui/components/card"
 
 export const pubs2025 = pubs.filter(pub => {
-  const year = pub.issued?.["date-parts"]?.[0]?.[0]
-  const isNotArxivOnly = pub["container-title"] !== "arXiv"
-  return (year === 2025 || year === "2025") && isNotArxivOnly
+    const year = pub.issued?.["date-parts"]?.[0]?.[0]
+    const isNotArxivOnly = pub["container-title"] !== "arXiv"
+    return (year === 2025 || year === "2025") && isNotArxivOnly
 }).sort((a, b) => {
-  const yearA = a.issued?.["date-parts"]?.[0]?.[0] || 0
-  const yearB = b.issued?.["date-parts"]?.[0]?.[0] || 0
-  return yearB - yearA
+    const yearA = a.issued?.["date-parts"]?.[0]?.[0] || 0
+    const yearB = b.issued?.["date-parts"]?.[0]?.[0] || 0
+    return yearB - yearA
 })
 
 export const pubs2026 = pubs.filter(pub => {
-  const year = pub.issued?.["date-parts"]?.[0]?.[0]
-  const isNotArxivOnly = pub["container-title"] !== "arXiv"
-  return (year === 2026 || year === "2026") && isNotArxivOnly
+    const year = pub.issued?.["date-parts"]?.[0]?.[0]
+    const isNotArxivOnly = pub["container-title"] !== "arXiv"
+    return (year === 2026 || year === "2026") && isNotArxivOnly
 }).sort((a, b) => {
-  const yearA = a.issued?.["date-parts"]?.[0]?.[0] || 0
-  const yearB = b.issued?.["date-parts"]?.[0]?.[0] || 0
-  return yearB - yearA
+    const yearA = a.issued?.["date-parts"]?.[0]?.[0] || 0
+    const yearB = b.issued?.["date-parts"]?.[0]?.[0] || 0
+    return yearB - yearA
 })
 
 回顾2025年，在教学、科研等方面取得了一些进展，现将本年度工作总结如下。
@@ -91,7 +91,7 @@ export const pubs2026 = pubs.filter(pub => {
 
 本年度继续主持和参与多项国家级科研项目：
 
-#### 主持项目（3项）
+#### 主持项目（2项）
 
 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 not-prose">
 
@@ -103,11 +103,6 @@ export const pubs2026 = pubs.filter(pub => {
 <Card title="机器学习方法快速求解辐射输运方程">
 **资助单位**：国家自然科学基金委员会
 **执行期限**：2023年1月 - 2025年12月
-</Card>
-
-<Card title="项目23GFC-JJ16-946">
-**本人到款经费**：7万元
-**起始时间**：2024年12月
 </Card>
 
 </div>
