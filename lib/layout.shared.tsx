@@ -53,6 +53,9 @@ export function baseOptions(): BaseLayoutProps {
         </>
       ),
     },
+    searchToggle: {
+      enabled: false,
+    },
     // see https://fumadocs.dev/docs/ui/navigation/links
     githubUrl: "https://github.com/mazhengcn",
   }
