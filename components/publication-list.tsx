@@ -34,7 +34,6 @@ export function PublicationList({
   showSearch = true,
 }: PublicationsListProps) {
   const [searchQuery, setSearchQuery] = useState("")
-  const totalNum = publications.length
 
   const filteredPublications = useMemo(() => {
     if (!searchQuery.trim()) {
@@ -81,6 +80,9 @@ export function PublicationList({
       return false
     })
   }, [publications, searchQuery])
+
+  const totalNum = publications.length
+  const filteredNum = filteredPublications.length
 
   return (
     <div className="space-y-4">
@@ -153,7 +155,7 @@ export function PublicationList({
                   variant="outline"
                   className="transition-colors hover:bg-accent/50"
                 >
-                  <ItemMedia variant="icon">{totalNum - index}</ItemMedia>
+                  <ItemMedia variant="icon">{filteredNum - index}</ItemMedia>
                   <ItemContent>
                     <ItemTitle className="font-semibold">{pub.title}</ItemTitle>
                     <ItemDescription className="text-foreground/80">
