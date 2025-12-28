@@ -11,10 +11,13 @@ import Image from "next/image"
  */
 
 export const linkItems = [
+  { text: "Research", url: "/research" },
+  { text: "Publications", url: "/publications" },
+  { text: "Talks", url: "/talks" },
+  { text: "Blog", url: "/blog" },
   {
     type: "menu" as const,
-    text: "Research",
-    url: "/research",
+    text: "Docs",
     items: [
       {
         text: "Kinetic Equations",
@@ -33,9 +36,6 @@ export const linkItems = [
       },
     ],
   },
-  { text: "Publications", url: "/publications" },
-  { text: "Talks", url: "/talks" },
-  { text: "Blog", url: "/blog" },
 ]
 
 export function baseOptions(): BaseLayoutProps {
