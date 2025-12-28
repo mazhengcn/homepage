@@ -23,16 +23,41 @@ const experiences = [
     title: "Ph.D. in Computational Mathematics",
     company: "Shanghai Jiao Tong University",
     period: "2012 - 2017",
-    description:
-      "Supervised by Prof. Shi Jin. Dissertation: Numerical Methods for Kinetic Equations in the Diffusive Regimes.",
-    tags: ["Thesis", "APUQ", "Conservation Laws"],
+    description: (
+      <>
+        Supervised by Prof. Shi Jin. Thesis:{" "}
+        <Link
+          href="/thesis.pdf"
+          className="font-medium text-primary hover:underline"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Numerical Methods for Kinetic Equations in the Diffusive Regimes
+        </Link>
+        .
+      </>
+    ),
+    tags: ["APUQ", "Conservation Laws"],
   },
   {
     title: "B.S. in Mathematics, Minor in Applied Physics",
     company: "Shanghai Jiao Tong University",
     period: "2008 - 2012",
-    description:
-      "Graduated from the the first 'Class of Science (Math and Physics)' which is the predecessor of the Zhiyuan College at SJTU.",
+    description: (
+      <>
+        Graduated from the the first &quot;Class of Science (Math and
+        Physics)&quot; which is the predecessor of the{" "}
+        <Link
+          href="https://zhiyuan.sjtu.edu.cn/html/zhiyuan"
+          className="font-medium text-primary hover:underline"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Zhiyuan College
+        </Link>{" "}
+        at SJTU.
+      </>
+    ),
     tags: [],
   },
 ]
@@ -63,18 +88,13 @@ export default function Resume() {
                   <span>{period}</span>
                 </div>
               </div>
-              <p className="text-sm text-pretty text-muted-foreground sm:text-base">
+              <div className="text-sm text-pretty text-muted-foreground sm:text-base">
                 {description}
-              </p>
+              </div>
               <div className="flex flex-wrap gap-2">
                 {tags.map((tag) => (
-                  <Badge
-                    key={tag}
-                    variant="secondary"
-                    className="rounded-full"
-                    asChild
-                  >
-                    <Link href={`/thesis.pdf`}>{tag}</Link>
+                  <Badge key={tag} variant="secondary" className="rounded-full">
+                    {tag}
                   </Badge>
                 ))}
               </div>

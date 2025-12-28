@@ -15,9 +15,9 @@ import {
   ArrowUp,
   ArrowUpRight,
   Calendar,
+  Code2,
   FileText,
   Filter,
-  Github,
   MapPin,
   Presentation,
   Search,
@@ -522,7 +522,7 @@ export function TalksList({ talks }: TalksListProps) {
                             }}
                             className="inline-flex items-center gap-1.5 rounded-md bg-secondary px-3 py-1.5 text-xs font-medium text-secondary-foreground transition-colors hover:bg-secondary/80"
                           >
-                            <Github className="h-3.5 w-3.5" />
+                            <Code2 className="h-3.5 w-3.5" />
                             Source
                           </button>
                         )}
