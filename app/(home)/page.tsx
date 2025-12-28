@@ -7,7 +7,7 @@ import { IoDocument, IoMail } from "react-icons/io5"
 
 export default function Home() {
   return (
-    <div className="mx-auto max-w-5xl pt-10">
+    <div className="mx-auto pt-10">
       <Card>
         <CardContent className="flex flex-col items-center gap-4 overflow-auto py-6 md:flex-row md:justify-center md:gap-20">
           <Image
