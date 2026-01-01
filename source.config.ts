@@ -19,6 +19,7 @@ export const docs = defineDocs({
       created: z.iso.date().or(z.date()).optional(),
       updated: z.iso.date().or(z.date()).optional(),
     }),
+    postprocess: { includeProcessedMarkdown: true },
   },
   meta: {
     schema: metaSchema,
