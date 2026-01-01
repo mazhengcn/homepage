@@ -15,10 +15,10 @@ import { z } from "zod"
 export const docs = defineDocs({
   dir: "content/docs",
   docs: {
-    schema: frontmatterSchema,
-    postprocess: {
-      includeProcessedMarkdown: true,
-    },
+    schema: frontmatterSchema.extend({
+      created: z.iso.date().or(z.date()).optional(),
+      updated: z.iso.date().or(z.date()).optional(),
+    }),
   },
   meta: {
     schema: metaSchema,
@@ -29,8 +29,8 @@ export const blog = defineCollections({
   type: "doc",
   dir: "content/blog",
   schema: frontmatterSchema.extend({
-    author: z.string(),
-    date: z.iso.date().or(z.date()),
+    author: z.string().optional(),
+    date: z.iso.date().or(z.date()).optional(),
   }),
 })
 

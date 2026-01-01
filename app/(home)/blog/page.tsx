@@ -31,7 +31,7 @@ export default function Page() {
           Latest activities of Zheng.
         </p>
       </div>
-      <div className="grid grid-cols-1 gap-2 md:grid-cols-2 xl:grid-cols-3">
+      <div className="grid grid-cols-1 gap-2 md:grid-cols-2">
         {posts.map((post) => (
           <Link
             key={post.url}

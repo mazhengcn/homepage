@@ -22,8 +22,8 @@ export default async function Page(props: PageProps<"/docs/[[...slug]]">) {
   return (
     <DocsPage
       toc={page.data.toc}
-      full={page.data.full}
       lastUpdate={new Date(page.data.lastModified as string | Date)}
+      tableOfContent={{ style: "clerk" }}
     >
       <DocsTitle>{page.data.title}</DocsTitle>
       <DocsDescription>
@@ -46,7 +46,7 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata(
-  props: PageProps<"/docs/[[...slug]]">
+  props: PageProps<"/docs/[[...slug]]">,
 ): Promise<Metadata> {
   const params = await props.params
   const page = source.getPage(params.slug)
