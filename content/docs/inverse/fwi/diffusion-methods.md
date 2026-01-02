@@ -8,7 +8,7 @@ created: 2025-09-22
 
 这是一个来自[King Abdullah University of Science and Technology](https://www.kaust.edu.sa/study/faculty/tariq-alkhalifah)的石油佬团队，学生大多是中国人，主要研究方向是地震反演和深度学习，最近几年做过一些扩散模型结合FWI的工作。
 
-### [DiffusionInv](https://s0lu5lblzl4.feishu.cn/record/Rw09rru72e49LBca4Lockm2inXd)
+### DiffusionInv
 
 总结：尝试从无条件生成模型中蒸馏先验分布，通过进一步训练将神经网络参数finetune到条件生成的轨迹上。方式是冻结其他参数，对U-Net的解码器进行训练，没有对条件/无条件分数形式联系的进一步讨论和设计，我认为能够保持先验分布的形式是因为finetune部分已经解好了反问题，另一方面Latent Diffusion模式在Auto-encoder的解码器部分保持了先验分布的信息。
 
