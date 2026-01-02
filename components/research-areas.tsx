@@ -16,7 +16,24 @@ const coverImages = {
   fusion: "/research/icf.png",
 }
 
+const researchOrder = {
+  kinetic: 0,
+  inverse: 1,
+  fusion: 2,
+}
+
 export default function ResearchAreas({ metas }: { metas: PageTree.Node[] }) {
+  metas.sort((a: PageTree.Node, b: PageTree.Node) => {
+    const indexA =
+      researchOrder[
+        (a.$id ? a.$id.split(":")[1] : "") as keyof typeof researchOrder
+      ]
+    const indexB =
+      researchOrder[
+        (b.$id ? b.$id.split(":")[1] : "") as keyof typeof researchOrder
+      ]
+    return indexA - indexB
+  })
   return (
     <ItemGroup className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
       {metas.map((meta) => {
