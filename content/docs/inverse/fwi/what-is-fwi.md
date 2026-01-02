@@ -37,18 +37,22 @@ $$
 - abc边界吸收层（[openfwi数据集](https://s0lu5lblzl4.feishu.cn/record/EtJYr3ScLeh4vXcIvhqcxq2fnWc)使用该边界条件）: 对于上下左右边界层，我们分别使用如下的方程
 
 $$
+\begin{aligned}
 \frac{\partial^{2} u}{\partial x \partial t} - \frac{1}{c} \frac{\partial^{2} u}{\partial t^{2}} + \frac{c}{2} \frac{\partial^{2} u}{\partial y^{2}} = 0 \\
 \frac{\partial^{2} u}{\partial x \partial t} - \frac{1}{c} \frac{\partial^{2} u}{\partial t^{2}} - \frac{c}{2} \frac{\partial^{2} u}{\partial y^{2}} = 0 \\
 \frac{\partial^{2} u}{\partial y \partial t} - \frac{1}{c} \frac{\partial^{2} u}{\partial t^{2}} + \frac{c}{2} \frac{\partial^{2} u}{\partial y^{2}} = 0 \\
-\frac{\partial^{2} u}{\partial y \partial t} - \frac{1}{c} \frac{\partial^{2} u}{\partial t^{2}} - \frac{c}{2} \frac{\partial^{2} u}{\partial y^{2}} = 0
+\frac{\partial^{2} u}{\partial y \partial t} - \frac{1}{c} \frac{\partial^{2} u}{\partial t^{2}} - \frac{c}{2} \frac{\partial^{2} u}{\partial y^{2}} = 0 \\
+\end{aligned}
 $$
 
 - pml边界（deepwave中的scaler函数所用的边界层）：我们首先引入中间变量$q_x,q_y,\psi_x,\psi_y$，我们将波动方程（2）改写为如下方程组
 
 $$
+\begin{aligned}
 \frac{\partial u}{\partial t}=\frac{1}{c^2}(\psi_x+\psi_y) \\
 \frac{\partial q_x}{\partial t}+d_x(x)q_x=\frac{\partial}{\partial x}\frac{\partial u}{\partial t} \\
 \frac{\partial \psi_x}{\partial t}+d_x(x)\psi_x=\frac{\partial}{\partial x}\frac{\partial q_x}{\partial t}
+\end{aligned}
 $$
 
 此处$q_y,\psi_y$与$q_x,\psi_x$同理。$d_x(x)$为衰减系数，在内部计算区域（对openfwi来说就是上面的(70,70）)为0，在pml边界层，$d_x(x)$平滑增加，例如使用多项式函数等
@@ -129,7 +133,7 @@ $$
 3. 把上面的残差在时间反转后作为源项注入接收器的位置
 
 $$
- s_{adj}(\mathbf{x}, t) = \sum_r \delta d(\mathbf{x}_r, T-t) \delta(\mathbf{x} - \mathbf{x}_r)
+s_{adj}(\mathbf{x}, t) = \sum_r \delta d(\mathbf{x}_r, T-t) \delta(\mathbf{x} - \mathbf{x}_r)
 $$
 
 初始时伴随波场在终端时间$t=T$设置为$\lambda(\mathbf{x},T)=0$，然后从$t=T$开始，<b>反向积分</b>到$t=0$，此处可以设置$\tau=T-t$。进行上面的正演过程，得到伴随波场$\lambda(\mathbf{x},t)$ 4. 计算梯度：$ \frac{\partial J}{\partial c(\mathbf{x})} = -\frac{2}{c^3(\mathbf{x})} \int_0^T \frac{\partial^2 u(\mathbf{x}, t)}{\partial t^2} \lambda(\mathbf{x}, t) dt$
@@ -163,9 +167,11 @@ $$
 也即上面的物理约束方程。
 
 $$
+\begin{aligned}
 \frac{\delta \mathcal{L}}{\delta p} = \frac{\delta J}{\delta p} - \langle \lambda, \frac{\delta \mathcal{F}}{\delta p} \rangle = 0 \\
 \frac{\delta J}{\delta p} = (p - d_{obs}) \delta(\mathbf{x} - \mathbf{x}_r) \\
-\langle \lambda, \frac{\delta \mathcal{F}}{\delta p} \rangle = \int_0^T \int_{\Omega} \lambda(\mathbf{x}, t) \left[ \frac{1}{c^2} \frac{\partial^2}{\partial t^2} - \nabla^2 \right] \delta pd\mathbf{x} dt
+\langle \lambda, \frac{\delta \mathcal{F}}{\delta p} \rangle = \int_0^T \int_{\Omega} \lambda(\mathbf{x}, t) \left[ \frac{1}{c^2} \frac{\partial^2}{\partial t^2} - \nabla^2 \right] \delta pd\mathbf{x} dt \\
+\end{aligned}
 $$
 
 为了将算子从 $\delta p$ 转移到 $\lambda$ 上，我们进行两次分部积分（这里假设波场初始时刻是静止的，伴随场终止时刻是静止的）

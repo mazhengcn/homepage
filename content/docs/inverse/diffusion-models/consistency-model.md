@@ -112,7 +112,7 @@ $$
 - 基于Tweedie's formula，推导得到分数函数$\nabla \log p_t(x_t)$的解析形式：
 - $$\nabla \log p_t(x_t) = -\mathbb{E}\left[\frac{x_t - x}{t^2} \mid x_t\right]$$
 - 损失函数：直接利用干净数据与噪声数据对，最小化不同噪声水平下模型输出的差异：
-- $$\mathcal{L}_{CT}^N(\theta, \theta^-) = \mathbb{E}\left[\lambda(t_n) \cdot d(f_\theta(x + t*{n+1}z, t*{n+1}), f\_{\theta^-}(x + t_nz, t_n))\right]$$
+- $$\mathcal{L}_{CT}^N(\theta, \theta^-) = \mathbb{E}\left[\lambda(t_n) \cdot d(f_\theta(x + t_{n+1}z, t_{n+1}), f_{\theta^-}(x + t_n z, t_n))\right]$$
 
 这种模式无需依赖预训练的扩散模型，并且结果被证实优于单步对抗模型
 

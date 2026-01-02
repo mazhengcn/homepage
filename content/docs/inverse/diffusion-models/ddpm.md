@@ -116,7 +116,7 @@ $$
    $$
    \bar{\alpha}_t = \frac{f(t)}{f(0)},f(t) = \cos\left(\frac{t/T + s}{1 + s} \cdot \frac{\pi}{2}\right)^2
    $$
-   这种采样方式更适合<b>低分辨率</b>图像
+   这种采样方式更适合低分辨率图像
 3. 提高采样频率
    $S_t$为$\{1,\cdots,T\}$的一个子集，只在该子集上做sample，相应的方差值修改如下
 
@@ -139,9 +139,7 @@ $$
       2. BigGAN的块先用简单的插值（如最近邻插值）放大特征图，然后再进行卷积操作。
    4. 自适应组归一化 Adaptive Group Normalization (AdaGN)：修改label和时间t的注入方式，计算公式为
       $$
-      \begin{equation}
       AdaGN(h, y_{emb}) = y_s * GroupNorm(h) + y_b
-      \end{equation}
       $$
       其中h为每个残差块第一个卷积后的特征图，$y_{emb}$是由条件和时间嵌入拼接而成的条件向量。通过一个线性层将其投影成 $y_s, y_b$，然后做上述仿射变换。
 
@@ -149,7 +147,7 @@ $$
 
 ### 核心思想
 
-训练DDPM使用重参数技巧，训练目标<b>只依赖于边缘分布</b>$q(\mathbf{x}_t|\mathbf{x}_0)$, 而不依赖联合分布的具体形式，因此本文设计了一族非马尔可夫前向过程，<b>保证重参数化下</b>$\mathbf{x}_t$<b>的分布不变</b>，对采样过程进行了修改
+训练DDPM使用重参数技巧，训练目标只依赖于边缘分布$q(\mathbf{x}_t|\mathbf{x}_0)$, 而不依赖联合分布的具体形式，因此本文设计了一族非马尔可夫前向过程，保证重参数化下$\mathbf{x}_t$的分布不变，对采样过程进行了修改
 
 ## 前向过程
 
@@ -177,7 +175,7 @@ $$
 \bm{x}_{t}=\sqrt{\alpha_{t}}\bm{x}_{0}+\sqrt{1-\alpha_{t}}\epsilon,\quad\text{where}\quad\epsilon\sim\mathcal{N}(\bm{0},\bm{I})
 $$
 
-因此可以<b>直接使用DDPM训练得到的模型</b>
+因此可以直接使用DDPM训练得到的模型
 
 ### 逆向过程
 
@@ -205,37 +203,37 @@ $$
 2. 对于DDPM，条件采样分布，由Bayes公式
 
    $$
-   p*{\theta,\phi}(x_t | x*{t+1}, y) \approx Z \cdot p*\theta(x_t | x*{t+1}) \cdot p\_\phi(y | x_t)
+   p_{\theta,\phi}(x_t | x_{t+1}, y) \approx Z \cdot p_\theta(x_t | x_{t+1}) \cdot p_\phi(y | x_t)
    $$
 
    其中Z为归一化参数，再通过对数似然的泰勒展开，可得修正后的均值：
 
    $$
-   \hat{\mu} = \mu*\theta(x_t, t) + \Sigma \cdot \nabla*{x*t} \log p*\phi(y | x_t)
+   \hat{\mu} = \mu_\theta(x_t, t) + \Sigma \cdot \nabla_{x_t} \log p_\phi(y | x_t)
    $$
 
    其中 $\Sigma$ 是方差矩阵。再添加缩放因子后可以得到:
 
    $$
-   \hat{\mu} = \mu*\theta(x_t, t) + s \cdot \Sigma \cdot \nabla*{x*t} \log p*\phi(y | x_t)
+   \hat{\mu} = \mu_\theta(x_t, t) + s \cdot \Sigma \cdot \nabla_{x_t} \log p_\phi(y | x_t)
    $$
 
 3. 对于DDIM，定义score function:
 
 $$
-\nabla*{x_t} \log p*\theta(x*t) = -\frac{1}{\sqrt{1 - \bar{\alpha}\_t}} \epsilon*\theta(x_t,t)
+\nabla_{x_t} \log p_\theta(x_t) = -\frac{1}{\sqrt{1 - \bar{\alpha}\_t}} \epsilon_\theta(x_t,t)
 $$
 
 联合分布的score function为：
 
 $$
-\nabla*{x_t} \log [p*\theta(x*t) p*\phi(y | x*t)] = -\frac{1}{\sqrt{1 - \bar{\alpha}\_t}} \epsilon*\theta(x*t,t) + \nabla*{x*t} \log p*\phi(y | x_t)
+\nabla_{x_t} \log [p_\theta(x_t) p_\phi(y | x_t)] = -\frac{1}{\sqrt{1 - \bar{\alpha}\_t}} \epsilon_\theta(x_t,t) + \nabla_{x_t} \log p_\phi(y | x_t)
 $$
 
 因此有修正后的噪声预测：(添加了缩放因子s）
 
 $$
-\hat{\epsilon}(x*t) = \epsilon*\theta(x*t) - s\cdot\sqrt{1 - \bar{\alpha}\_t} \cdot \nabla*{x*t} \log p*\phi(y | x_t)
+\hat{\epsilon}(x_t) = \epsilon_\theta(x_t) - s\cdot\sqrt{1 - \bar{\alpha}\_t} \cdot \nabla_{x_t} \log p_\phi(y | x_t)
 $$
 
 4. 注：上述的无条件模型也可以改成有条件的模型，有<b>条件模型+引导器指导采样</b>的图片效果最好
@@ -248,7 +246,7 @@ $$
     ![](../assets/JIQlbI5dNodgyAxyEYmc900Znef.png) 1. 采样算法：同时计算条件预测和无条件预测，然后将原来的预测噪声部分修改为
 
     $$
-    \bar\epsilon*t=(1+w)\epsilon*{cond}-w\epsilon\_{uncond}
+    \bar\epsilon_t=(1+w)\epsilon_{cond}-w\epsilon\_{uncond}
     $$
 
     其中$w$为超参，设置越高越能生成符合条件的图像。完整的算法流程如下：
@@ -257,13 +255,13 @@ $$
 2.  核心公式的推导：
 
     $$
-    \bar\epsilon*t=(1+w)\epsilon*{cond}-w\epsilon\_{uncond}
+    \bar\epsilon_t=(1+w)\epsilon_{cond}-w\epsilon\_{uncond}
     $$
 
     推导从上面给的引导器采样开始，我们有如下公式：
 
     $$
-    \nabla*{z*\lambda} \log \tilde{p}(z*\lambda|c) = \nabla*{z*\lambda} \log p(z*\lambda|c) + w \cdot \nabla*{z*\lambda} \log p*\phi(c|z*\lambda)
+    \nabla_{z_\lambda} \log \tilde{p}(z_\lambda|c) = \nabla_{z_\lambda} \log p(z_\lambda|c) + w \cdot \nabla_{z_\lambda} \log p_\phi(c|z_\lambda)
     $$
 
     由score function和神经网络输出的转化关系我们有如下式子

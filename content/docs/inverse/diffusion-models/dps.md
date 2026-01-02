@@ -35,7 +35,7 @@ $$
 实现从数据分布到标准正态分布的演化，其中$T=1,\beta(0)=0.2, \beta(1)=10$。并训练好分数函数$\nabla_x\log p_t(x)$后，通过逆时演化以下方程：
 
 $$
-\mathrm{d}x = [-\frac{\beta(t)}{2}-\nabla_{x(t)}\log p_t(x(t))]\,\mathrm{d}t + \sqrt{\beta(t)}\,\mathrm{d}\bar{w},
+\mathrm{d}x = [-\frac{\beta(t)}{2}-\nabla_{x(t)}\log p_t(x(t))]\,\mathrm{d}t + \sqrt{\beta(t)}\,\mathrm{d}\bar{w}
 $$
 
 实现从数据分布中采样。
@@ -43,7 +43,7 @@ $$
 在反问题中，我们通常会有观测数据$y^\delta$，以及相应的正向算子A。因此我们通常想要学习条件数据分布，即$x(0)\sim p_{data}(x(0)|y^\delta)$。其对应正向SDE仍为方程（1），也就是说，我们仍然可以从该条件数据分布，顺时演化到标准正态分布。然而，其对应反向SDE为：
 
 $$
-\mathrm{d}x = [-\frac{\beta(t)}{2}-\nabla_{x(t)}\log p_t(x(t)|y^\delta)]\,\mathrm{d}t + \sqrt{\beta(t)}\,\mathrm{d}\bar{w}。
+\mathrm{d}x = [-\frac{\beta(t)}{2}-\nabla_{x(t)}\log p_t(x(t)|y^\delta)]\,\mathrm{d}t + \sqrt{\beta(t)}\,\mathrm{d}\bar{w}
 $$
 
 通过前一步训练，我们有分数函数$\nabla_x\log p_t(x)$，但并没有上式中的条件分布函数。
@@ -51,7 +51,7 @@ $$
 于是我们将上述（3）式，通过贝叶斯公式转化为：
 
 $$
-\mathrm{d}x = [-\frac{\beta(t)}{2}-(\nabla_{x(t)}\log p_t(x(t))+\nabla_{x(t)}\log p_t(y^\delta|x(t)))]\,\mathrm{d}t + \sqrt{\beta(t)}\,\mathrm{d}\bar{w}。
+\mathrm{d}x = [-\frac{\beta(t)}{2}-(\nabla_{x(t)}\log p_t(x(t))+\nabla_{x(t)}\log p_t(y^\delta|x(t)))]\,\mathrm{d}t + \sqrt{\beta(t)}\,\mathrm{d}\bar{w}
 $$
 
 其中，分数函数已有训练近似，我们只需计算得出$\nabla_{x(t)}\log p_t(y^\delta|x(t))$即可进行逆时演化。

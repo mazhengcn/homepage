@@ -66,7 +66,7 @@ $$
 
 $$
 \begin{aligned}
-J_1&=\mathbb{E}_{t\sim U(0,1),~\mathbf{x}(t)\sim p(\mathbf{x}(t))}[\| s_\theta(\mathbf{x}(t), t) - \nabla_{\mathbf{x}(t)}\log p(\mathbf{x}(t))\|_2^2]\\
+J_1&=\mathbb{E}_{t\sim U(0,1),~\mathbf{x}(t)\sim p(\mathbf{x}(t))}[\| s_\theta(\mathbf{x}(t), t) - \nabla_{\mathbf{x}(t)}\log p(\mathbf{x}(t))\|_2^2] \\
 J_2 &= \mathbb{E}_{t\sim U(0,1),~\mathbf{x}(t)\sim p(\mathbf{x}(t)|\mathbf{x}(0)), ~\mathbf{x}(0)\sim p(\mathbf{x}(0))}[\|s_\theta(\mathbf{x}(t), t)-\nabla_{\mathbf{x}(t)}\log p(\mathbf{x}(t)|\mathbf{x}(0))\|_2^2].
 \end{aligned}
 $$
@@ -75,7 +75,7 @@ $$
 
 $$
 \begin{aligned}
-\hat{J}_1 &= \mathbb{E}_{\mathbf{x}(t)\sim p(\mathbf{x}(t))}[\| s_\theta(\mathbf{x}(t), t) - \nabla_{\mathbf{x}(t)}\log p(\mathbf{x}(t))\|_2^2]\\
+\hat{J}_1 &= \mathbb{E}_{\mathbf{x}(t)\sim p(\mathbf{x}(t))}[\| s_\theta(\mathbf{x}(t), t) - \nabla_{\mathbf{x}(t)}\log p(\mathbf{x}(t))\|_2^2] \\
 \hat{J}_2 &= \mathbb{E}_{\mathbf{x}(t)\sim p(\mathbf{x}(t)|\mathbf{x}(0)), ~\mathbf{x}(0)\sim p(\mathbf{x}(0))}[\|s_\theta(\mathbf{x}(t), t)-\nabla_{\mathbf{x}(t)}\log p(\mathbf{x}(t)|\mathbf{x}(0))\|_2^2].
 \end{aligned}
 $$
@@ -129,13 +129,13 @@ $$
 对比两式，我们得到（8）对应方程：
 
 $$
-\,\mathrm{d}{x}=[{f}({x}(t),t)-\frac{1}{2}g^2(t)\nabla_{{x}(t)}\log p({x}(t))]\,\mathrm{d}t.
+\mathrm{d}{x}=[{f}({x}(t),t)-\frac{1}{2}g^2(t)\nabla_{{x}(t)}\log p({x}(t))]\,\mathrm{d}t.
 $$
 
 由于（8）是ODE，其对应反向方程仍为：
 
 $$
-\,\mathrm{d}{x}=[{f}({x}(t),t)-\frac{1}{2}g^2(t)\nabla_{{x}(t)}\log p({x}(t))]\,\mathrm{d}t.
+\mathrm{d}{x}=[{f}({x}(t),t)-\frac{1}{2}g^2(t)\nabla_{{x}(t)}\log p({x}(t))]\,\mathrm{d}t.
 $$
 
 证毕。
