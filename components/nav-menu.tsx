@@ -28,6 +28,11 @@ export function NavMenu({ tags }: { tags: string[] }) {
             <Link href="/publications">Publications</Link>
           </NavigationMenuLink>
         </NavigationMenuItem>
+        <NavigationMenuItem>
+          <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
+            <Link href="/teachings">Teachings</Link>
+          </NavigationMenuLink>
+        </NavigationMenuItem>
         <NavigationMenuItem asChild className={navigationMenuTriggerStyle()}>
           <Link href="https://github.com/mazhengcn">Github</Link>
         </NavigationMenuItem>

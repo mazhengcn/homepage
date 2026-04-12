@@ -8,6 +8,7 @@ import PortraitImage from "@/public/portrait.jpg"
 const navLinks = [
   { href: "/research", text: "Research" },
   { href: "/publications", text: "Publications" },
+  { href: "/teachings", text: "Teachings" },
   { href: "https://github.com/mazhengcn", text: "Github" },
 ]
 

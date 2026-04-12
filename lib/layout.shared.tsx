@@ -14,6 +14,7 @@ export const linkItems = [
   { text: "Research", url: "/research" },
   { text: "Publications", url: "/publications" },
   { text: "Talks", url: "/talks" },
+  { text: "Teachings", url: "/teachings" },
   { text: "Blog", url: "/blog" },
   {
     type: "menu" as const,
