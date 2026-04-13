@@ -25,7 +25,16 @@ const experiences = [
     period: "2012 - 2017",
     description: (
       <>
-        Supervised by Prof. Shi Jin. Thesis:{" "}
+        Supervised by {" "}
+        <Link
+          href="https://ins.sjtu.edu.cn/people/shijin/"
+          className="font-medium text-primary hover:underline"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Prof. Shi Jin
+        </Link>.
+        Dissertation: {" "}
         <Link
           href="/thesis.pdf"
           className="font-medium text-primary hover:underline"

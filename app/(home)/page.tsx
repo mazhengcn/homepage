@@ -26,7 +26,7 @@ export default function Home() {
             <div className="flex gap-2">
               <LinkButton href="/cv.pdf">
                 <IoDocument />
-                Resume
+                CV
               </LinkButton>
               <LinkButton href="mailto:zhengma@sjtu.edu.cn">
                 <IoMail />
