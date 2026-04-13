@@ -1,6 +1,38 @@
 [
   {
     "type": "article-journal",
+    "title": "Robust Physics-Guided Diffusion for Full-Waveform Inversion",
+    "author": [
+      {
+        "family": "Peng",
+        "given": "Jishen"
+      },
+      {
+        "family": "Jiang",
+        "given": "Enze"
+      },
+      {
+        "family": "Ma",
+        "given": "Zheng"
+      },
+      {
+        "family": "Yan",
+        "given": "Xiongbin"
+      }
+    ],
+    "container-title": "arXiv",
+    "DOI": "10.48550/arXiv.2603.16393",
+    "arXiv": "2603.16393",
+    "abstract": "We develop a robust physics-guided diffusion framework for full-waveform inversion that combines a score-based generative prior with likelihood guidance computed through wave-equation simulations. We adopt a transport-based data-consistency potential (Wasserstein-2), incorporating wavefield enhancement via bounded weighting and observation-dependent normalization, thereby improving robustness to amplitude imbalance and time/phase misalignment. On the inference side, we introduce a preconditioned guided reverse-diffusion scheme that adapts the guidance strength and spatial scaling throughout the reverse-time dynamics, yielding a more stable and effective data-consistency guidance step than standard diffusion posterior sampling (DPS). Numerical experiments on OpenFWI datasets demonstrate improved reconstruction quality over deterministic optimization baselines and standard DPS under comparable computational budgets.",
+    "issued": {
+      "date-parts": [["2026"]]
+    },
+    "journalAbbreviation": "arXiv",
+    "id": "b43fe6f7-e56b-4aa7-8eb8-d3b265f8662b",
+    "tags": ["Full-waveform Inversion", "Diffusion models"]
+  },
+  {
+    "type": "article-journal",
     "title": "Asymptotic-Preserving Neural Networks based on Even-odd Decomposition for Multiscale Gray Radiative Transfer Equations",
     "author": [
       {
