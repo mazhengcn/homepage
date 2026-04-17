@@ -14,6 +14,7 @@ export default function Home() {
             src={PortraitImage}
             alt="Portrait of Zheng Ma"
             className="h-60 w-60 rounded-full border border-border object-cover"
+            loading="eager"
           />
           <div className="flex flex-col items-center gap-6 text-center">
             <h1 className="text-5xl font-bold tracking-tight">
