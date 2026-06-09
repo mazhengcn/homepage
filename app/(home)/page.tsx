@@ -22,7 +22,7 @@ export default function Home() {
               <span className="font-cn font-bold tracking-tight">(马 征)</span>
             </h1>
             <p className="-mt-4 font-mono text-lg text-gray-600 dark:text-gray-400">
-              Mathmatician and Tech Enthusiast
+              Mathematician and Tech Enthusiast
             </p>
             <div className="flex gap-2">
               <LinkButton href="/cv.pdf">
