@@ -56,14 +56,14 @@
         "given": "Zheng"
       }
     ],
-    "container-title": "arXiv",
-    "DOI": "10.48550/arxiv.2501.08166",
+    "container-title": "CSIAM Transactions on Applied Mathematics",
+    "DOI": "10.4208/csiam-am.SO-2025-0003",
     "arXiv": "2501.08166",
     "abstract": "We present a novel Asymptotic-Preserving Neural Network (APNN) approach utilizing even-odd decomposition to tackle the nonlinear gray radiative transfer equations (GRTEs). Our AP loss demonstrates consistent stability concerning the small Knudsen number, ensuring the neural network solution uniformly converges to the macro solution. This APNN method alleviates the rigorous conservation requirements while simultaneously incorporating an auxiliary deep neural network, distinguishing it from the APNN method based on micro-macro decomposition for GRTE. Several numerical problems are examined to demonstrate the effectiveness of our proposed APNN technique.",
     "issued": {
-      "date-parts": [["2025"]]
+      "date-parts": [["2026"]]
     },
-    "journalAbbreviation": "arXiv",
+    "journalAbbreviation": "CSIAM Trans. Appl. Math.",
     "id": "c84fe6f7-e56b-4aa7-8eb8-d3b265f8662b",
     "tags": ["APNNs", "Gray-RTE"]
   },
