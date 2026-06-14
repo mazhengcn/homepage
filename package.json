@@ -6,9 +6,14 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "manage-pubs": "bun run scripts/manage-pubs.ts",
+    "convert-bibtex": "bun run scripts/convert-bibtex.ts"
   },
   "dependencies": {
+    "@citation-js/core": "^0.7.21",
+    "@citation-js/plugin-bibtex": "^0.7.21",
+    "@citation-js/plugin-csl": "^0.7.22",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "fumadocs-core": "^16.10.2",
@@ -19,6 +24,7 @@
     "lucide-react": "^1.18.0",
     "next": "16.2.9",
     "next-themes": "^0.4.6",
+    "radix-ui": "1.5.0",
     "react": "19.2.7",
     "react-dom": "19.2.7",
     "react-icons": "^5.6.0",
@@ -27,7 +33,7 @@
     "remark-gfm": "^4.0.1",
     "remark-math": "^6.0.0",
     "tailwind-merge": "^3.6.0",
-    "radix-ui": "1.5.0"
+    "zod": "^4.4.3"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.3.1",
