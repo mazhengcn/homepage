@@ -1,7 +1,8 @@
+import { DocsLayout } from "fumadocs-ui/layouts/docs"
+
 import BackToTopButton from "@/components/back-to-top"
 import { baseOptions } from "@/lib/layout.shared"
 import { source } from "@/lib/source"
-import { DocsLayout } from "fumadocs-ui/layouts/docs"
 
 // const today = new Date()
 

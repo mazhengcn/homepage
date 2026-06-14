@@ -30,9 +30,7 @@ function MemberList({ people }: { people: Student[] }) {
               <ItemContent className="gap-1">
                 <ItemTitle className="text-base">{person.name}</ItemTitle>
                 <ItemDescription>{person.period}</ItemDescription>
-                <ItemDescription>
-                  {person.position && person.position}
-                </ItemDescription>
+                <ItemDescription>{person.position && person.position}</ItemDescription>
               </ItemContent>
               <ItemActions>
                 <Button variant="ghost" size="icon" className="rounded-full">
@@ -60,12 +58,8 @@ export default function GroupMembers() {
   )
   return (
     <section className="mt-10">
-      <h1 className="mt-10 text-center text-3xl font-bold md:text-5xl">
-        People
-      </h1>
-      <h2 className="mt-5 mb-5 text-xl font-semibold">
-        Current Ph.D. Students
-      </h2>
+      <h1 className="mt-10 text-center text-3xl font-bold md:text-5xl">People</h1>
+      <h2 className="mt-5 mb-5 text-xl font-semibold">Current Ph.D. Students</h2>
       <MemberList people={currentPhDs} />
       <h2 className="mt-5 mb-5 text-xl font-semibold">Former Ph.D. Students</h2>
       <MemberList people={formerPhDs} />

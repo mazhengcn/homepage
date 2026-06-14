@@ -422,12 +422,7 @@
     "page": "116191",
     "volume": "454",
     "id": "66b0f0a0-ce7a-4552-9caa-fb05c80bb53a",
-    "tags": [
-      "Inverse problems",
-      "Fractional Diffusion",
-      "Operator Leraning",
-      "Bayesian"
-    ]
+    "tags": ["Inverse problems", "Fractional Diffusion", "Operator Leraning", "Bayesian"]
   },
   {
     "type": "article-journal",
@@ -527,12 +522,7 @@
     "page": "116531",
     "volume": "418",
     "id": "7db6a4f5-a551-4709-b724-06e31a41930a",
-    "tags": [
-      "APNNs",
-      "APCON",
-      "Multiscale Kinetic Equations",
-      "Operator Leraning"
-    ]
+    "tags": ["APNNs", "APCON", "Multiscale Kinetic Equations", "Operator Leraning"]
   },
   {
     "type": "article-journal",
@@ -563,11 +553,7 @@
     "issue": "3",
     "volume": "94",
     "id": "0f2ccbef-7c70-4a5c-8e50-9fa302608033",
-    "tags": [
-      "APNNs",
-      "Linear Transport Equations",
-      "Uncertainty Quantification"
-    ]
+    "tags": ["APNNs", "Linear Transport Equations", "Uncertainty Quantification"]
   },
   {
     "type": "article-journal",
@@ -861,11 +847,7 @@
     "volume": "111",
     "citekey": "Ma.Applied Numerical Mathematics.2017hfc",
     "id": "280cfd67-577b-4c0e-b52a-a9a8c44cbeb6",
-    "tags": [
-      "Semi-classical Schrödinger",
-      "Time Splitting Spectral Methods",
-      "NUFFT"
-    ]
+    "tags": ["Semi-classical Schrödinger", "Time Splitting Spectral Methods", "NUFFT"]
   },
   {
     "type": "article-journal",
@@ -1133,11 +1115,7 @@
     "issued": {
       "date-parts": [["2023"]]
     },
-    "tags": [
-      "Numerical Stability",
-      "Differential Equations with Memory",
-      "Multi-step Methods"
-    ],
+    "tags": ["Numerical Stability", "Differential Equations with Memory", "Multi-step Methods"],
     "id": "0959bff4-6f23-44c8-ab97-9825b3149c38"
   }
 ]

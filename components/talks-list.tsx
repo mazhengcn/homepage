@@ -1,15 +1,5 @@
 "use client"
 
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
-import { Card, CardHeader, CardTitle } from "@/components/ui/card"
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
-import { Input } from "@/components/ui/input"
 import {
   ArrowDown,
   ArrowUp,
@@ -26,6 +16,17 @@ import {
 import Image from "next/image"
 import Link from "next/link"
 import { useMemo, useState } from "react"
+
+import { Badge } from "@/components/ui/badge"
+import { Button } from "@/components/ui/button"
+import { Card, CardHeader, CardTitle } from "@/components/ui/card"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
+import { Input } from "@/components/ui/input"
 
 interface SlideMetadata {
   title?: string
@@ -72,16 +73,12 @@ export function TalksList({ talks }: TalksListProps) {
   }, [talks])
 
   const uniqueEvents = useMemo(() => {
-    const events = talks
-      .map((talk) => talk.metadata.event)
-      .filter(Boolean) as string[]
+    const events = talks.map((talk) => talk.metadata.event).filter(Boolean) as string[]
     return Array.from(new Set(events)).sort()
   }, [talks])
 
   const uniqueLocations = useMemo(() => {
-    const locations = talks
-      .map((talk) => talk.metadata.location)
-      .filter(Boolean) as string[]
+    const locations = talks.map((talk) => talk.metadata.location).filter(Boolean) as string[]
     return Array.from(new Set(locations)).sort()
   }, [talks])
 
@@ -136,14 +133,7 @@ export function TalksList({ talks }: TalksListProps) {
 
       return false
     })
-  }, [
-    talks,
-    searchQuery,
-    selectedYear,
-    selectedEvent,
-    selectedLocation,
-    selectedTag,
-  ])
+  }, [talks, searchQuery, selectedYear, selectedEvent, selectedLocation, selectedTag])
 
   const sortedTalks = useMemo(() => {
     const sorted = [...filteredTalks]
@@ -246,9 +236,7 @@ export function TalksList({ talks }: TalksListProps) {
           className="h-9 w-9 p-0 transition-all"
           title={showFilters ? "Hide Filters" : "Show Filters"}
         >
-          <Filter
-            className={`h-4 w-4 transition-transform ${showFilters ? "scale-110" : ""}`}
-          />
+          <Filter className={`h-4 w-4 transition-transform ${showFilters ? "scale-110" : ""}`} />
         </Button>
       </div>
       {showFilters && (
@@ -256,9 +244,7 @@ export function TalksList({ talks }: TalksListProps) {
           {/* Year filters */}
           {uniqueYears.length > 0 && (
             <div className="flex items-center gap-2 overflow-x-auto pb-1">
-              <span className="shrink-0 text-xs font-semibold text-muted-foreground">
-                Year:
-              </span>
+              <span className="shrink-0 text-xs font-semibold text-muted-foreground">Year:</span>
               {uniqueYears.map((year) => (
                 <Badge
                   key={year}
@@ -268,9 +254,7 @@ export function TalksList({ talks }: TalksListProps) {
                       ? "bg-blue-500 text-white shadow-sm hover:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-700"
                       : "hover:bg-blue-100 hover:shadow-sm dark:hover:bg-blue-950"
                   }`}
-                  onClick={() =>
-                    setSelectedYear(selectedYear === year ? null : year)
-                  }
+                  onClick={() => setSelectedYear(selectedYear === year ? null : year)}
                 >
                   {year}
                 </Badge>
@@ -280,9 +264,7 @@ export function TalksList({ talks }: TalksListProps) {
           {/* Event filters */}
           {uniqueEvents.length > 0 && (
             <div className="flex items-center gap-2 overflow-x-auto pb-1">
-              <span className="shrink-0 text-xs font-semibold text-muted-foreground">
-                Event:
-              </span>
+              <span className="shrink-0 text-xs font-semibold text-muted-foreground">Event:</span>
               {uniqueEvents.map((event) => (
                 <Badge
                   key={event}
@@ -292,9 +274,7 @@ export function TalksList({ talks }: TalksListProps) {
                       ? "bg-purple-500 text-white shadow-sm hover:bg-purple-600 dark:bg-purple-600 dark:hover:bg-purple-700"
                       : "hover:bg-purple-100 hover:shadow-sm dark:hover:bg-purple-950"
                   }`}
-                  onClick={() =>
-                    setSelectedEvent(selectedEvent === event ? null : event)
-                  }
+                  onClick={() => setSelectedEvent(selectedEvent === event ? null : event)}
                 >
                   {event}
                 </Badge>
@@ -317,9 +297,7 @@ export function TalksList({ talks }: TalksListProps) {
                       : "hover:bg-green-100 hover:shadow-sm dark:hover:bg-green-950"
                   }`}
                   onClick={() =>
-                    setSelectedLocation(
-                      selectedLocation === location ? null : location,
-                    )
+                    setSelectedLocation(selectedLocation === location ? null : location)
                   }
                 >
                   {location}
@@ -330,9 +308,7 @@ export function TalksList({ talks }: TalksListProps) {
           {/* Tag filters */}
           {uniqueTags.length > 0 && (
             <div className="flex items-center gap-2 overflow-x-auto pb-1">
-              <span className="shrink-0 text-xs font-semibold text-muted-foreground">
-                Tags:
-              </span>
+              <span className="shrink-0 text-xs font-semibold text-muted-foreground">Tags:</span>
               {uniqueTags.map((tag) => (
                 <Badge
                   key={tag}
@@ -342,9 +318,7 @@ export function TalksList({ talks }: TalksListProps) {
                       ? "bg-orange-500 text-white shadow-sm hover:bg-orange-600 dark:bg-orange-600 dark:hover:bg-orange-700"
                       : "hover:bg-orange-100 hover:shadow-sm dark:hover:bg-orange-950"
                   }`}
-                  onClick={() =>
-                    setSelectedTag(selectedTag === tag ? null : tag)
-                  }
+                  onClick={() => setSelectedTag(selectedTag === tag ? null : tag)}
                 >
                   {tag}
                 </Badge>
@@ -352,10 +326,7 @@ export function TalksList({ talks }: TalksListProps) {
             </div>
           )}
           {/* Clear all filters button */}
-          {(selectedYear ||
-            selectedEvent ||
-            selectedLocation ||
-            selectedTag) && (
+          {(selectedYear || selectedEvent || selectedLocation || selectedTag) && (
             <div className="flex items-center gap-1.5">
               <Button
                 variant="ghost"
@@ -387,11 +358,7 @@ export function TalksList({ talks }: TalksListProps) {
       {sortedTalks.length > 0 && (
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
           {sortedTalks.map((talk) => (
-            <Link
-              key={talk.dirname}
-              href={talk.html_url}
-              className="group block"
-            >
+            <Link key={talk.dirname} href={talk.html_url} className="group block">
               <Card className="relative flex h-full flex-col overflow-hidden border-border/40 bg-card shadow-sm transition-all duration-300 hover:border-primary/50 hover:shadow-md dark:border-border/50 dark:hover:border-primary/60">
                 {/* Preview Area */}
                 <div className="relative -mt-6 aspect-video w-full overflow-hidden bg-linear-to-br from-primary/8 to-primary/3">
@@ -466,9 +433,7 @@ export function TalksList({ talks }: TalksListProps) {
                             {talk.metadata.event}
                           </button>
                         ) : (
-                          <span className="line-clamp-1 font-medium">
-                            {talk.metadata.event}
-                          </span>
+                          <span className="line-clamp-1 font-medium">{talk.metadata.event}</span>
                         )}
                       </div>
                     )}
@@ -479,9 +444,7 @@ export function TalksList({ talks }: TalksListProps) {
                     {talk.metadata.location && (
                       <div className="flex items-center gap-1.5">
                         <MapPin className="h-3.5 w-3.5 shrink-0 text-primary/60" />
-                        <span className="line-clamp-1">
-                          {talk.metadata.location}
-                        </span>
+                        <span className="line-clamp-1">{talk.metadata.location}</span>
                       </div>
                     )}
                   </div>
@@ -496,11 +459,7 @@ export function TalksList({ talks }: TalksListProps) {
                             onClick={(e) => {
                               e.preventDefault()
                               e.stopPropagation()
-                              window.open(
-                                talk.pdfUrl,
-                                "_blank",
-                                "noopener,noreferrer",
-                              )
+                              window.open(talk.pdfUrl, "_blank", "noopener,noreferrer")
                             }}
                             className="inline-flex items-center gap-1.5 rounded-md bg-secondary px-3 py-1.5 text-xs font-medium text-secondary-foreground transition-colors hover:bg-secondary/80"
                           >
@@ -514,11 +473,7 @@ export function TalksList({ talks }: TalksListProps) {
                             onClick={(e) => {
                               e.preventDefault()
                               e.stopPropagation()
-                              window.open(
-                                talk.sourceUrl,
-                                "_blank",
-                                "noopener,noreferrer",
-                              )
+                              window.open(talk.sourceUrl, "_blank", "noopener,noreferrer")
                             }}
                             className="inline-flex items-center gap-1.5 rounded-md bg-secondary px-3 py-1.5 text-xs font-medium text-secondary-foreground transition-colors hover:bg-secondary/80"
                           >

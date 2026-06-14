@@ -7,22 +7,22 @@
  *   bun convert-bibtex from-bibtex <file> --merge  BibTeX → JSON (appends to publications.json)
  */
 
-import { readFileSync, writeFileSync } from "node:fs"
 import { Cite } from "@citation-js/core"
+import { readFileSync, writeFileSync } from "node:fs"
 // Side-effect imports: register BibTeX and CSL plugins
 import "@citation-js/plugin-bibtex"
 import "@citation-js/plugin-csl"
 
+import type { Publication } from "../lib/db/publications.schema"
+
+import { PublicationSchema } from "../lib/db/publications.schema"
 import {
   readPublications,
   writePublications,
   backupPublications,
-  resolveDbPath,
   resolveBibPath,
   reorderKeys,
 } from "./helpers"
-import { PublicationSchema, PublicationsArraySchema } from "../lib/db/publications.schema"
-import type { Publication } from "../lib/db/publications.schema"
 
 // ── Help ─────────────────────────────────────────────────────────────────────
 
@@ -53,7 +53,7 @@ function handleToBibtex(): void {
   // Remove the `id` field — citation-js uses its own internal IDs
   // but preserves `citekey` if present as the BibTeX key
   const citeInput = pubs.map((p) => {
-    const { id, ...rest } = p
+    const { id: _id, ...rest } = p
     return rest
   })
 
@@ -65,9 +65,7 @@ function handleToBibtex(): void {
       template: "bibtex",
     }) as string
   } catch (err) {
-    console.error(
-      `Conversion failed: ${err instanceof Error ? err.message : err}`
-    )
+    console.error(`Conversion failed: ${err instanceof Error ? err.message : err}`)
     process.exit(1)
   }
 
@@ -98,9 +96,7 @@ function handleFromBibtex(filePath: string | undefined, merge: boolean): void {
     const cite = new Cite(bibContent)
     entries = cite.data as Record<string, unknown>[]
   } catch (err) {
-    console.error(
-      `Failed to parse BibTeX: ${err instanceof Error ? err.message : err}`
-    )
+    console.error(`Failed to parse BibTeX: ${err instanceof Error ? err.message : err}`)
     process.exit(1)
   }
 
@@ -125,9 +121,7 @@ function handleFromBibtex(filePath: string | undefined, merge: boolean): void {
     const result = PublicationSchema.safeParse(entry)
     if (!result.success) {
       warnCount++
-      console.error(
-        `⚠ Entry "${entry.title ?? "(no title)"}" has validation issues:`
-      )
+      console.error(`⚠ Entry "${entry.title ?? "(no title)"}" has validation issues:`)
       for (const issue of result.error.issues) {
         console.error(`    [${issue.path.join(".")}] ${issue.message}`)
       }
@@ -138,9 +132,7 @@ function handleFromBibtex(filePath: string | undefined, merge: boolean): void {
     // Print to stdout
     console.log(JSON.stringify(entries, null, 2))
     if (warnCount > 0) {
-      console.error(
-        `\n${warnCount} entry(s) have validation warnings (details above).`
-      )
+      console.error(`\n${warnCount} entry(s) have validation warnings (details above).`)
     }
     return
   }
@@ -148,12 +140,8 @@ function handleFromBibtex(filePath: string | undefined, merge: boolean): void {
   // ── Merge mode ──────────────────────────────────────────────────────────
 
   const existing = readPublications()
-  const existingDOIs = new Set(
-    existing.map((p) => p.DOI).filter(Boolean)
-  )
-  const existingTitles = new Set(
-    existing.map((p) => p.title.toLowerCase().trim())
-  )
+  const existingDOIs = new Set(existing.map((p) => p.DOI).filter(Boolean))
+  const existingTitles = new Set(existing.map((p) => p.title.toLowerCase().trim()))
 
   let added = 0
   let skipped = 0
@@ -183,9 +171,7 @@ function handleFromBibtex(filePath: string | undefined, merge: boolean): void {
     // Ensure UUID
     if (!pub.id) pub.id = crypto.randomUUID()
 
-    const ordered = reorderKeys(
-      pub as unknown as Record<string, unknown>
-    ) as unknown as Publication
+    const ordered = reorderKeys(pub as unknown as Record<string, unknown>) as unknown as Publication
     existing.push(ordered)
     added++
     console.log(`  Added: ${pub.title}`)
@@ -195,7 +181,7 @@ function handleFromBibtex(filePath: string | undefined, merge: boolean): void {
     backupPublications()
     writePublications(existing)
     console.log(
-      `\n✓ Merged ${added} new publication(s) into publications.json (${skipped} skipped).`
+      `\n✓ Merged ${added} new publication(s) into publications.json (${skipped} skipped).`,
     )
   } else {
     console.log(`\nNo new publications to add (${skipped} skipped).`)
@@ -215,8 +201,7 @@ switch (subcommand) {
   case "from-bibtex":
   case "from-bib": {
     const filePath = process.argv[3]
-    const merge =
-      process.argv.includes("--merge") || process.argv.includes("-m")
+    const merge = process.argv.includes("--merge") || process.argv.includes("-m")
     handleFromBibtex(filePath, merge)
     break
   }

@@ -1,6 +1,8 @@
-import PortraitImage from "@/public/portrait.jpg"
 import type { BaseLayoutProps } from "fumadocs-ui/layouts/shared"
+
 import Image from "next/image"
+
+import PortraitImage from "@/public/portrait.jpg"
 
 /**
  * Shared layout configurations
@@ -45,11 +47,7 @@ export function baseOptions(): BaseLayoutProps {
       transparentMode: "always",
       title: (
         <>
-          <Image
-            src={PortraitImage}
-            alt="Portrait of Zheng Ma"
-            className="size-6 rounded-full"
-          />
+          <Image src={PortraitImage} alt="Portrait of Zheng Ma" className="size-6 rounded-full" />
           Home
         </>
       ),

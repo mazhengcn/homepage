@@ -13,11 +13,7 @@ export type Author = z.infer<typeof AuthorSchema>
 
 export const IssuedSchema = z.object({
   "date-parts": z
-    .array(
-      z
-        .tuple([z.coerce.number().int()])
-        .rest(z.coerce.number().int().optional())
-    )
+    .array(z.tuple([z.coerce.number().int()]).rest(z.coerce.number().int().optional()))
     .min(1, "At least one date-part entry is required"),
   status: z.string().optional(),
 })

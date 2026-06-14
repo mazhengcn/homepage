@@ -1,9 +1,10 @@
+import Image from "next/image"
+import { IoDocument, IoMail } from "react-icons/io5"
+
 import LinkButton from "@/components/link-button"
 import Resume from "@/components/resume"
 import { Card, CardContent } from "@/components/ui/card"
 import PortraitImage from "@/public/portrait.jpg"
-import Image from "next/image"
-import { IoDocument, IoMail } from "react-icons/io5"
 
 export default function Home() {
   return (
@@ -18,8 +19,7 @@ export default function Home() {
           />
           <div className="flex flex-col items-center gap-6 text-center">
             <h1 className="text-5xl font-bold tracking-tight">
-              Zheng Ma{" "}
-              <span className="font-cn font-bold tracking-tight">(马 征)</span>
+              Zheng Ma <span className="font-cn font-bold tracking-tight">(马 征)</span>
             </h1>
             <p className="-mt-4 font-mono text-lg text-gray-600 dark:text-gray-400">
               Mathematician and Tech Enthusiast

@@ -1,6 +1,7 @@
 import "@/app/globals.css"
-import { RootProvider } from "fumadocs-ui/provider/next"
 import type { Metadata } from "next"
+
+import { RootProvider } from "fumadocs-ui/provider/next"
 import { Inter, JetBrains_Mono, Noto_Sans_SC } from "next/font/google"
 
 const interSans = Inter({

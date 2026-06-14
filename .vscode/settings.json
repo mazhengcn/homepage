@@ -3,10 +3,7 @@
     "*.css": "tailwindcss"
   },
   "[json][jsonc][javascript][javascriptreact][typescript][typescriptreact]": {
-    "editor.defaultFormatter": "prettier.prettier-vscode",
-    "editor.codeActionsOnSave": {
-      "source.organizeImports.biome": "explicit"
-    }
+    "editor.defaultFormatter": "oxfmtr.vscode-oxfmt"
   },
   "typescript.tsdk": "node_modules/typescript/lib"
 }

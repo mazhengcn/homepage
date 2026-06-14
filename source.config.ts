@@ -1,15 +1,12 @@
-import remarkReadingTime from "@/lib/remark-plugins/remark-reading-time.mjs"
 import { remarkMdxFiles } from "fumadocs-core/mdx-plugins"
 import { metaSchema, pageSchema } from "fumadocs-core/source/schema"
-import {
-  defineCollections,
-  defineConfig,
-  defineDocs,
-} from "fumadocs-mdx/config"
+import { defineCollections, defineConfig, defineDocs } from "fumadocs-mdx/config"
 import lastModified from "fumadocs-mdx/plugins/last-modified"
 import rehypeKatex from "rehype-katex"
 import remarkMath from "remark-math"
 import { z } from "zod"
+
+import remarkReadingTime from "@/lib/remark-plugins/remark-reading-time.mjs"
 
 export const docs = defineDocs({
   dir: "content/docs",

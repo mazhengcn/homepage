@@ -1,19 +1,12 @@
 "use client"
 
-import { Button } from "@/components/ui/button"
-import { Card, CardHeader, CardTitle } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import {
-  ArrowUpRight,
-  BookOpen,
-  Calendar,
-  Code2,
-  FileText,
-  Search,
-} from "lucide-react"
+import { ArrowUpRight, BookOpen, Calendar, Code2, FileText, Search } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import { useMemo, useState } from "react"
+
+import { Card, CardHeader, CardTitle } from "@/components/ui/card"
+import { Input } from "@/components/ui/input"
 
 interface TeachingInfo {
   id: string
@@ -75,11 +68,7 @@ export function TeachingsList({ teachings }: TeachingsListProps) {
       {filteredTeachings.length > 0 && (
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
           {filteredTeachings.map((teaching) => (
-            <Link
-              key={teaching.id}
-              href={teaching.slidesUrl}
-              className="group block"
-            >
+            <Link key={teaching.id} href={teaching.slidesUrl} className="group block">
               <Card className="relative flex h-full flex-col overflow-hidden border-border/40 bg-card shadow-sm transition-all duration-300 hover:border-primary/50 hover:shadow-md dark:border-border/50 dark:hover:border-primary/60">
                 {/* Preview Area */}
                 <div className="relative -mt-6 aspect-video w-full overflow-hidden bg-linear-to-br from-primary/8 to-primary/3">
@@ -137,11 +126,7 @@ export function TeachingsList({ teachings }: TeachingsListProps) {
                             onClick={(e) => {
                               e.preventDefault()
                               e.stopPropagation()
-                              window.open(
-                                teaching.pdfUrl,
-                                "_blank",
-                                "noopener,noreferrer",
-                              )
+                              window.open(teaching.pdfUrl, "_blank", "noopener,noreferrer")
                             }}
                             className="inline-flex items-center gap-1.5 rounded-md bg-secondary px-3 py-1.5 text-xs font-medium text-secondary-foreground transition-colors hover:bg-secondary/80"
                           >
@@ -155,11 +140,7 @@ export function TeachingsList({ teachings }: TeachingsListProps) {
                             onClick={(e) => {
                               e.preventDefault()
                               e.stopPropagation()
-                              window.open(
-                                teaching.sourceUrl,
-                                "_blank",
-                                "noopener,noreferrer",
-                              )
+                              window.open(teaching.sourceUrl, "_blank", "noopener,noreferrer")
                             }}
                             className="inline-flex items-center gap-1.5 rounded-md bg-secondary px-3 py-1.5 text-xs font-medium text-secondary-foreground transition-colors hover:bg-secondary/80"
                           >

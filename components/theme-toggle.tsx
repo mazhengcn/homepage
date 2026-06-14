@@ -1,9 +1,10 @@
 "use client"
-import { cn } from "@/lib/utils"
 import { cva } from "class-variance-authority"
 import { Airplay, Moon, Sun } from "lucide-react"
 import { useTheme } from "next-themes"
 import { useEffect, useState } from "react"
+
+import { cn } from "@/lib/utils"
 
 const itemVariants = cva("size-7 rounded-full p-1.5 text-muted-foreground", {
   variants: {
@@ -23,7 +24,7 @@ export function ThemeToggle({ mode = "light-dark" }) {
   const { setTheme, theme, resolvedTheme } = useTheme()
   const [mounted, setMounted] = useState(false)
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect
+    // oxlint-disable-next-line react/set-state-in-effect
     setMounted(true)
   }, [])
   const container = cn("inline-flex items-center rounded-full border p-1")

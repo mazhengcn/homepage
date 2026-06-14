@@ -1,7 +1,8 @@
+import { spawnSync } from "node:child_process"
 import { readFileSync, writeFileSync, copyFileSync, unlinkSync } from "node:fs"
 import { tmpdir } from "node:os"
 import { join, resolve as resolvePath } from "node:path"
-import { spawnSync } from "node:child_process"
+
 import type { Publication } from "../lib/db/publications.schema"
 
 // ── Path resolution ──────────────────────────────────────────────────────────
@@ -61,8 +62,7 @@ export function openInEditor(template: unknown): Record<string, unknown> {
   writeFileSync(tmpFile, content, "utf-8")
 
   // Pick editor
-  const editor =
-    process.env.EDITOR || process.env.VISUAL || findAvailableEditor()
+  const editor = process.env.EDITOR || process.env.VISUAL || findAvailableEditor()
 
   console.log(`Opening ${tmpFile} in ${editor}...`)
 
@@ -82,9 +82,7 @@ export function openInEditor(template: unknown): Record<string, unknown> {
     parsed = JSON.parse(raw)
   } catch (err) {
     unlinkSync(tmpFile)
-    throw new Error(
-      `Failed to parse edited JSON: ${err instanceof Error ? err.message : err}`
-    )
+    throw new Error(`Failed to parse edited JSON: ${err instanceof Error ? err.message : err}`)
   }
 
   // Clean up
@@ -101,7 +99,7 @@ function findAvailableEditor(): string {
   }
   throw new Error(
     "No editor found. Set $EDITOR or install vim/nano. " +
-      "Falling back to editing the JSON file directly."
+      "Falling back to editing the JSON file directly.",
   )
 }
 

@@ -1,6 +1,7 @@
-import { Badge } from "@/components/ui/badge"
 import { Building2, Calendar } from "lucide-react"
 import Link from "next/link"
+
+import { Badge } from "@/components/ui/badge"
 
 const experiences = [
   {
@@ -25,7 +26,7 @@ const experiences = [
     period: "2012 - 2017",
     description: (
       <>
-        Supervised by {" "}
+        Supervised by{" "}
         <Link
           href="https://ins.sjtu.edu.cn/people/shijin/"
           className="font-medium text-primary hover:underline"
@@ -33,8 +34,8 @@ const experiences = [
           rel="noopener noreferrer"
         >
           Prof. Shi Jin
-        </Link>.
-        Dissertation: {" "}
+        </Link>
+        . Dissertation:{" "}
         <Link
           href="/thesis.pdf"
           className="font-medium text-primary hover:underline"
@@ -54,8 +55,8 @@ const experiences = [
     period: "2008 - 2012",
     description: (
       <>
-        Graduated from the the first &quot;Class of Science (Math and
-        Physics)&quot; which is the predecessor of the{" "}
+        Graduated from the the first &quot;Class of Science (Math and Physics)&quot; which is the
+        predecessor of the{" "}
         <Link
           href="https://zhiyuan.sjtu.edu.cn/html/zhiyuan"
           className="font-medium text-primary hover:underline"

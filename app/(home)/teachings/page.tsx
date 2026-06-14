@@ -1,8 +1,6 @@
+import type { TeachingMetadata, TeachingsCollection } from "@/types/teachings-metadata"
+
 import { TeachingsList } from "@/components/teachings-list"
-import type {
-  TeachingMetadata,
-  TeachingsCollection,
-} from "@/types/teachings-metadata"
 
 interface TeachingInfo {
   id: string
@@ -16,12 +14,9 @@ interface TeachingInfo {
 }
 
 async function getTeachingsMetadata(): Promise<TeachingsCollection> {
-  const res = await fetch(
-    "https://zheng-teachings.netlify.app/teachings-metadata.json",
-    {
-      next: { revalidate: 3600 }, // Revalidate every hour
-    },
-  )
+  const res = await fetch("https://zheng-teachings.netlify.app/teachings-metadata.json", {
+    next: { revalidate: 3600 }, // Revalidate every hour
+  })
 
   if (!res.ok) {
     throw new Error("Failed to fetch teachings metadata")
@@ -31,9 +26,7 @@ async function getTeachingsMetadata(): Promise<TeachingsCollection> {
 }
 
 function transformTeachingMetadata(teaching: TeachingMetadata): TeachingInfo {
-  const slidesUrl =
-    teaching.slidesUrl ||
-    `https://zheng-teachings.netlify.app/${teaching.id}`
+  const slidesUrl = teaching.slidesUrl || `https://zheng-teachings.netlify.app/${teaching.id}`
 
   // Generate preview image URL (Slidev exports og-image.png with 16:9 ratio)
   const previewImage = `${slidesUrl}og-image.png`

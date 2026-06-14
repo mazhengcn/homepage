@@ -1,7 +1,8 @@
+import { HomeLayout } from "fumadocs-ui/layouts/home"
+
 import BackToTopButton from "@/components/back-to-top"
 import Footer from "@/components/footer"
 import { baseOptions, linkItems } from "@/lib/layout.shared"
-import { HomeLayout } from "fumadocs-ui/layouts/home"
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (

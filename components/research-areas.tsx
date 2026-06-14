@@ -1,3 +1,8 @@
+import type * as PageTree from "fumadocs-core/page-tree"
+
+import Image from "next/image"
+import Link from "next/link"
+
 import {
   Item,
   ItemContent,
@@ -6,9 +11,6 @@ import {
   ItemHeader,
   ItemTitle,
 } from "@/components/ui/item"
-import type * as PageTree from "fumadocs-core/page-tree"
-import Image from "next/image"
-import Link from "next/link"
 
 const coverImages = {
   kinetic: "/research/reentry.png",
@@ -24,14 +26,8 @@ const researchOrder = {
 
 export default function ResearchAreas({ metas }: { metas: PageTree.Node[] }) {
   metas.sort((a: PageTree.Node, b: PageTree.Node) => {
-    const indexA =
-      researchOrder[
-        (a.$id ? a.$id.split(":")[1] : "") as keyof typeof researchOrder
-      ]
-    const indexB =
-      researchOrder[
-        (b.$id ? b.$id.split(":")[1] : "") as keyof typeof researchOrder
-      ]
+    const indexA = researchOrder[(a.$id ? a.$id.split(":")[1] : "") as keyof typeof researchOrder]
+    const indexB = researchOrder[(b.$id ? b.$id.split(":")[1] : "") as keyof typeof researchOrder]
     return indexA - indexB
   })
   return (

@@ -1,5 +1,6 @@
 "use client"
 import Link from "next/link"
+
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -16,10 +17,7 @@ export function NavMenu({ tags }: { tags: string[] }) {
     <NavigationMenu viewport={false}>
       <NavigationMenuList>
         <NavigationMenuItem>
-          <NavigationMenuLink
-            asChild
-            className={cn(navigationMenuTriggerStyle())}
-          >
+          <NavigationMenuLink asChild className={cn(navigationMenuTriggerStyle())}>
             <Link href="/research">Research</Link>
           </NavigationMenuLink>
         </NavigationMenuItem>

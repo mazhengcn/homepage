@@ -1,0 +1,30 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "plugins": ["react", "typescript", "import", "nextjs"],
+  "rules": {
+    "nextjs/google-font-display": "deny",
+    "nextjs/google-font-preconnect": "deny",
+    "nextjs/inline-script-id": "deny",
+    "nextjs/next-script-for-ga": "deny",
+    "nextjs/no-assign-module-variable": "deny",
+    "nextjs/no-async-client-component": "deny",
+    "nextjs/no-before-interactive-script-outside-document": "deny",
+    "nextjs/no-css-tags": "deny",
+    "nextjs/no-document-import-in-page": "deny",
+    "nextjs/no-duplicate-head": "deny",
+    "nextjs/no-head-element": "deny",
+    "nextjs/no-head-import-in-document": "deny",
+    "nextjs/no-html-link-for-pages": "deny",
+    "nextjs/no-img-element": "deny",
+    "nextjs/no-page-custom-font": "deny",
+    "nextjs/no-script-component-in-head": "deny",
+    "nextjs/no-styled-jsx-in-document": "deny",
+    "nextjs/no-sync-scripts": "deny",
+    "nextjs/no-title-in-document-head": "deny",
+    "nextjs/no-typos": "deny",
+    "nextjs/no-unwanted-polyfillio": "deny",
+    "import/first": "warn",
+    "import/no-duplicates": "warn"
+  },
+  "ignorePatterns": [".next", "out", "build", "next-env.d.ts", ".source", "node_modules"]
+}

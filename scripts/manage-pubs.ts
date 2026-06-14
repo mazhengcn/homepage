@@ -10,6 +10,10 @@
  */
 
 import { createInterface } from "node:readline"
+
+import type { Publication } from "../lib/db/publications.schema"
+
+import { PublicationSchema, PublicationsArraySchema } from "../lib/db/publications.schema"
 import {
   readPublications,
   writePublications,
@@ -17,8 +21,6 @@ import {
   openInEditor,
   reorderKeys,
 } from "./helpers"
-import { PublicationSchema, PublicationsArraySchema } from "../lib/db/publications.schema"
-import type { Publication } from "../lib/db/publications.schema"
 
 // ── Help ─────────────────────────────────────────────────────────────────────
 
@@ -110,7 +112,7 @@ function handleAdd(): void {
   backupPublications()
   const pubs = readPublications()
   const entry = reorderKeys(
-    result.data as unknown as Record<string, unknown>
+    result.data as unknown as Record<string, unknown>,
   ) as unknown as Publication
   pubs.push(entry)
   writePublications(pubs)
@@ -137,9 +139,7 @@ function handleEdit(indexStr: string | undefined): void {
   const pub = pubs[index - 1]
 
   if (!pub) {
-    console.error(
-      `Index ${index} out of range. There are ${pubs.length} publications.`
-    )
+    console.error(`Index ${index} out of range. There are ${pubs.length} publications.`)
     console.error("Run 'bun manage-pubs list' to see available indexes.")
     process.exit(1)
   }
@@ -167,7 +167,7 @@ function handleEdit(indexStr: string | undefined): void {
 
   backupPublications()
   const entry = reorderKeys(
-    result.data as unknown as Record<string, unknown>
+    result.data as unknown as Record<string, unknown>,
   ) as unknown as Publication
   pubs[index - 1] = entry
   writePublications(pubs)
@@ -193,18 +193,14 @@ async function handleRemove(indexStr: string | undefined): Promise<void> {
   const pub = pubs[index - 1]
 
   if (!pub) {
-    console.error(
-      `Index ${index} out of range. There are ${pubs.length} publications.`
-    )
+    console.error(`Index ${index} out of range. There are ${pubs.length} publications.`)
     process.exit(1)
   }
 
   const year = pub.issued?.["date-parts"]?.[0]?.[0] ?? "????"
   console.log(`\n  #${index}: [${year}] ${pub.title}\n`)
 
-  const answer = (await prompt("Remove this publication? (y/N): "))
-    .trim()
-    .toLowerCase()
+  const answer = (await prompt("Remove this publication? (y/N): ")).trim().toLowerCase()
 
   if (answer !== "y" && answer !== "yes") {
     console.log("Cancelled.")
@@ -236,9 +232,7 @@ function handleValidate(): void {
   }
 
   const issues = result.error.issues
-  console.error(
-    `✗ ${issues.length} validation issue(s) found across ${pubs.length} entries:\n`
-  )
+  console.error(`✗ ${issues.length} validation issue(s) found across ${pubs.length} entries:\n`)
 
   for (const issue of issues) {
     const path = issue.path.length ? issue.path.join(" → ") : "(root)"

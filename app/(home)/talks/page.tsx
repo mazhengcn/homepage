@@ -1,5 +1,6 @@
-import { TalksList } from "@/components/talks-list"
 import type { TalkMetadata, TalksCollection } from "@/types/talks-metadata"
+
+import { TalksList } from "@/components/talks-list"
 
 interface TalkInfo {
   dirname: string
@@ -22,12 +23,9 @@ interface TalkInfo {
 }
 
 async function getTalksMetadata(): Promise<TalksCollection> {
-  const res = await fetch(
-    "https://zheng-talks.netlify.app/talks-metadata.json",
-    {
-      next: { revalidate: 3600 }, // Revalidate every hour
-    },
-  )
+  const res = await fetch("https://zheng-talks.netlify.app/talks-metadata.json", {
+    next: { revalidate: 3600 }, // Revalidate every hour
+  })
 
   if (!res.ok) {
     throw new Error("Failed to fetch talks metadata")
@@ -43,8 +41,7 @@ function transformTalkMetadata(talk: TalkMetadata): TalkInfo {
     return typeof value === "string" ? value : undefined
   }
 
-  const slidesUrl =
-    talk.slidesUrl || `https://zheng-talks.netlify.app/${talk.id}`
+  const slidesUrl = talk.slidesUrl || `https://zheng-talks.netlify.app/${talk.id}`
 
   // Generate preview image URL (Slidev exports og-image.png with 16:9 ratio)
   const previewImage = `${slidesUrl}/og-image.png`

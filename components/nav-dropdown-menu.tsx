@@ -1,4 +1,5 @@
 import { Menu as IconMenu } from "lucide-react"
+
 import { Button } from "@/components/ui/button"
 import {
   DropdownMenu,
@@ -19,11 +20,7 @@ export function NavDropdownMenu({ navLinks, className }: Props) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button
-          variant="outline"
-          size="icon"
-          className={cn("cursor-pointer", className)}
-        >
+        <Button variant="outline" size="icon" className={cn("cursor-pointer", className)}>
           <IconMenu />
         </Button>
       </DropdownMenuTrigger>

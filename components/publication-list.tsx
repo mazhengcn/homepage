@@ -1,5 +1,11 @@
 "use client"
 
+import { ArrowDown, ArrowUp, Calendar, Filter, Search, Tag, Type } from "lucide-react"
+import Link from "next/link"
+import { useMemo, useState } from "react"
+
+import type pubs from "@/lib/db/publications.json"
+
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import {
@@ -8,11 +14,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import {
-  HoverCard,
-  HoverCardContent,
-  HoverCardTrigger,
-} from "@/components/ui/hover-card"
+import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card"
 import { Input } from "@/components/ui/input"
 import {
   Item,
@@ -23,18 +25,6 @@ import {
   ItemMedia,
   ItemTitle,
 } from "@/components/ui/item"
-import type pubs from "@/lib/db/publications.json"
-import {
-  ArrowDown,
-  ArrowUp,
-  Calendar,
-  Filter,
-  Search,
-  Tag,
-  Type,
-} from "lucide-react"
-import Link from "next/link"
-import { useMemo, useState } from "react"
 
 type Publication = (typeof pubs)[number]
 
@@ -43,10 +33,7 @@ interface PublicationsListProps {
   showSearch?: boolean
 }
 
-export function PublicationList({
-  publications,
-  showSearch = true,
-}: PublicationsListProps) {
+export function PublicationList({ publications, showSearch = true }: PublicationsListProps) {
   const [searchQuery, setSearchQuery] = useState("")
   const [sortField, setSortField] = useState<"year" | "type" | "tags">("year")
   const [sortDirection, setSortDirection] = useState<"asc" | "desc">("desc")
@@ -136,9 +123,7 @@ export function PublicationList({
       const authorString =
         pub.author
 
-          ?.map((a: { family: string; given: string }) =>
-            `${a.given} ${a.family}`.toLowerCase(),
-          )
+          ?.map((a: { family: string; given: string }) => `${a.given} ${a.family}`.toLowerCase())
           .join(" ") || ""
       if (authorString.includes(query)) return true
 
@@ -158,22 +143,14 @@ export function PublicationList({
       if (type.includes(query)) return true
 
       // Search in tags
-      if (pub.tags?.some((tag) => tag.toLowerCase().includes(query)))
-        return true
+      if (pub.tags?.some((tag) => tag.toLowerCase().includes(query))) return true
 
       // Search in journal/container-title
       if (pub["container-title"]?.toLowerCase().includes(query)) return true
 
       return false
     })
-  }, [
-    publications,
-    searchQuery,
-    selectedYear,
-    selectedType,
-    selectedStatus,
-    selectedTag,
-  ])
+  }, [publications, searchQuery, selectedYear, selectedType, selectedStatus, selectedTag])
 
   const sortedPublications = useMemo(() => {
     const sorted = [...filteredPublications]
@@ -287,9 +264,7 @@ export function PublicationList({
             className="h-9 w-9 p-0 transition-all"
             title={showFilters ? "Hide Filters" : "Show Filters"}
           >
-            <Filter
-              className={`h-4 w-4 transition-transform ${showFilters ? "scale-110" : ""}`}
-            />
+            <Filter className={`h-4 w-4 transition-transform ${showFilters ? "scale-110" : ""}`} />
           </Button>
         </div>
       )}
@@ -298,9 +273,7 @@ export function PublicationList({
           {/* Year filters */}
           {uniqueYears.length > 0 && (
             <div className="flex items-center gap-2 overflow-x-auto pb-1">
-              <span className="shrink-0 text-xs font-semibold text-muted-foreground">
-                Year:
-              </span>
+              <span className="shrink-0 text-xs font-semibold text-muted-foreground">Year:</span>
               {uniqueYears.map((year) => (
                 <Badge
                   key={year}
@@ -310,9 +283,7 @@ export function PublicationList({
                       ? "bg-blue-500 text-white shadow-sm hover:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-700"
                       : "hover:bg-blue-100 hover:shadow-sm dark:hover:bg-blue-950"
                   }`}
-                  onClick={() =>
-                    setSelectedYear(selectedYear === year ? null : year)
-                  }
+                  onClick={() => setSelectedYear(selectedYear === year ? null : year)}
                 >
                   {year}
                 </Badge>
@@ -322,9 +293,7 @@ export function PublicationList({
           {/* Type filters */}
           {uniqueTypes.length > 0 && (
             <div className="flex items-center gap-2 overflow-x-auto pb-1">
-              <span className="shrink-0 text-xs font-semibold text-muted-foreground">
-                Type:
-              </span>
+              <span className="shrink-0 text-xs font-semibold text-muted-foreground">Type:</span>
               {uniqueTypes.map((type) => (
                 <Badge
                   key={type}
@@ -334,9 +303,7 @@ export function PublicationList({
                       ? "bg-purple-500 text-white shadow-sm hover:bg-purple-600 dark:bg-purple-600 dark:hover:bg-purple-700"
                       : "hover:bg-purple-100 hover:shadow-sm dark:hover:bg-purple-950"
                   }`}
-                  onClick={() =>
-                    setSelectedType(selectedType === type ? null : type)
-                  }
+                  onClick={() => setSelectedType(selectedType === type ? null : type)}
                 >
                   {type}
                 </Badge>
@@ -346,9 +313,7 @@ export function PublicationList({
           {/* Status filters */}
           {uniqueStatuses.length > 0 && (
             <div className="flex items-center gap-2 overflow-x-auto pb-1">
-              <span className="shrink-0 text-xs font-semibold text-muted-foreground">
-                Status:
-              </span>
+              <span className="shrink-0 text-xs font-semibold text-muted-foreground">Status:</span>
               {uniqueStatuses.map((status) => (
                 <Badge
                   key={status}
@@ -358,9 +323,7 @@ export function PublicationList({
                       ? "bg-green-500 text-white shadow-sm hover:bg-green-600 dark:bg-green-600 dark:hover:bg-green-700"
                       : "hover:bg-green-100 hover:shadow-sm dark:hover:bg-green-950"
                   }`}
-                  onClick={() =>
-                    setSelectedStatus(selectedStatus === status ? null : status)
-                  }
+                  onClick={() => setSelectedStatus(selectedStatus === status ? null : status)}
                 >
                   {status}
                 </Badge>
@@ -370,9 +333,7 @@ export function PublicationList({
           {/* Tag filters */}
           {uniqueTags.length > 0 && (
             <div className="flex items-center gap-2 overflow-x-auto pb-1">
-              <span className="shrink-0 text-xs font-semibold text-muted-foreground">
-                Tags:
-              </span>
+              <span className="shrink-0 text-xs font-semibold text-muted-foreground">Tags:</span>
               {uniqueTags.map((tag) => (
                 <Badge
                   key={tag}
@@ -382,9 +343,7 @@ export function PublicationList({
                       ? "bg-orange-500 text-white shadow-sm hover:bg-orange-600 dark:bg-orange-600 dark:hover:bg-orange-700"
                       : "hover:bg-orange-100 hover:shadow-sm dark:hover:bg-orange-950"
                   }`}
-                  onClick={() =>
-                    setSelectedTag(selectedTag === tag ? null : tag)
-                  }
+                  onClick={() => setSelectedTag(selectedTag === tag ? null : tag)}
                 >
                   {tag}
                 </Badge>
@@ -428,10 +387,7 @@ export function PublicationList({
           // Format author names
           const authorString =
             pub.author
-              ?.map(
-                (a: { family: string; given: string }) =>
-                  `${a.given} ${a.family}`,
-              )
+              ?.map((a: { family: string; given: string }) => `${a.given} ${a.family}`)
               .join(", ") || "Unknown Author"
 
           // Get journal name from container-title
@@ -458,29 +414,19 @@ export function PublicationList({
                 : "published"
 
           // PDF link
-          const pdfLink =
-            pub["pdf-link"] ?? `https://arxiv.org/pdf/${pub.arXiv}`
+          const pdfLink = pub["pdf-link"] ?? `https://arxiv.org/pdf/${pub.arXiv}`
 
           return (
             <HoverCard key={pub.id}>
               <HoverCardTrigger asChild>
-                <Item
-                  variant="outline"
-                  className="transition-colors hover:bg-accent/50"
-                >
+                <Item variant="outline" className="transition-colors hover:bg-accent/50">
                   <ItemMedia variant="icon">{filteredNum - index}</ItemMedia>
                   <ItemContent>
                     <ItemTitle className="font-semibold">{pub.title}</ItemTitle>
-                    <ItemDescription className="text-foreground/80">
-                      {authorString}
-                    </ItemDescription>
-                    <ItemDescription className="italic">
-                      {journal}
-                    </ItemDescription>
+                    <ItemDescription className="text-foreground/80">{authorString}</ItemDescription>
+                    <ItemDescription className="italic">{journal}</ItemDescription>
                     <ItemDescription className="mt-1 flex w-full flex-wrap items-center gap-2 text-xs">
-                      <Badge className="px-1 font-mono tabular-nums">
-                        {year}
-                      </Badge>
+                      <Badge className="px-1 font-mono tabular-nums">{year}</Badge>
                       <Badge variant="secondary" className="px-1 font-mono">
                         {type}
                       </Badge>
@@ -495,11 +441,7 @@ export function PublicationList({
                         {status}
                       </Badge>
                       {pub.tags.map((tag) => (
-                        <Badge
-                          key={tag}
-                          variant="outline"
-                          className="px-1 font-mono"
-                        >
+                        <Badge key={tag} variant="outline" className="px-1 font-mono">
                           {tag}
                         </Badge>
                       ))}

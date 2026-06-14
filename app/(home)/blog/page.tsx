@@ -1,7 +1,9 @@
-import { blog } from "@/lib/source"
 import { PathUtils } from "fumadocs-core/source"
 import Image from "next/image"
 import Link from "next/link"
+
+import { blog } from "@/lib/source"
+
 import BannerImage from "./banner.png"
 
 function getName(path: string) {
@@ -24,12 +26,8 @@ export default function Page() {
           alt="banner"
           className="absolute inset-0 -z-1 size-full object-cover"
         />
-        <h1 className="text-landing-foreground mb-4 font-mono text-3xl font-medium">
-          Blog
-        </h1>
-        <p className="text-landing-foreground-200 font-mono text-sm">
-          Latest activities of Zheng.
-        </p>
+        <h1 className="text-landing-foreground mb-4 font-mono text-3xl font-medium">Blog</h1>
+        <p className="text-landing-foreground-200 font-mono text-sm">Latest activities of Zheng.</p>
       </div>
       <div className="grid grid-cols-1 gap-2 md:grid-cols-2">
         {posts.map((post) => (
@@ -39,9 +37,7 @@ export default function Page() {
             className="flex flex-col rounded-2xl border bg-fd-card p-4 shadow-sm transition-colors hover:bg-fd-accent hover:text-fd-accent-foreground"
           >
             <p className="font-medium">{post.data.title}</p>
-            <p className="text-sm text-fd-muted-foreground">
-              {post.data.description}
-            </p>
+            <p className="text-sm text-fd-muted-foreground">{post.data.description}</p>
 
             <p className="text-brand mt-auto pt-4 text-xs">
               {new Date(post.data.date ?? getName(post.path)).toDateString()}

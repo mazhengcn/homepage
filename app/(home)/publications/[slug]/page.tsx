@@ -1,13 +1,9 @@
 import { PublicationList } from "@/components/publication-list"
 import pubs from "@/lib/db/publications.json"
 
-export default async function TagPage(
-  props: PageProps<"/publications/[slug]">
-) {
+export default async function TagPage(props: PageProps<"/publications/[slug]">) {
   const { slug } = await props.params
-  const filteredPubs = pubs.filter(publication =>
-    publication.tags?.includes(slug)
-  )
+  const filteredPubs = pubs.filter((publication) => publication.tags?.includes(slug))
 
   return (
     <div className="pt-10">
