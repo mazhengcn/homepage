@@ -1,6 +1,34 @@
 [
   {
     "type": "article-journal",
+    "title": "Decoupled Latent Optimization of Diffusion Models for Full Waveform Inversion",
+    "author": [
+      {
+        "family": "Min",
+        "given": "Chen"
+      },
+      {
+        "family": "Ma",
+        "given": "Zheng"
+      }
+    ],
+    "abstract": "Full waveform inversion (FWI) recovers subsurface velocity from seismic recordings by solving a severely ill-posed, nonconvex PDE-constrained optimization. Classical regularizers stabilize the inversion but fail to reproduce realistic geological structures; recent diffusion-prior methods improve realism at the cost of a fragile trade-off between data fidelity and prior consistency. We propose Decoupled Latent Optimization (DLO), which relaxes the standard latent-optimization formulation into a quadratic-penalty objective over an auxiliary physical variable and a latent variable. The data-fidelity gradient acts in physical space, the diffusion sampler contributes only through a decoded prior sample, and the standard smoothed-velocity initialization of classical FWI is preserved. On the OpenFWI benchmark, DLO outperforms classical regularizers and existing diffusion-based methods under clean, noisy, and missing-trace acquisitions. The prior, trained on 70*70 OpenFWI models, transfers directly to the Marmousi and Overthrust benchmarks, where DLO recovers intricate fault structures and remains robust to initialization smoothing and measurement noise. ",
+    "issued": {
+      "date-parts": [[2026]]
+    },
+    "container-title": "arXiv",
+    "DOI": "10.48550/arXiv.2606.14139",
+    "arXiv": "2606.14139",
+    "tags": [
+      "Full-waveform inversion",
+      "Diffusion models",
+      "PDE-governed inverse problem",
+      "Seismic imaging"
+    ],
+    "id": "9873b4f8-b113-4eef-9e2a-9696aa695d5b"
+  },
+  {
+    "type": "article-journal",
     "title": "Robust Physics-Guided Diffusion for Full-Waveform Inversion",
     "author": [
       {

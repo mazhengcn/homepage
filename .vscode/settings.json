@@ -3,7 +3,7 @@
     "*.css": "tailwindcss"
   },
   "[json][jsonc][javascript][javascriptreact][typescript][typescriptreact]": {
-    "editor.defaultFormatter": "oxfmtr.vscode-oxfmt"
+    "editor.defaultFormatter": "oxc.oxc-vscode"
   },
-  "typescript.tsdk": "node_modules/typescript/lib"
+  "js/ts.tsdk.path": "./node_modules/typerscipt/lib"
 }
