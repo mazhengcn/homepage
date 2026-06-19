@@ -1,8 +1,8 @@
 "use client"
 
-import { ArrowUpRight, BookOpen, Calendar, Code2, FileText, Search } from "lucide-react"
+import { ArrowUpRight, BookOpen, Calendar, FileText, Pencil, Search } from "lucide-react"
 import Image from "next/image"
-import Link from "next/link"
+import { useRouter } from "next/navigation"
 import { useMemo, useState } from "react"
 
 import { Card, CardHeader, CardTitle } from "@/components/ui/card"
@@ -14,8 +14,8 @@ interface TeachingInfo {
   date: string
   language?: string
   slidesUrl: string
-  pdfUrl?: string
-  sourceUrl?: string
+  slidesPdfUrl: string
+  notesPdfUrl: string
   previewImage?: string
 }
 
@@ -24,6 +24,7 @@ interface TeachingsListProps {
 }
 
 export function TeachingsList({ teachings }: TeachingsListProps) {
+  const router = useRouter()
   const [searchQuery, setSearchQuery] = useState("")
 
   const filteredTeachings = useMemo(() => {
@@ -68,7 +69,16 @@ export function TeachingsList({ teachings }: TeachingsListProps) {
       {filteredTeachings.length > 0 && (
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
           {filteredTeachings.map((teaching) => (
-            <Link key={teaching.id} href={teaching.slidesUrl} className="group block">
+            <div
+              key={teaching.id}
+              role="button"
+              tabIndex={0}
+              onClick={() => router.push(teaching.slidesUrl)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") router.push(teaching.slidesUrl)
+              }}
+              className="group block cursor-pointer"
+            >
               <Card className="relative flex h-full flex-col overflow-hidden border-border/40 bg-card shadow-sm transition-all duration-300 hover:border-primary/50 hover:shadow-md dark:border-border/50 dark:hover:border-primary/60">
                 {/* Preview Area */}
                 <div className="relative -mt-6 aspect-video w-full overflow-hidden bg-linear-to-br from-primary/8 to-primary/3">
@@ -116,44 +126,32 @@ export function TeachingsList({ teachings }: TeachingsListProps) {
                     </div>
                   </div>
 
-                  <div className="mt-auto space-y-2.5 pt-2">
-                    {/* Action Buttons */}
-                    {(teaching.pdfUrl || teaching.sourceUrl) && (
-                      <div className="flex gap-2">
-                        {teaching.pdfUrl && (
-                          <button
-                            type="button"
-                            onClick={(e) => {
-                              e.preventDefault()
-                              e.stopPropagation()
-                              window.open(teaching.pdfUrl, "_blank", "noopener,noreferrer")
-                            }}
-                            className="inline-flex items-center gap-1.5 rounded-md bg-secondary px-3 py-1.5 text-xs font-medium text-secondary-foreground transition-colors hover:bg-secondary/80"
-                          >
-                            <FileText className="h-3.5 w-3.5" />
-                            PDF
-                          </button>
-                        )}
-                        {teaching.sourceUrl && (
-                          <button
-                            type="button"
-                            onClick={(e) => {
-                              e.preventDefault()
-                              e.stopPropagation()
-                              window.open(teaching.sourceUrl, "_blank", "noopener,noreferrer")
-                            }}
-                            className="inline-flex items-center gap-1.5 rounded-md bg-secondary px-3 py-1.5 text-xs font-medium text-secondary-foreground transition-colors hover:bg-secondary/80"
-                          >
-                            <Code2 className="h-3.5 w-3.5" />
-                            Source
-                          </button>
-                        )}
-                      </div>
-                    )}
+                  <div className="mt-auto space-y-2.5 pt-2" onClick={(e) => e.stopPropagation()}>
+                    {/* Action Links */}
+                    <div className="flex gap-2">
+                      <a
+                        href={teaching.slidesPdfUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 rounded-md bg-secondary px-3 py-1.5 text-xs font-medium text-secondary-foreground transition-colors hover:bg-secondary/80"
+                      >
+                        <FileText className="h-3.5 w-3.5" />
+                        PDF
+                      </a>
+                      <a
+                        href={teaching.notesPdfUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 rounded-md bg-secondary px-3 py-1.5 text-xs font-medium text-secondary-foreground transition-colors hover:bg-secondary/80"
+                      >
+                        <Pencil className="h-3.5 w-3.5" />
+                        Notes
+                      </a>
+                    </div>
                   </div>
                 </CardHeader>
               </Card>
-            </Link>
+            </div>
           ))}
         </div>
       )}

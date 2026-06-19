@@ -14,7 +14,7 @@ import {
   Tag,
 } from "lucide-react"
 import Image from "next/image"
-import Link from "next/link"
+import { useRouter } from "next/navigation"
 import { useMemo, useState } from "react"
 
 import { Badge } from "@/components/ui/badge"
@@ -55,6 +55,7 @@ interface TalksListProps {
 }
 
 export function TalksList({ talks }: TalksListProps) {
+  const router = useRouter()
   const [searchQuery, setSearchQuery] = useState("")
   const [sortField, setSortField] = useState<"date" | "event" | "tags">("date")
   const [sortDirection, setSortDirection] = useState<"asc" | "desc">("desc")
@@ -358,7 +359,16 @@ export function TalksList({ talks }: TalksListProps) {
       {sortedTalks.length > 0 && (
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
           {sortedTalks.map((talk) => (
-            <Link key={talk.dirname} href={talk.html_url} className="group block">
+            <div
+              key={talk.dirname}
+              role="button"
+              tabIndex={0}
+              onClick={() => router.push(talk.html_url)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") router.push(talk.html_url)
+              }}
+              className="group block cursor-pointer"
+            >
               <Card className="relative flex h-full flex-col overflow-hidden border-border/40 bg-card shadow-sm transition-all duration-300 hover:border-primary/50 hover:shadow-md dark:border-border/50 dark:hover:border-primary/60">
                 {/* Preview Area */}
                 <div className="relative -mt-6 aspect-video w-full overflow-hidden bg-linear-to-br from-primary/8 to-primary/3">
@@ -417,21 +427,15 @@ export function TalksList({ talks }: TalksListProps) {
                       <div className="flex items-center gap-2">
                         <Presentation className="h-3.5 w-3.5 shrink-0 text-primary/60" />
                         {talk.metadata.conferenceUrl ? (
-                          <button
-                            type="button"
-                            onClick={(e) => {
-                              e.preventDefault()
-                              e.stopPropagation()
-                              window.open(
-                                talk.metadata.conferenceUrl,
-                                "_blank",
-                                "noopener,noreferrer",
-                              )
-                            }}
+                          <a
+                            href={talk.metadata.conferenceUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onClick={(e) => e.stopPropagation()}
                             className="line-clamp-1 text-left font-medium text-primary underline-offset-4 hover:underline"
                           >
                             {talk.metadata.event}
-                          </button>
+                          </a>
                         ) : (
                           <span className="line-clamp-1 font-medium">{talk.metadata.event}</span>
                         )}
@@ -449,44 +453,38 @@ export function TalksList({ talks }: TalksListProps) {
                     )}
                   </div>
 
-                  <div className="mt-auto space-y-2.5 pt-2">
-                    {/* Action Buttons */}
+                  <div className="mt-auto space-y-2.5 pt-2" onClick={(e) => e.stopPropagation()}>
+                    {/* Action Links */}
                     {(talk.pdfUrl || talk.sourceUrl) && (
                       <div className="flex gap-2">
                         {talk.pdfUrl && (
-                          <button
-                            type="button"
-                            onClick={(e) => {
-                              e.preventDefault()
-                              e.stopPropagation()
-                              window.open(talk.pdfUrl, "_blank", "noopener,noreferrer")
-                            }}
+                          <a
+                            href={talk.pdfUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
                             className="inline-flex items-center gap-1.5 rounded-md bg-secondary px-3 py-1.5 text-xs font-medium text-secondary-foreground transition-colors hover:bg-secondary/80"
                           >
                             <FileText className="h-3.5 w-3.5" />
                             PDF
-                          </button>
+                          </a>
                         )}
                         {talk.sourceUrl && (
-                          <button
-                            type="button"
-                            onClick={(e) => {
-                              e.preventDefault()
-                              e.stopPropagation()
-                              window.open(talk.sourceUrl, "_blank", "noopener,noreferrer")
-                            }}
+                          <a
+                            href={talk.sourceUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
                             className="inline-flex items-center gap-1.5 rounded-md bg-secondary px-3 py-1.5 text-xs font-medium text-secondary-foreground transition-colors hover:bg-secondary/80"
                           >
                             <Code2 className="h-3.5 w-3.5" />
                             Source
-                          </button>
+                          </a>
                         )}
                       </div>
                     )}
                   </div>
                 </CardHeader>
               </Card>
-            </Link>
+            </div>
           ))}
         </div>
       )}

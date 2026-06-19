@@ -8,8 +8,8 @@ interface TeachingInfo {
   date: string
   language?: string
   slidesUrl: string
-  pdfUrl?: string
-  sourceUrl?: string
+  slidesPdfUrl: string
+  notesPdfUrl: string
   previewImage?: string
 }
 
@@ -28,6 +28,10 @@ async function getTeachingsMetadata(): Promise<TeachingsCollection> {
 function transformTeachingMetadata(teaching: TeachingMetadata): TeachingInfo {
   const slidesUrl = teaching.slidesUrl || `https://zheng-teachings.netlify.app/${teaching.id}`
 
+  // Derive PDF URLs from the slides base URL
+  const slidesPdfUrl = teaching.pdfUrl || `${slidesUrl}assets/${teaching.id}.pdf`
+  const notesPdfUrl = `${slidesUrl}assets/notes.pdf`
+
   // Generate preview image URL (Slidev exports og-image.png with 16:9 ratio)
   const previewImage = `${slidesUrl}og-image.png`
 
@@ -37,8 +41,8 @@ function transformTeachingMetadata(teaching: TeachingMetadata): TeachingInfo {
     date: teaching.date,
     language: teaching.language,
     slidesUrl,
-    pdfUrl: teaching.pdfUrl,
-    sourceUrl: teaching.sourceUrl,
+    slidesPdfUrl,
+    notesPdfUrl,
     previewImage,
   }
 }
