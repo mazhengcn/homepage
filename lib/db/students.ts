@@ -10,14 +10,6 @@ export type Student = {
 
 export const students: Student[] = [
   {
-    name: "Yekun Zhu",
-    avatar: "/people/zhu-yekun.jpg",
-    email: "shadcn@vercel.com",
-    period: "2021 - present",
-    type: "phd",
-    status: "current",
-  },
-  {
     name: "Nan Zhou",
     avatar: "/people/zhou-nan.jpg",
     email: "maxleiter@vercel.com",
@@ -64,6 +56,15 @@ export const students: Student[] = [
     period: "2025 - present",
     type: "phd",
     status: "current",
+  },
+  {
+    name: "Yekun Zhu",
+    avatar: "/people/zhu-yekun.jpg",
+    email: "shadcn@vercel.com",
+    period: "2021 - 2026",
+    position: "First position: TikTok, Hangzhou, China",
+    type: "phd",
+    status: "former",
   },
   {
     name: "Keke Wu",
